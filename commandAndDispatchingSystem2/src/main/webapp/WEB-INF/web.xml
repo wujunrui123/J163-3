@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app version="2.3" xmlns="http://java.sun.com/xml/ns/javaee"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://java.sun.com/xml/ns/javaee 
+    http://java.sun.com/xml/ns/javaee/web-app_2_3.xsd">
+    
+  <display-name>Archetype Created Web Application</display-name>
+  
+  <!-- 加载servlet.xml文件 -->
+  <servlet>
+      <servlet-name>dispatcher</servlet-name>
+      <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+      <!-- 如果命名为xxxservlet-servlet 就不用写init-param -->
+          <init-param>
+             <param-name>contextConfigLocation</param-name>
+          <param-value>/WEB-INF/springContext.xml</param-value>
+      </init-param>
+      <!-- timcat启动时就加载servlet -->
+      <load-on-startup>1</load-on-startup>
+  </servlet>
+  
+  <servlet-mapping>
+      <servlet-name>dispatcher</servlet-name>
+      <url-pattern>/</url-pattern>
+  </servlet-mapping>
+  
+
+
+
+  
+<!--     监听器（观察者设置模式） 注册 -->
+  <listener>
+      <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+  </listener> 
+   
+  <!--  加载spring.xml文件-->
+  <context-param>
+      <param-name>contextConfigLocation</param-name>
+<!--       如果classpath 会在src下面找文件 -->
+      <param-value>classpath:applicationContext*.xml</param-value>
+  </context-param> 
+  
+
+  
+<!--  <context-param>
+      <param-name>contextConfigLocation</param-name>
+      如果classpath 会在src下面找文件
+      <param-value>classpath:applicationContext-ActiveMQ.xml</param-value>
+  </context-param>    -->
+  
+  
+  
+  <!-- 过滤器   中来设置编码集 -->
+  <filter>
+   <filter-name>characterEncodingFilter</filter-name>
+   <filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
+ <init-param>
+ 
+ 
+<plugins>
+    <!-- com.github.pagehelper为PageHelper类所在包名 -->
+    <plugin interceptor="com.github.pagehelper.PageHelper">
+    	<!-- 方言 -->
+        <property name="dialect" value="mysql"/>
+        <!-- 该参数默认为false -->
+        <!-- 设置为true时，使用RowBounds分页会进行count查询 -->
+        <property name="rowBoundsWithCount" value="true"/>
+    </plugin>
+</plugins>
+
+
+    <param-name>encoding</param-name>
+    <param-value>utf8</param-value>
+ </init-param>
+  </filter>
+</web-app>
