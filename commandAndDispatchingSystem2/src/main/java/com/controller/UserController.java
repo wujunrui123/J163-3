@@ -27,8 +27,6 @@ public class UserController {
 	 */
 	@RequestMapping("user.lovo")
 	public String getuserli(HttpServletRequest rq) {
-		//分页
-		 PageHelper.startPage(1, 2, true);
 	   List<UserBean> userli= u.getListUser();
 	    rq.setAttribute("userli", userli);
 		return "user1";
