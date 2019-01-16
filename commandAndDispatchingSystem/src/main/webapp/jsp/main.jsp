@@ -51,12 +51,12 @@
 
 						<div class="layui-input-inline">
 							<input value="" placeholder="起始时间"
-								class="layui-input search_input" type="text">
+								class="layui-input search_input" type="datetime-local">
 
 						</div>
 						<div class="layui-input-inline">
 							<input value="" placeholder="结束时间"
-								class="layui-input search_input" type="text">
+								class="layui-input search_input" type="datetime-local">
 
 						</div>
 						<div class="layui-input-inline">

@@ -78,6 +78,26 @@
 			</if>
 		</trim>
 	</select>
+	
+	<insert id="addThing" parameterType="thingEntity">
+	insert into t_thing(f_thingCard, f_thingName, f_thingType, f_grade, f_address, f_peopleNum, 
+    f_uploadName, f_phone, f_callDate, f_uploadDate, f_uploadType, f_thingState, f_callName, 
+    f_area, f_freeText, f_freeName, f_crumArea, f_crumText) values(#{thingCard},#{thingName},#{thingType},#{grade},#{address},#{peopleNum},#{uploadName},#{phone},#{callDate},#{uploadDate},#{uploadType},#{thingState},#{callName},#{area},#{freeText},#{freeName},#{crumArea},#{crumText})
+	</insert>
+	
+	<update id="updateThing">
+		update t_thing set
+		f_address=#{param2},f_grade=#{param3} where
+		pk_thingID=#{param1}
+	</update>
+	<update id="updateThingTwo">
+		update t_thing set
+		f_thingState=#{param2} where
+		pk_thingID=#{param1}
+	</update>
+	<delete id="del">
+	delete from t_thing where pk_thingID=#{param1}
+	</delete>
   
   
   

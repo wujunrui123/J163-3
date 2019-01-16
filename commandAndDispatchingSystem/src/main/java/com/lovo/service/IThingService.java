@@ -49,12 +49,12 @@ public interface IThingService {
      * @param address 详细地址
      * @param grade 等级
      */
-    public void updateThing(String address,String grade);
+    public void updateThing(int id,String address,String grade);
     /**
      * 将上报改为续报（将事件状态未上报改为上报）
      * @param thingState
      */
-    public void updateThingTwo(String thingState);
+    public void updateThingTwo(int id,String thingState);
     /**
      * 删除上报
      * @param id 事件ID

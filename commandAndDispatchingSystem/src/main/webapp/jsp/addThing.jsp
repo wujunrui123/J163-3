@@ -144,18 +144,7 @@
                     </div>
                 </div>
                 
-                <div class="layui-form-item">
-                    <label for="username" class="layui-form-label">
-                        <span class="x-red">*</span>上报时间
-                    </label>
-                    <div class="layui-input-inline">
-                        <input type="date" id="username" name="username" required="" lay-verify="required"
-                        autocomplete="off" class="layui-input">
-                    </div>
-                    <div class="layui-form-mid layui-word-aux">
-                        <span class="x-red">*</span>请输入数字
-                    </div>
-                </div>
+              
                 
                 <div class="layui-form-item">
                     <label for="username" class="layui-form-label">
@@ -170,15 +159,7 @@
                     </div>
                 </div>
                 
-                <div class="layui-form-item">
-                    <label for="username" class="layui-form-label">
-                        <span class="x-red">*</span>事件编号
-                    </label>
-                    <label for="username" class="layui-form-label">
-                        XXXX
-                    </label>
-                                     
-                </div>
+               
                 
                 <div class="layui-form-item">
                     <label for="role" class="layui-form-label">

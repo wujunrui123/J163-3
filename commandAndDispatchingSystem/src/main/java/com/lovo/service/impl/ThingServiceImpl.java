@@ -33,25 +33,25 @@ public class ThingServiceImpl implements IThingService {
 
 	@Override
 	public void addThing(ThingEntity thingEntity) {
-		// TODO Auto-generated method stub
+		dao.addThing(thingEntity);
 		
 	}
 
 	@Override
-	public void updateThing(String address, String grade) {
-		// TODO Auto-generated method stub
+	public void updateThing(int id,String address, String grade) {
+		dao.updateThing(id, address, grade);
 		
 	}
 
 	@Override
-	public void updateThingTwo(String thingState) {
-		// TODO Auto-generated method stub
+	public void updateThingTwo(int id,String thingState) {
+		dao.updateThingTwo(id, thingState);
 		
 	}
 
 	@Override
 	public void del(int id) {
-		// TODO Auto-generated method stub
+		dao.del(id);
 		
 	}
     
