@@ -2,6 +2,7 @@ package com.lovo.service;
 
 
 import java.util.List;
+import java.util.Map;
 
 import com.lovo.bean.ContinueBean;
 import com.lovo.bean.EventBean;
@@ -15,7 +16,7 @@ public interface IEventService {
 	 * @param userId 用户id
 	 * @return 用户对象
 	 */
-	public List<EventBean> findAll();
+	public List<EventBean> findAll(Map<String, Object> map);
 	/**
 	 * 根据事件id查询 续报信息
 	 * @return
