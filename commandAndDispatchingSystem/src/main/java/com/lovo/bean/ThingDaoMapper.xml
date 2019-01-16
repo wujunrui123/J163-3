@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+
+<mapper namespace="com.lovo.dao.IThingDao">
+
+<resultMap type="thingEntity" id="thingEntity">
+		<id property="thingID" column="pk_thingID" />
+		<result property="thingCard" column="f_thingCard"/>
+		<result property="thingName" column="f_thingName"/>
+		<result property="thingType" column="f_thingType"/>
+		<result property="grade" column="f_grade"/>
+		<result property="address" column="f_address"/>
+		<result property="peopleNum" column="f_peopleNum"/>
+		<result property="uploadName" column="f_uploadName"/>
+		<result property="phone" column="f_phone"/>
+		<result property="callDate" column="f_callDate"/>
+		<result property="uploadDate" column="f_uploadDate"/>
+		<result property="uploadType" column="f_uploadType"/>
+		<result property="thingState" column="f_thingState"/>
+		<result property="callName" column="f_callName"/>
+		<result property="area" column="f_area"/>
+		<result property="freeText" column="f_freeText"/>
+		<result property="freeName" column="f_freeName"/>
+		<result property="crumArea" column="f_crumArea"/>
+		<result property="crumText" column="f_crumText"/>
+		<!-- 处理有一个的问题 -->
+		<!-- <association property="continueEntityList" javaType="continueEntityList" column="fk_lock_id" select="getLockBylockId"/>	 -->	
+	<!-- 处理有多个的问题 -->
+		<collection property="continueEntityList" column="pk_thingID" select="getContinueEntityListByThingId"/>
+	</resultMap>
+	
+	<resultMap type="continueEntity" id="continueRM">
+		<id property="id" column="pk_id" />
+		<result property="grade" column="f_grade"/>
+		<result property="peopleNum" column="f_peopleNum"/>
+		<result property="uploadName" column="f_uploadName"/>
+		<result property="callName" column="f_callName"/>
+		<result property="callphone" column="f_callphone"/>
+		<result property="uploadDate" column="f_uploadDate"/>		
+	</resultMap>
+	<!-- <resultMap type="lockBean" id="lockRM">
+		<id property="id" column="lock_id" />
+		<result property="type" column="f_type"/>		
+	</resultMap> -->
+
+  <select id="findById" resultMap="thingEntity" >
+    select * from t_thing where pk_thingID=#{id} 
+  </select>
+  <select id="getContinueEntityListByThingId" resultMap="continueRM" >
+    select * from  t_continue where fk_thingID=#{pk_thingID} 
+  </select>
+  
+  
+  <select id="find" resultMap="thingEntity" parameterType="map">
+		select * from t_thing 
+
+		<trim prefix="where" prefixOverrides="and /or">
+			<if test="param1!=null"> 
+				 f_thingName like "%"#{thingName}"%"
+			</if>
+			<if test="param2!=null">
+				 f_area like "%"#{area}"%"  
+			</if>
+			<if test="param3!=null">
+				 f_uploadDate &gt; #{startDate} 
+			</if>
+			<if test="param4!=null">
+				 f_uploadDate &lt;; #{endDate}   
+			</if>
+			<if test="param5!=null">
+				 f_thingType=#{thingType}  
+			</if>
+			<if test="param6!=null">
+				 f_thingState=#{thingState}  
+			</if>
+		</trim>
+	</select>
+  
+  
+  
+  
+  
+   <!-- <select id="getUserByUserId" resultType="userBean" >
+    select * from t_user where id=#{id};
+  </select> -->
+  
+<!--   <select id="getListUser" resultType="powerEntity" >
+    select p.* from t_user u,t_userrole ur,t_role r,t_rolepower rp ,t_power  p 
+    WHERE u.id=ur.userid AND ur.roleid=r.roleId and r.roleId=rp.roleid 
+    AND rp.powerid=p.powerId AND u.id=1
+  </select> -->
+  
+
+  
+</mapper>

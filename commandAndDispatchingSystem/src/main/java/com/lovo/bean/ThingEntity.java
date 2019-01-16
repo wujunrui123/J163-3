@@ -11,6 +11,7 @@ import java.util.List;
  */
 public class ThingEntity {
 
+	
 	/**
 	 * 事件ID（主键）
 	 */
@@ -53,12 +54,12 @@ public class ThingEntity {
 	/**
 	 * 报警时间
 	 */
-	private java.sql.Date callDate;
+	private String callDate;
 	
 	/**
 	 * 上报时间
 	 */
-	private java.sql.Date uploadDate;
+	private String uploadDate;
 	
 	/**
 	 * 是否上报
@@ -162,16 +163,16 @@ public class ThingEntity {
 	public void setPhone(String phone) {
 		this.phone = phone;
 	}
-	public java.sql.Date getCallDate() {
+	public String getCallDate() {
 		return callDate;
 	}
-	public void setCallDate(java.sql.Date callDate) {
+	public void setCallDate(String callDate) {
 		this.callDate = callDate;
 	}
-	public java.sql.Date getUploadDate() {
+	public String getUploadDate() {
 		return uploadDate;
 	}
-	public void setUploadDate(java.sql.Date uploadDate) {
+	public void setUploadDate(String uploadDate) {
 		this.uploadDate = uploadDate;
 	}
 	public String getUploadType() {
@@ -228,6 +229,22 @@ public class ThingEntity {
 	public void setContinueEntityList(List<ContinueEntity> continueEntityList) {
 		this.continueEntityList = continueEntityList;
 	}
+
+
+
+	@Override
+	public String toString() {
+		return "ThingEntity [thingID=" + thingID + ", thingCard=" + thingCard + ", thingName=" + thingName
+				+ ", thingType=" + thingType + ", grade=" + grade + ", address=" + address + ", peopleNum=" + peopleNum
+				+ ", uploadName=" + uploadName + ", phone=" + phone + ", callDate=" + callDate + ", uploadDate="
+				+ uploadDate + ", uploadType=" + uploadType + ", thingState=" + thingState + ", callName=" + callName
+				+ ", area=" + area + ", freeText=" + freeText + ", freeName=" + freeName + ", crumArea=" + crumArea
+				+ ", crumText=" + crumText + ", continueEntityList=" + continueEntityList + "]";
+	}
+	
+	
+	
+	
 	
 	
 	
