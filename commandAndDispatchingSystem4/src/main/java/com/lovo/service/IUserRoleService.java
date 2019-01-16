@@ -1,7 +1,11 @@
 package com.lovo.service;
 
 import com.lovo.bean.UserRoleEntity;
-
+/**
+ * 角色业务层
+ * @author Administrator
+ *
+ */
 public interface IUserRoleService {
 	/**
 	 * 根据用户id 给用户添加角色

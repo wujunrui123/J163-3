@@ -4,7 +4,11 @@ import java.util.List;
 
 import com.lovo.bean.UserBean;
 
-
+/**
+ * 用户业务层
+ * @author Administrator
+ *
+ */
 public interface IUserService {
 	/**
 	 * 查询用户信息

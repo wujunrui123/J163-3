@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lovo.dao.ICarBeanDao">
+ <resultMap  id="car" type="CarBean">
+		<id property="ziYuanId" column="pk_car_id"/>
+		<id property="plateNumber" column="f_plateNumber"/>
+		<id property="state" column="f_state"/>
+	</resultMap>
+	
+  <select id="find" resultMap="car"  >
+      select * from t_resourcestocks where pk_car_id =#{param1} 
+  </select>
+  
+  <select id="findByItem" resultMap="car" >
+		select * from t_resourcestocks  where 1=1
+
+			<if test="param1 !=null">
+				and f_plateNumber like "%"#{param1}"%"  
+			</if>
+		
+	</select>
+  
+   <insert id="addCar"  parameterType="carBean">
+  insert into t_resourcestocks values(null,#{plateNumber},#{state})
+  </insert>
+  
+  <delete id="delCara"   >
+    delete  from t_resourcestocks where pk_car_id =#{param1} 
+ </delete>
+
+<update id="updateCar" >
+		update t_resourcestocks set f_plateNumber=#{param1} where pk_car_id=#{param2}
+	</update>
+</mapper>
