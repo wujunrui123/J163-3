@@ -33,7 +33,7 @@
 
   </select>
   
-  <select id="findcontByEvid" parameterType="int" resultType="continueBean" >
+  <select id="findcontByEvid"   resultType="continueBean" >
      select * from t_continue where t_e_pk_id = #{id} 
      ORDER BY f_repTime DESC 
  </select>
@@ -47,8 +47,8 @@
      ,#{f_collapse})
  </insert>
  
-  <select id="findEventById" parameterType="eventBean">
-   select * from t_event where pk_id=#{f_firesi}
+  <select id="findEventById" resultType="eventBean" >
+   select * from t_event where pk_id=#{eventid}
  </select>
   
   

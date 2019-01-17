@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
+    <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html >
 <html>
 <head>
@@ -8,12 +9,17 @@
 </head>
 <body>
 <div style="text-align:center">
-     <h1>xxx资源详情</h1>
+     <h1>资源详情</h1>
      <table border="1" style="position: relative;
             right: -35%;">
      <tr><th>资源类型</th><th>资源名称</th><th>归还时间</th></tr>
-     <tr><td>医生</td><td>张三</td><td>未归</td></tr>
-      <tr><td>救护车</td><td>CX13154</td><td>未归</td></tr>
+     <c:forEach  var="u2" items="${reli}" >
+     <tr><td>${u2.t_type}</td>
+     <td>${u2.f_name}</td>
+     <td>${u2.f_backDate}</td>
+     </tr>
+     </c:forEach>
+   
      </table>
      </div>
 </body>

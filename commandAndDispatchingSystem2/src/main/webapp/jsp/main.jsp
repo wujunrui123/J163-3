@@ -141,7 +141,7 @@
 	           var tr ="<tr name='new'><td>"+e.f_eventName+"</td><td>"+e.f_eventNum+"</td>"+
 	                    "<td>"+e.f_area+"</td><td>"+e.f_type+"</td><td>"+e.f_state+"</td><td>"+e.f_level+"</td><td>"+e.f_time+
 	                    "</td>"+
-	                    " <td><a href='eventShow.jsp' class='layui-btn layui-btn-mini news_edit' data-url='PlanTemplate.jsp' ><i class='iconfont icon-edit'></i>查看详情</a>"
+	                    " <td><a href='../showEvent.lovo?id="+e.pk_id+"' class='layui-btn layui-btn-mini news_edit' data-url='PlanTemplate.jsp' ><i class='iconfont icon-edit'></i>查看详情</a>"
 				        +"</td>"
 	                    +"</tr>"
 
@@ -174,7 +174,7 @@
 	           var tr ="<tr name='new'><td>"+e.f_eventName+"</td><td>"+e.f_eventNum+"</td>"+
 	                    "<td>"+e.f_area+"</td><td>"+e.f_type+"</td><td>"+e.f_state+"</td><td>"+e.f_level+"</td><td>"+e.f_time+
 	                    "</td>"+
-	                    " <td><a href='eventShow.jsp' class='layui-btn layui-btn-mini news_edit' data-url='PlanTemplate.jsp' ><i class='iconfont icon-edit'></i>查看详情</a>"
+	                    " <td><a href='../showEvent.lovo?id="+e.pk_id+"' class='layui-btn layui-btn-mini news_edit' data-url='PlanTemplate.jsp' ><i class='iconfont icon-edit'></i>查看详情</a>"
 				        +"</td>"
 	                    +"</tr>"
 

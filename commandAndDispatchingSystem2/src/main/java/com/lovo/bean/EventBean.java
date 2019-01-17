@@ -27,7 +27,7 @@ public class EventBean {
       /**
        * 事件类型
        */
-      private int f_type;
+      private String f_type;
       /**
        * 上报人
        */
@@ -89,16 +89,19 @@ public class EventBean {
 	public void setF_area(String f_area) {
 		this.f_area = f_area;
 	}
+    
+
+	
 	public String getF_level() {
 		return f_level;
 	}
 	public void setF_level(String f_level) {
 		this.f_level = f_level;
 	}
-	public int getF_type() {
+	public String getF_type() {
 		return f_type;
 	}
-	public void setF_type(int f_type) {
+	public void setF_type(String f_type) {
 		this.f_type = f_type;
 	}
 	public String getT_report() {

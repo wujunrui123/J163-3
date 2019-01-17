@@ -31,11 +31,11 @@ public class ContinueBean {
     */
    private String f_repTime;
    /**
-    * 上报人
+    * 报警人
     */
    private String f_AlarmMan;
    /**
-    * 上报人电话
+    * 报警人电话
     */
    private String f_Alarntel;
 public int getPk_id() {
