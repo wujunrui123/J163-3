@@ -13,7 +13,7 @@ public class ContinueBean {
    /**
     * 事件等级
     */
-   private int f_level;
+   private String f_level;
    /**
     * 事件编号
     */
@@ -44,10 +44,11 @@ public int getPk_id() {
 public void setPk_id(int pk_id) {
 	this.pk_id = pk_id;
 }
-public int getF_level() {
+
+public String getF_level() {
 	return f_level;
 }
-public void setF_level(int f_level) {
+public void setF_level(String f_level) {
 	this.f_level = f_level;
 }
 public String getF_eventNum() {

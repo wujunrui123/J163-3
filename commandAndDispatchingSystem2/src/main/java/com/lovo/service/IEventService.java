@@ -21,11 +21,16 @@ public interface IEventService {
 	 * 根据事件id查询 续报信息
 	 * @return
 	 */
-    public List<ContinueBean> findContByEvid();
+    public List<ContinueBean> findContByEvid(int eveid);
     /**
      * 添加事件
      * @param e
      */
     public void addEvent(Event e);
+    /**
+     * 根据事件id 查询事件详情
+     * @param eventid
+     */
+    public EventBean findEventById(int eventid);
 	
 }

@@ -1,6 +1,8 @@
 package com.lovo.bean;
 
 public class EventBean {
+	private int pk_id;
+	
 	private String f_eventName;
 	/**
 	 *事件编号
@@ -158,6 +160,12 @@ public class EventBean {
 	}
 	public void setF_eventName(String f_eventName) {
 		this.f_eventName = f_eventName;
+	}
+	public int getPk_id() {
+		return pk_id;
+	}
+	public void setPk_id(int pk_id) {
+		this.pk_id = pk_id;
 	}
       
       

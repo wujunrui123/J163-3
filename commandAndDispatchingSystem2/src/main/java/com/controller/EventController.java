@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
 
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -58,23 +59,18 @@ public class EventController {
 	   
 		List<EventBean> li=eventService.findAll(map);
 		 PageInfo<EventBean> pageInfo = new PageInfo<EventBean>(li);
-		 System.out.println("数据总页数：" + pageInfo.getPages());
+		
 	 DTOBean  dto= new DTOBean(pageInfo.getPages(), li);
 		return dto;
 	}
-	//测试代码
-	@Test
-	public void testQueryUserListLikeName() {
-	    //设置分页条件，Parameters:pageNum 页码pageSize 每页显示数量count 是否进行count查询
-	    PageHelper.startPage(1, 3, true);
-	    List<UserBean> users = this.userService.getListUser();
-	    
-	    for (UserBean user : users) {
-	        System.out.println(user);
-	    }
+	
+	@RequestMapping("showEvent.lovo")
+	public String getuserli(HttpServletRequest rq) {
+	     
+	   /* rq.setAttribute("userli", userli);*/
+		return "user1";
 	}
 
-	
 
 	
 }

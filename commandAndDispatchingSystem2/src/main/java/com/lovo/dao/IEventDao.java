@@ -24,4 +24,9 @@ public interface IEventDao {
      * @param e
      */
     public void addEvent(Event e);
+    /**
+     * 按事件id查询事件
+     * @param eventid
+     */
+    public EventBean findEventById(int eventid);
 }

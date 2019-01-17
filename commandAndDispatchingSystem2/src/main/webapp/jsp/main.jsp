@@ -80,6 +80,7 @@
 						</tr>
 					</thead>
 					<tbody class="news_content">
+
 					</tbody>
 					</table>
                      <div class="larry-table-page clearfix">
@@ -122,7 +123,7 @@
 			    </div>
 		    </div>
 		</div>
-		<input type="hidden" id='zong'>
+		<input type="hidden" id='zong' >
 	
 </section>
  <script src="../jquery-2.1.4.js"></script>
@@ -130,19 +131,6 @@
 <script type="text/javascript" src="js/newslist.js"></script>
 <script type="text/javascript">
 
-       $(function () {
-    	   //先用ajax查询一次数据
-    	   var num=  $('#Number').val();
- 	      var state=  $('#state').val();
- 	      var statTime=  $('#statTime').val();
- 	      var endTime=  $('#endTime').val();
- 	      //默认页码为1
- 	      var curr=1;
- 			 $.post("../event.lovo",{num:num,state:state,statTime:statTime,endTime:endTime,curr:curr},
- 				cha
- 			      ,"json")
-    			 
-	})
 	
 	//第一次请求和点击页码后的回调函数
 	function cha(data) {
@@ -252,7 +240,7 @@
 	
 	
 	
-	//第一次进入页面时生成的页码按钮
+	 //第一次进入页面时生成的页码按钮
 	layui.use(['jquery','layer','element','laypage'],function(){
 	      window.jQuery = window.$ = layui.jquery;
 	      window.layer = layui.layer;
@@ -276,7 +264,7 @@
 				 	      var statTime=  $('#statTime').val();
 				 	      var endTime=  $('#endTime').val();
 				 			 $.post("../event.lovo",{num:num,state:state,statTime:statTime,endTime:endTime,curr:curr},
-				 				cha
+				 				cha1
 				 			      ,"json")
 						
 						
@@ -300,7 +288,7 @@
 						}
 					}
 				});
-    });
+    }); 
 </script>
 </body>
 </html>

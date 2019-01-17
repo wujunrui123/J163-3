@@ -28,12 +28,27 @@
 					and f_time &lt; #{endtime}
 				</if>
 				
+				   ORDER BY f_time DESC
 		
 
   </select>
   
   <select id="findcontByEvid" parameterType="int" resultType="continueBean" >
-   select * from t_continue where t_e_pk_id = #{id}
+     select * from t_continue where t_e_pk_id = #{id} 
+     ORDER BY f_repTime DESC 
+ </select>
+ 
+ <insert id="addEvent" parameterType="eventBean">
+     insert into t_event values(null,#{f_eventName},#{f_eventNum},#{f_time},
+     #{f_address},#{f_area},
+     #{f_level},#{f_type},#{t_report}
+     ,#{t_alarm},#{f_alarmTel},#{f_state}
+     ,#{f_firesituation},#{f_firesi},#{f_collapsearea}
+     ,#{f_collapse})
+ </insert>
+ 
+  <select id="findEventById" parameterType="eventBean">
+   select * from t_event where pk_id=#{f_firesi}
  </select>
   
   
