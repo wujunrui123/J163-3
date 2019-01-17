@@ -66,7 +66,7 @@ public class EventController {
 	
 	@RequestMapping("showEvent.lovo")
 	public String getuserli(HttpServletRequest rq) {
-	   //asdasdasdwdas
+	   //asdasdasdwdasss
 	   /* rq.setAttribute("userli", userli);*/
 		return "user1";
 	}
