@@ -54,5 +54,18 @@ public interface ICarBeanDao {
 	  */
 	 public void updateState(String state,String name);
 	 
+	/**
+	 * 按事件id查询所有车辆集合
+	 * @param id
+	 * @return 返回车辆集合
+	 */
+	 public List<CarBean> findBitm(int id);
+	 
+	 /**
+	  *  根据转态查询车辆集合
+	  * @param state
+	  * @return
+	  */
+	 public List<CarBean> findAll(String state);
 }
 

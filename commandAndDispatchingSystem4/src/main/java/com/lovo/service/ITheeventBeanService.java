@@ -30,8 +30,9 @@ public interface ITheeventBeanService {
    * @param id 事件id
    * @param area 事件状态
    */
-	public void updateTheevent(int id ,String area );
+	public void updateTheevent(String area,int id  );
 	
+
 	
 
 }

@@ -50,4 +50,16 @@ public class CarBeanServiceimpl implements ICarBeanService {
 		CarBeanDao.updateState( state,name);
 	}
 
+	@Override
+	public List<CarBean> findBitm(int id) {
+		// TODO Auto-generated method stub
+		return CarBeanDao.findBitm(id);
+	}
+
+	@Override
+	public List<CarBean> findAll(String state) {
+		// TODO Auto-generated method stub
+		return CarBeanDao.findAll(state);
+	}
+
 }

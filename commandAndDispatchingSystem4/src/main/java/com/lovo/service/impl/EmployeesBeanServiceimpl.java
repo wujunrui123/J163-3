@@ -48,6 +48,18 @@ public class EmployeesBeanServiceimpl implements IEmployeesBeanService {
 		EmployeesBeanDao.updateState(state, name);
 		
 	}
+
+	@Override
+	public List<EmployeesBean> findBitm(int id) {
+		// TODO Auto-generated method stub
+		return EmployeesBeanDao.findBitm(id);
+	}
+
+	@Override
+	public List<EmployeesBean> findAll(String state) {
+		// TODO Auto-generated method stub
+		return EmployeesBeanDao.findAll(state);
+	}
 	
 
 }

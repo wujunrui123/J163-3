@@ -1,5 +1,7 @@
 package com.lovo.bean;
 
+import java.util.List;
+
 /**
  * 库存人员
  * @author Administrator
@@ -24,6 +26,14 @@ public class EmployeesBean {
 	private String  sendData;
 	/**归队时间*/
 	private String BackDate;
+	/**事件集合*/
+	private List<TheeventBean> Theevent;
+	public List<TheeventBean> getTheevent() {
+		return Theevent;
+	}
+	public void setTheevent(List<TheeventBean> theevent) {
+		Theevent = theevent;
+	}
 	public Integer getThingId() {
 		return ThingId;
 	}

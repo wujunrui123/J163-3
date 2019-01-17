@@ -1,5 +1,7 @@
 package com.lovo.bean;
 
+import java.util.List;
+
 /**
  * 车辆库存
  * 
@@ -13,12 +15,6 @@ public class CarBean {
 	/**事件id*/
 	private Integer ThingId;
 	
-	public Integer getThingId() {
-		return ThingId;
-	}
-	public void setThingId(Integer thingId) {
-		ThingId = thingId;
-	}
 	/** 车牌号码 */
 	private String plateNumber;
 	/** 外派状态 */
@@ -29,6 +25,25 @@ public class CarBean {
 	private String  sendData;
 	/**归队时间*/
 	private String BackDate;
+	
+	/**
+	 * 事件集合
+	 */
+	private List<TheeventBean> Theevent;
+	
+	public List<TheeventBean> getTheevent() {
+		return Theevent;
+	}
+	public void setTheevent(List<TheeventBean> theevent) {
+		Theevent = theevent;
+	}
+	public Integer getThingId() {
+		return ThingId;
+	}
+	public void setThingId(Integer thingId) {
+		ThingId = thingId;
+	}
+
 	
 	
 	public String getSendData() {

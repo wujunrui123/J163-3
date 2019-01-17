@@ -9,12 +9,20 @@
 		<id property="name" column="f_name"/>
 		<id property="phone" column="f_phone"/>
 		<id property="state" column="f_state"/>
-	<id property="sendData" column="f_outDate"/>
+	<id property="sendData" column="f_outDate"/> 
 			<id property="BackDate" column="f_backDate"/>
 	</resultMap>
 	
   <select id="findEmployees" resultMap="Employees"  >
       select * from t_inventoriesare where pk_InventoriesId =#{param1} 
+  </select>
+  
+    <select id="findBitm" resultMap="Employees"  >
+      select * from t_inventoriesare where fk_eventSourceId =#{param1} 
+  </select>
+  
+  <select id="findAll" resultMap="Employees"  >
+      select * from t_inventoriesare where f_state =1 
   </select>
   
   <select id="findByItem" resultMap="Employees" >
@@ -26,7 +34,7 @@
 		
 	</select>
   
-   <insert id="addEmployees"  parameterType="carBean">
+   <insert id="addEmployees"  parameterType="EmployeesBean">
   insert into t_inventoriesare values(null,#{ThingId},#{name},#{phone},#{state},#{sendData},#{BackDate})
   </insert>
   

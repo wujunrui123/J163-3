@@ -16,6 +16,14 @@
       select * from t_resourcestocks where pk_car_id =#{param1} 
   </select>
   
+    <select id="findBitm" resultMap="car"  >
+      select * from t_resourcestocks where fk_eventSourceId =#{param1} 
+  </select>
+  
+   <select id="findAll" resultMap="car"  >
+      select * from t_resourcestocks where f_state =#{param1} 
+  </select>
+  
   <select id="findByItem" resultMap="car" >
 		select * from t_resourcestocks  where 1=1
 

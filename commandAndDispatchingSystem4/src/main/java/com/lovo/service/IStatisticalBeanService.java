@@ -5,5 +5,17 @@ package com.lovo.service;
  *
  */
 public interface IStatisticalBeanService {
-
+   
+	/**
+	 * 统计车辆总数
+	 * @return  返回总数
+	 */
+	public int  systemCar();
+	/**
+	 * 统计人数
+	 * @return 返回总数
+	 */
+	public int systemEmployees();
+	
+	
 }

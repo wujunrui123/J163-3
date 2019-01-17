@@ -49,4 +49,18 @@ public interface IEmployeesBeanService {
 		  * @param state 人员状态
 		  */
 		 public void updateState(String state,String name);
+		 
+		 /**
+			 * 按事件id查询所有员工集合
+			 * @param id
+			 * @return 返回员工集合
+			 */
+			 public List<EmployeesBean> findBitm(int id);
+			 
+			 /**
+			  *  根据转态查询人员集合
+			  * @param state
+			  * @return
+			  */
+			 public List<EmployeesBean> findAll(String state);
 }
