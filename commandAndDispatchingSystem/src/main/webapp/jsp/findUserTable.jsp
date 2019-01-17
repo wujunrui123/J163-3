@@ -1,11 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
 	<title>上报系统</title>
-	<meta name="renderer" content="webkit">	
+	<meta name="renderer" content="webkit">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">	
 	<meta name="apple-mobile-web-app-status-bar-style" content="black">	
@@ -20,7 +21,17 @@
     height: 36px;
     width: 123px;
 	}
+	
 	</style>
+	<script type="text/javascript" src="../jquery-2.1.4.js"></script>
+	<script type="text/javascript">
+		$(function(){
+			$.post("../userList.lovo",callBack,'JSON')
+		})
+		function callBack(data){
+		}
+
+	</script>
 </head>
 <body>
 <section class="layui-larry-box">
@@ -80,27 +91,23 @@
 							
 							<th>联系方式</th>
 							
-							
 							<th>操作</th>
 						</tr>
 					</thead>
 					<tbody class="news_content">
-						<tr>
-							<td align="left">张三</td>
-							<td>aaa123</td>
-							<td>男</td>
-							<td>13688261088</td>
-							
-							<td>
-								
-								<a href="findUser.jsp" class="layui-btn layui-btn-mini news_edit" data-url="findUser.jsp" ><i class="iconfont icon-edit"></i>查看详情</a>
-								
-								<a href="PlanTemplate.jsp" class="layui-btn layui-btn-mini news_edit" data-url="PlanTemplate.jsp" ><i class="iconfont icon-edit"></i>删除</a>
-								
-							
-							</td>
-						</tr>	
-
+						<c:forEach var="n" items="${userList }">
+				  			<tr>
+				  				<td align="left">${n.name }</td>
+				  				<td>${n.userName }</td>
+				  				<td>${n.sex }</td>
+				  				<td>${n.phone }</td>
+				  				<td>
+									<a href="../findUser.lovo?id=${n.userID}" class="layui-btn layui-btn-mini news_edit" data-url="findUser.jsp" ><i class="iconfont icon-edit"></i>查看详情</a>
+									
+									<a href="PlanTemplate.jsp" class="layui-btn layui-btn-mini news_edit" data-url="PlanTemplate.jsp" ><i class="iconfont icon-edit"></i>删除</a>
+								</td>
+				  			</tr>
+				  		</c:forEach>
 					</tbody>
 					</table>
                      <div class="larry-table-page clearfix">
@@ -110,32 +117,6 @@
 			    </div>
 			     <!-- 登录日志 -->
 			    <div class="layui-tab-item layui-field-box">
-			          <table class="layui-table table-hover" lay-even="" lay-skin="nob">
-                           <thead>
-                              <tr>
-                                  <th><input type="checkbox" id="selected-all"></th>
-                                  <th>ID</th>
-                                  <th>管理员账号</th>
-                                  <th>状态</th>
-                                  <th>最后登录时间</th>
-                                  <th>上次登录IP</th>
-                                  <th>登录IP</th>
-                                  <th>IP所在位置</th>
-                              </tr>
-                            </thead>
-                            <tbody>
-                              <tr>
-                                <td><input type="checkbox"></td>
-                                <td>110</td>
-                                <td>admin</td>
-                                <td>后台登录成功</td>
-                                <td>2016-12-19 14:26:03</td>
-                                <td>127.0.0.1</td>
-                                <td>127.0.0.1</td>
-                                <td>Unknown</td>
-                              </tr>
-                            </tbody>
-			          </table>
 			          <div class="larry-table-page clearfix">
                           <a href="javascript:;" class="layui-btn layui-btn-small"><i class="iconfont icon-shanchu1"></i>删除</a>
 				          <div id="page2" class="page"></div>

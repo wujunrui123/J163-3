@@ -1,12 +1,13 @@
 package com.lovo.bean;
 
+import java.io.Serializable;
 
 /**
  * 用户表
  * @author Administrator
  *
  */
-public class UserBean {
+public class UserBean implements Serializable{
 
 	/**
 	 * 用户ID（主键）
@@ -16,7 +17,6 @@ public class UserBean {
 	 * 姓名
 	 */
 	private String name;
-
 	/**
 	 * 用户名
 	 */
@@ -98,6 +98,15 @@ public class UserBean {
 	public UserBean() {
 		super();
 		// TODO Auto-generated constructor stub
+	}
+
+	public UserBean(String name, String userName, String password, String sex, String phone) {
+		super();
+		this.name = name;
+		this.userName = userName;
+		this.password = password;
+		this.sex = sex;
+		this.phone = phone;
 	}
     
     

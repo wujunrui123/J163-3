@@ -6,6 +6,11 @@ import com.lovo.bean.UserBean;
 
 
 public interface IUserService {
+	 public void addUser(UserBean user);
+	 
+	 public void delUser(int userId);
+	 
+	 public void updateUser(String phone,String password,String roleEntity,int userID);
 	/**
 	 * 查询用户信息
 	 * @param userId 用户id
@@ -31,6 +36,8 @@ public interface IUserService {
 	 * @return 用户对象
 	 */
 	public UserBean login(String userName,String password);
+	
+	public List<UserBean> findByItem(String sex,String name);
 	
 	
 }
