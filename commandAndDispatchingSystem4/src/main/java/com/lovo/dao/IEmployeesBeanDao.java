@@ -42,4 +42,11 @@ public interface IEmployeesBeanDao {
 		  * @return 员工集合
 		  */
 		 public List<EmployeesBean> findByItem(String name );
+		 
+		 /**
+		  * 根据人员名字，修改人员状态
+		  * @param id 人员id
+		  * @param state 人员状态
+		  */
+		 public void updateState(String state,String name);
 }

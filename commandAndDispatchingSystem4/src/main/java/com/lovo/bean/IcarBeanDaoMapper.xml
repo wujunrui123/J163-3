@@ -5,8 +5,11 @@
 <mapper namespace="com.lovo.dao.ICarBeanDao">
  <resultMap  id="car" type="CarBean">
 		<id property="ziYuanId" column="pk_car_id"/>
+		<id property="ThingId" column="fk_eventSourceId"/>
 		<id property="plateNumber" column="f_plateNumber"/>
 		<id property="state" column="f_state"/>
+		<id property="sendData" column="f_outDate"/>
+			<id property="BackDate" column="f_backDate"/>
 	</resultMap>
 	
   <select id="find" resultMap="car"  >
@@ -23,7 +26,7 @@
 	</select>
   
    <insert id="addCar"  parameterType="carBean">
-  insert into t_resourcestocks values(null,#{plateNumber},#{state})
+  insert into t_resourcestocks values(null,#{ThingId},#{plateNumber},#{state},#{sendData},#{BackDate})
   </insert>
   
   <delete id="delCara"   >
@@ -32,5 +35,9 @@
 
 <update id="updateCar" >
 		update t_resourcestocks set f_plateNumber=#{param1} where pk_car_id=#{param2}
+	</update>
+	
+	<update id="updateState" >
+		update t_resourcestocks set f_state=#{param1} where f_plateNumber=#{param2}
 	</update>
 </mapper>

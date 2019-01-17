@@ -5,9 +5,12 @@
 <mapper namespace="com.lovo.dao.IEmployeesBeanDao">
  <resultMap  id="Employees" type="EmployeesBean">
 		<id property="inventoriesId" column="pk_InventoriesId"/>
+		<id property="ThingId" column="fk_eventSourceId"/>
 		<id property="name" column="f_name"/>
 		<id property="phone" column="f_phone"/>
 		<id property="state" column="f_state"/>
+	<id property="sendData" column="f_outDate"/>
+			<id property="BackDate" column="f_backDate"/>
 	</resultMap>
 	
   <select id="findEmployees" resultMap="Employees"  >
@@ -24,7 +27,7 @@
 	</select>
   
    <insert id="addEmployees"  parameterType="carBean">
-  insert into t_inventoriesare values(null,#{name},#{phone},#{state})
+  insert into t_inventoriesare values(null,#{ThingId},#{name},#{phone},#{state},#{sendData},#{BackDate})
   </insert>
   
   <delete id="delEmployees"   >
@@ -33,5 +36,9 @@
 
 <update id="updateEmployees" >
 		update t_inventoriesare set f_phone=#{param1} where pk_InventoriesId=#{param2}
+	</update>
+	
+	<update id="updateState" >
+		update t_inventoriesare set f_state=#{param1} where f_name=#{param2}
 	</update>
 </mapper>
