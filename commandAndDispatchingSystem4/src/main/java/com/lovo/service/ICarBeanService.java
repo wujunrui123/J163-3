@@ -40,4 +40,11 @@ public interface ICarBeanService {
 	  */
 	 public List<CarBean> findByItem(String plateNumber );
 	 
+	 /**
+	  * 根据车辆id，修改车辆状态
+	  * @param id 车辆id
+	  * @param state 车辆状态
+	  */
+	 public void updateState(String state,String name);
+	 
 }

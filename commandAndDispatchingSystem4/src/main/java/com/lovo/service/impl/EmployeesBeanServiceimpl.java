@@ -42,6 +42,12 @@ public class EmployeesBeanServiceimpl implements IEmployeesBeanService {
 		// TODO Auto-generated method stub
 		return EmployeesBeanDao.findByItem(name);
 	}
+
+	@Override
+	public void updateState( String state,String name) {
+		EmployeesBeanDao.updateState(state, name);
+		
+	}
 	
 
 }

@@ -1,3 +1,8 @@
+
+
+
+
+
 package com.lovo.dao;
 
 
@@ -41,6 +46,13 @@ public interface ICarBeanDao {
 	  * @return 车辆集合
 	  */
 	 public List<CarBean> findByItem(String plateNumber );
+	 
+	 /**
+	  * 根据车牌，修改车辆状态
+	  * @param name 车牌
+	  * @param state 车辆状态
+	  */
+	 public void updateState(String state,String name);
 	 
 }
 

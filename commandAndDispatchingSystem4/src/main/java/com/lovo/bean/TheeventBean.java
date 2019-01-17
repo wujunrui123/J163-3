@@ -9,7 +9,7 @@ public class TheeventBean {
 	private Integer messageId;
 	/**事件名称*/
 	private String eventName;
-	/**事件区域*/
+	/**事件状态*/
 	private String area;
 	/**事件等级*/
 	private Integer level;

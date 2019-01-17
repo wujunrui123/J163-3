@@ -44,4 +44,10 @@ public class CarBeanServiceimpl implements ICarBeanService {
 		return CarBeanDao.findByItem(plateNumber);
 	}
 
+	@Override
+	public void updateState( String state,String name) {
+		
+		CarBeanDao.updateState( state,name);
+	}
+
 }
