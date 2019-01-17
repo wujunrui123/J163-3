@@ -173,7 +173,7 @@
 			    
 			    
 			       <div style='display:none;' class="layui-form-item" id='diao'>
-                  <a style="left: 50px"  href='jsp/schedulingResources.jsp' class="layui-btn search_btn">资源调度</a>
+                  <a style="left: 50px"  href='dispatch.lovo?id=${e.pk_id}' class="layui-btn search_btn">资源调度</a>
                 </div>
                 
 	   <script src="jquery-2.1.4.js"></script>  

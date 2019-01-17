@@ -16,6 +16,7 @@ import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.lovo.bean.ContinueBean;
 import com.lovo.bean.DTOBean;
+import com.lovo.bean.DTOBean2;
 import com.lovo.bean.EventBean;
 import com.lovo.bean.EventResourceBean;
 import com.lovo.bean.ResourcesBean;
@@ -65,8 +66,10 @@ public class EventController {
 	    PageHelper.startPage(curr, 1, true);
 	   
 		List<EventBean> li=eventService.findAll(map);
-		 PageInfo<EventBean> pageInfo = new PageInfo<EventBean>(li);
 		
+		
+		 PageInfo<EventBean> pageInfo = new PageInfo<EventBean>(li);
+		//将总页码和 集合放在 传输bean里   发送至页面
 	 DTOBean  dto= new DTOBean(pageInfo.getPages(), li);
 		return dto;
 	}
@@ -119,10 +122,19 @@ public class EventController {
 	@RequestMapping("dispatch.lovo")
 	public String dispatch(int id,HttpServletRequest rq) {
 		  EventBean e= eventService.findEventById(id);
-         
-		
+		   DTOBean2 d= resourcesService.findNumByEveid(id,"医院");
+		   DTOBean2 d1= resourcesService.findNumByEveid(id,"消防队");
+		   if(d==null) {
+			  d=new DTOBean2();
+		   }
+		   if(d1==null) {
+				  d1=new DTOBean2();
+			   }
+		 
 		  rq.setAttribute("eve", e);
-		return "resources";
+		  rq.setAttribute("d", d);
+		  rq.setAttribute("d1", d1);
+		return "schedulingResources";
 		
 	}
 

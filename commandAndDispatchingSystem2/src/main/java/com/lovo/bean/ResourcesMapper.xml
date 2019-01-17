@@ -6,11 +6,15 @@
 
 <mapper namespace="com.lovo.dao.ResourcesDao">
 
-
   <select id="findResourByErid"  resultType="resourcesBean" >
          select * from t_resource where 
 				  t_e_pk_id=#{id}
 				   ORDER BY t_type 
+  </select>
+  
+    <select id="findNumByEveid" parameterType="map"  resultType="dTOBean2" >
+        SELECT SUM(re.f_perNum) pro,SUM(re.f_carNum) car  FROM t_event e,t_eventresource re where
+      re.t_e_pk_id=e.pk_id AND e.pk_id=#{id}   AND re.f_type=#{type}
   </select>
   
 

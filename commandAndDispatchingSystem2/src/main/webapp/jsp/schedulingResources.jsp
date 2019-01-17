@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
+     <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
    
@@ -14,7 +15,7 @@
         <meta name="apple-mobile-web-app-status-bar-style" content="black">
         <meta name="apple-mobile-web-app-capable" content="yes">
         <meta name="format-detection" content="telephone=no">
-        <link rel="stylesheet" href="./css/x-admin.css" media="all">
+        <link rel="stylesheet" href="jsp/css/x-admin.css" media="all">
         <style type="text/css">
         .asd{
                margin-left: 26px;
@@ -29,19 +30,19 @@
               
                 <dl style="margin-left:6px; color:#019688">
                
-                <dt>  <a style="left: 50px"  href='main.jsp' class="layui-btn search_btn">返回</a>   <span style="margin-left:50px">XXX事件</span> </dt>
+                <dt>  <a style="left: 50px"  href='main.jsp' class="layui-btn search_btn">返回</a>   <span style="margin-left:50px">${eve.f_eventName}调度系统</span> </dt>
               </dl>
             </blockquote>
             <div class="pd-20">
               <table  class="layui-table" lay-skin="line">
                 <tbody>
                   <tr>
-                    <th width="80">事件等级：</th>
-                    <td>A</td>
+                    <th width="80">事件等级</th>
+                    <td>${eve.f_level}</td>
                   </tr>
                   <tr>
                     <th>事件类型</th>
-                    <td>水灾</td>
+                    <td>${eve.f_type}</td>
                   </tr>
                 </tbody>
               </table>
@@ -61,20 +62,24 @@
 						<col width="30%">
 					</colgroup>
 					<thead>
+				
 						<tr>						
 							<th style="text-align:left;">已调医生人数</th>
 							<th>已调救护车数</th>
 							<th>已调消防员数</th>
 							<th>已调消防车数</th>
 						</tr>
+						
 					</thead>
 					<tbody class="news_content">
+							
 						<tr>
-							<td align="left">3</td>
-							<td>2</td>
-							<td>2</td>
-							<td>1</td>
+							<td align="left">${d.pro}</td>
+							<td>${d.car}</td>
+							<td>${d1.pro}</td>
+							<td>${d1.car}</td>
 						</tr>
+				
 					</tbody>
 					</table>
 			    </div>
@@ -183,9 +188,9 @@
 			    </div>
                 
 			    
-        <script src="./lib/layui/layui.js" charset="utf-8">
+        <script src="jsp/lib/layui/layui.js" charset="utf-8">
         </script>
-        <script src="./js/x-layui.js" charset="utf-8">
+        <script src="jsp/js/x-layui.js" charset="utf-8">
         </script>
         <script>
             layui.use(['form','layer'], function(){

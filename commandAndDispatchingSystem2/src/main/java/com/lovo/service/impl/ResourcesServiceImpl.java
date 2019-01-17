@@ -1,10 +1,14 @@
 package com.lovo.service.impl;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.lovo.bean.DTOBean;
+import com.lovo.bean.DTOBean2;
 import com.lovo.bean.ResourcesBean;
 import com.lovo.dao.ResourcesDao;
 import com.lovo.service.IResourcesService;
@@ -22,6 +26,13 @@ public class ResourcesServiceImpl implements IResourcesService{
 	public List<ResourcesBean> findResourByErid(int id) {
 		
 		return resourcesDao.findResourByErid(id);
+	}
+	@Override
+	public DTOBean2 findNumByEveid(int id, String type) {
+		Map<String, Object> map=new HashMap<>();
+		   map.put("id", id);
+		   map.put("type", type);
+		return resourcesDao.findNumByEveid(map);
 	}
       
 }

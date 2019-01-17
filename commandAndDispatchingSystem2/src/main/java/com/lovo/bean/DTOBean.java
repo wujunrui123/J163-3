@@ -10,6 +10,8 @@ import java.util.List;
 public class DTOBean {
      private int  tot;
      private List<EventBean> evelist;
+
+	
 	public int getTot() {
 		return tot;
 	}
