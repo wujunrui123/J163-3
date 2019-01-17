@@ -36,7 +36,8 @@ private String callphone;
 /**
  * 上报时间
  */
-private java.sql.Date uploadDate;
+private String uploadDate;
+
 /**
  * 事件类
  */
@@ -77,10 +78,10 @@ public String getCallphone() {
 public void setCallphone(String callphone) {
 	this.callphone = callphone;
 }
-public java.sql.Date getUploadDate() {
+public String getUploadDate() {
 	return uploadDate;
 }
-public void setUploadDate(java.sql.Date uploadDate) {
+public void setUploadDate(String uploadDate) {
 	this.uploadDate = uploadDate;
 }
 
@@ -93,6 +94,11 @@ public void setThingEntity(ThingEntity thingEntity) {
 public ContinueEntity() {
 	super();
 	// TODO Auto-generated constructor stub
+}
+@Override
+public String toString() {
+	return "ContinueEntity [id=" + id + ", grade=" + grade + ", peopleNum=" + peopleNum + ", uploadName=" + uploadName
+			+ ", callName=" + callName + ", callphone=" + callphone + ", uploadDate=" + uploadDate + "]";
 }
 
 

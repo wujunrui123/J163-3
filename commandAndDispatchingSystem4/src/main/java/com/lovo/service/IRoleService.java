@@ -4,7 +4,11 @@ import java.util.List;
 
 import com.lovo.bean.RoleEntity;
 
-
+/**
+ * 角色业务层
+ * @author Administrator
+ *
+ */
 public interface IRoleService {
      /**
       * 查询角色集合

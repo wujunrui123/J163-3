@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lovo.dao.IEmployeesBeanDao">
+ <resultMap  id="Employees" type="EmployeesBean">
+		<id property="inventoriesId" column="pk_InventoriesId"/>
+		<id property="name" column="f_name"/>
+		<id property="phone" column="f_phone"/>
+		<id property="state" column="f_state"/>
+	</resultMap>
+	
+  <select id="findEmployees" resultMap="Employees"  >
+      select * from t_inventoriesare where pk_InventoriesId =#{param1} 
+  </select>
+  
+  <select id="findByItem" resultMap="Employees" >
+		select * from t_inventoriesare  where 1=1
+
+			<if test="param1 !=null">
+				and f_plateNumber like "%"#{param1}"%"  
+			</if>
+		
+	</select>
+  
+   <insert id="addEmployees"  parameterType="carBean">
+  insert into t_inventoriesare values(null,#{name},#{phone},#{state})
+  </insert>
+  
+  <delete id="delEmployees"   >
+    delete  from t_inventoriesare where pk_InventoriesId =#{param1} 
+ </delete>
+
+<update id="updateEmployees" >
+		update t_inventoriesare set f_phone=#{param1} where pk_InventoriesId=#{param2}
+	</update>
+</mapper>
