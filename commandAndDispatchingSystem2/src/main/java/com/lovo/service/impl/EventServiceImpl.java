@@ -1,6 +1,7 @@
 package com.lovo.service.impl;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -20,21 +21,35 @@ public class EventServiceImpl  implements IEventService {
     private IEventDao eventDao;
 	
 	@Override
-	public List<EventBean> findAll() {
-		
-		return null;
+	public List<EventBean> findAll(Map<String, Object> map) {
+		List<EventBean> li=eventDao.findAll(map);
+		for (EventBean eventBean : li) {
+			List<ContinueBean> lic=eventDao.findcontByEvid(eventBean.getPk_id());
+			if(lic!=null&&lic.size()!=0) {
+				eventBean.setF_level(lic.get(0).getF_level());
+			}
+		}
+		return li;
 	}
 
 
 	@Override
-	public List<ContinueBean> findContByEvid() {
-		// TODO Auto-generated method stub
-		return null;
+	public List<ContinueBean> findContByEvid(int eveid) {
+		
+		return eventDao.findcontByEvid(eveid);
 	}
 
 
 	@Override
 	public void addEvent(Event e) {
+		eventDao.addEvent(e);
+		
+	}
+
+
+	@Override
+	public EventBean findEventById(int eventid) {
+		return eventDao.findEventById(eventid);
 		
 		
 	}

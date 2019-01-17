@@ -38,7 +38,7 @@ layui.config({
 
 	//查询
 	$(".search_btn").click(function(){
-		var newArray = [];
+		/*var newArray = [];
 		if($(".search_input").val() != ''){
 			var index = layer.msg('查询中，请稍候',{icon: 16,time:false,shade:0.8});
             setTimeout(function(){
@@ -101,8 +101,6 @@ layui.config({
             	
                 layer.close(index);
             },2000);
-		}else{
-			layer.msg("请输入需要查询的内容");
 		}
 	})
 
@@ -137,7 +135,8 @@ layui.config({
             },2000);
 		}else{
 			layer.msg("请选择需要推荐的文章");
-		}
+		}*/
+		alert(1);
 	})
 
 	//审核文章

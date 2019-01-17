@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -16,7 +17,9 @@
 	<link rel="stylesheet" type="text/css" href="common/global.css" media="all">
 	<link rel="stylesheet" type="text/css" href="css/adminstyle.css" media="all">
 	
-	
+<%
+  String userName = request.getParameter("username");
+ %>	
 </head>
 <body>
 <div class="layui-layout layui-layout-admin" id="layui_layout">
@@ -41,7 +44,7 @@
             <!-- 右侧导航 -->
             <ul class="layui-nav larry-header-item">
             		<li class="layui-nav-item">
-            			账户名：广州丹奇日化
+            			用户名：<span><%=userName %></span>
             		</li>
 					<li class="layui-nav-item">
 						<a href="login.html">

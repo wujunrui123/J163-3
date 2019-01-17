@@ -11,9 +11,21 @@
         select * from  t_user 
   </select>
   
+  <select id="login" resultType="userBean" >
+        select * from  t_user where userName=#{param1} and password=#{param2}
+  </select>
+  
   <select id="getUserByUserId"  resultType="userBean" >
         select * from  t_user  where id=#{id}
   </select>
+  
+  <update id="updateUserInfoByUserId">
+  		update t_user set tel=#{param1}, emil=#{param2} where id=#{param3}
+  </update>
+  
+  <update id="updatePasswordByUserId">
+  		update t_user set password=#{param1} where id=#{param2}
+  </update>
   
   
 <!--   <select id="getListUser" resultType="powerEntity" >

@@ -1,6 +1,9 @@
 package com.lovo.bean;
 
 public class EventBean {
+	private int pk_id;
+	
+	private String f_eventName;
 	/**
 	 *事件编号
 	 */
@@ -24,7 +27,7 @@ public class EventBean {
       /**
        * 事件类型
        */
-      private int f_type;
+      private String f_type;
       /**
        * 上报人
        */
@@ -86,16 +89,19 @@ public class EventBean {
 	public void setF_area(String f_area) {
 		this.f_area = f_area;
 	}
+    
+
+	
 	public String getF_level() {
 		return f_level;
 	}
 	public void setF_level(String f_level) {
 		this.f_level = f_level;
 	}
-	public int getF_type() {
+	public String getF_type() {
 		return f_type;
 	}
-	public void setF_type(int f_type) {
+	public void setF_type(String f_type) {
 		this.f_type = f_type;
 	}
 	public String getT_report() {
@@ -151,6 +157,18 @@ public class EventBean {
 	}
 	public void setF_collapse(String f_collapse) {
 		this.f_collapse = f_collapse;
+	}
+	public String getF_eventName() {
+		return f_eventName;
+	}
+	public void setF_eventName(String f_eventName) {
+		this.f_eventName = f_eventName;
+	}
+	public int getPk_id() {
+		return pk_id;
+	}
+	public void setPk_id(int pk_id) {
+		this.pk_id = pk_id;
 	}
       
       

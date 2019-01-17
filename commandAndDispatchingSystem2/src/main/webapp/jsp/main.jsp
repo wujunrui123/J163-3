@@ -30,21 +30,25 @@
 		
 		<div class="layui-inline">
 		    <div class="layui-input-inline">
-		    	<input value="" placeholder="请输入事件编号" class="layui-input search_input" type="text">
+		    	<input value="" placeholder="请输入事件编号" id='Number' class="layui-input search_input" type="text">
 		    </div>
-		    <div class="layui-input-inline">
-		      <select  class='sel'>
-		       <option>已处理事件
+		    <div class="layui-input-inline" >
+		      <select  class='sel' id='state'>
+		       <option value='待处理'>待处理
+		       </option>
+		       <option value='已处理'>已处理
+		       </option>
+		       <option value='未处理'>未处理
 		       </option>
 		      </select>
 		    </div>
 		    <div class="layui-input-inline">
-		    	<input value="" placeholder="请输入关键字" class="layui-input search_input" type="text">
+		    	<input id='statTime' value="" placeholder="请输入起始日期" class="layui-input search_input" type="date">
 		    </div>
 		    <div class="layui-input-inline">
-		    	<input value="" placeholder="请输入关键字" class="layui-input search_input" type="text">
+		    	<input id='endTime' value="" placeholder="请输入结束日期" class="layui-input search_input" type="date">
 		    </div>
-		    <a class="layui-btn search_btn">查询</a>
+		    <a class="layui-btn" id='cha'>查询</a>
 		</div>
 		
 		<div class="layui-inline">
@@ -53,7 +57,7 @@
 	</blockquote>
 		         <!-- 操作日志 -->
                 <div class="layui-form news_list">
-                    <table class="layui-table">
+                    <table class="layui-table" id='tab'>
 					    <colgroup>
 						<col>
 						<col width="9%">
@@ -65,7 +69,6 @@
 					</colgroup>
 					<thead>
 						<tr>
-
 							<th style="text-align:left;">事件名称</th>
 							<th>事件编号</th>
 							<th>所在地区</th>
@@ -77,21 +80,6 @@
 						</tr>
 					</thead>
 					<tbody class="news_content">
-						<tr>
-							<td align="left">css3用transition实现边框动画效果</td>
-							<td>请叫我马哥</td>
-							<td>审核通过</td>
-							<td>开放浏览</td>
-							<td>
-								待处理
-							</td>
-							<td>A</td>
-						    <td>2017-04-14</td>
-							<td>
-								<a href="eventShow.jsp" class="layui-btn layui-btn-mini news_edit" data-url="PlanTemplate.jsp" ><i class="iconfont icon-edit"></i>查看详情</a>
-							
-							</td>
-						</tr>	
 
 					</tbody>
 					</table>
@@ -135,33 +123,151 @@
 			    </div>
 		    </div>
 		</div>
+		<input type="hidden" id='zong' >
 	
 </section>
  <script src="../jquery-2.1.4.js"></script>
 <script type="text/javascript" src="common/layui/layui.js"></script>
 <script type="text/javascript" src="js/newslist.js"></script>
-<!-- <script type="text/javascript" src="js/larry.js"></script>
-<script type="text/javascript" src="js/index.js"></script> -->
 <script type="text/javascript">
-/*     $("body").on("click",".news_edit",function(){  //编辑
-	layer.alert('您点击了文章编辑按钮，由于是纯静态页面，所以暂时不存在编辑内容，后期会添加，敬请谅解。。。',{icon:6, title:'文章编辑'});
-    }) */
+
+	
+	//第一次请求和点击页码后的回调函数
+	function cha(data) {
+		   var $table=$("#tab");
+	        $("tr[name=new]").remove();
+	        
+		    $.each(data.evelist,function(i,e){
+	           var tr ="<tr name='new'><td>"+e.f_eventName+"</td><td>"+e.f_eventNum+"</td>"+
+	                    "<td>"+e.f_area+"</td><td>"+e.f_type+"</td><td>"+e.f_state+"</td><td>"+e.f_level+"</td><td>"+e.f_time+
+	                    "</td>"+
+	                    " <td><a href='../showEvent.lovo?id="+e.pk_id+"' class='layui-btn layui-btn-mini news_edit' data-url='PlanTemplate.jsp' ><i class='iconfont icon-edit'></i>查看详情</a>"
+				        +"</td>"
+	                    +"</tr>"
+
+	            $table.append(tr);
+	        
+	         });
+		    //隐藏表单域  记录总页数
+		    $("#zong").val(data.tot);
+
+       }
+	
+    //查询按钮点击事件
+    $("#cha").click(function () {
+      var num=  $('#Number').val();
+      var state=  $('#state').val();
+      var statTime=  $('#statTime').val();
+      var endTime=  $('#endTime').val();
+      //默认为第一页
+      var curr=1;
+		 $.post("../event.lovo",{num:num,state:state,statTime:statTime,endTime:endTime,curr:curr},
+				 cha1
+				 ,'json')
+	})
+    //查询按钮点击后的回调函数
+	function cha1(data) {
+		   var $table=$("#tab");
+	        $("tr[name=new]").remove();
+	        
+		    $.each(data.evelist,function(i,e){
+	           var tr ="<tr name='new'><td>"+e.f_eventName+"</td><td>"+e.f_eventNum+"</td>"+
+	                    "<td>"+e.f_area+"</td><td>"+e.f_type+"</td><td>"+e.f_state+"</td><td>"+e.f_level+"</td><td>"+e.f_time+
+	                    "</td>"+
+	                    " <td><a href='../showEvent.lovo?id="+e.pk_id+"' class='layui-btn layui-btn-mini news_edit' data-url='PlanTemplate.jsp' ><i class='iconfont icon-edit'></i>查看详情</a>"
+				        +"</td>"
+	                    +"</tr>"
+
+	            $table.append(tr);
+	        
+	         });
+		    //查询后会将查询的到数据的总页数重新记录到隐藏表单域
+		    $("#zong").val(data.tot);
+		    
+		    //此代码为配置页码按钮代码     将此代码放在回调函数中是为了，在点击查询后会  将页码按钮重新刷新
+		    layui.use(['jquery','layer','element','laypage'],function(){
+			      window.jQuery = window.$ = layui.jquery;
+			      window.layer = layui.layer;
+		          var element = layui.element(),
+		              laypage = layui.laypage;
+
+		          laypage({
+							cont: 'page',
+							//获取隐藏表单域保存的总页数  -1+1是位了将string类型 转换为int
+							pages:  $("#zong").val()-1+1 
+								,
+							groups: 2 //连续显示分页数
+								,
+								//该方法为点击页码按钮后触发的方法
+							jump: function(obj, first) {
+								//curr为点击的页码
+								var curr = obj.curr;
+								
+								//再次发ajax请求 为了得到下一页的数据
+								   var num=  $('#Number').val();
+						 	      var state=  $('#state').val();
+						 	      var statTime=  $('#statTime').val();
+						 	      var endTime=  $('#endTime').val();
+						 			 $.post("../event.lovo",{num:num,state:state,statTime:statTime,endTime:endTime,curr:curr},
+						 				cha
+						 			      ,"json") 
+								
+								
+								if(!first) {
+									//layer.msg('第 '+ obj.curr +' 页');
+								}
+							}
+						});
+                 
+		          laypage({
+							cont: 'page2',
+							pages: 10 //总页数
+								,
+							groups: 5 //连续显示分页数
+								,
+							jump: function(obj, first) {
+								//得到了当前页，用于向服务端请求对应数据
+								var curr = obj.curr;
+								if(!first) {
+									//layer.msg('第 '+ obj.curr +' 页');
+								}
+							}
+						});
+		    });
+
+       }
+	
+	
+	
+	
+	 //第一次进入页面时生成的页码按钮
 	layui.use(['jquery','layer','element','laypage'],function(){
 	      window.jQuery = window.$ = layui.jquery;
 	      window.layer = layui.layer;
           var element = layui.element(),
               laypage = layui.laypage;
-
+         
             
           laypage({
 					cont: 'page',
-					pages: 10 //总页数
+					pages:  $("#zong").val()-1+1 //总页数
 						,
-					groups: 5 //连续显示分页数
+					groups: 2 //连续显示分页数
 						,
 					jump: function(obj, first) {
 						//得到了当前页，用于向服务端请求对应数据
 						var curr = obj.curr;
+						
+					
+						  var num=  $('#Number').val();
+				 	      var state=  $('#state').val();
+				 	      var statTime=  $('#statTime').val();
+				 	      var endTime=  $('#endTime').val();
+				 			 $.post("../event.lovo",{num:num,state:state,statTime:statTime,endTime:endTime,curr:curr},
+				 				cha1
+				 			      ,"json")
+						
+						
 						if(!first) {
 							//layer.msg('第 '+ obj.curr +' 页');
 						}
@@ -182,7 +288,7 @@
 						}
 					}
 				});
-    });
+    }); 
 </script>
 </body>
 </html>
