@@ -19,8 +19,6 @@ public class UserServiceImpl implements IUserService {
 		return userDao.getListUser();
 	}
 
-
-
 	@Override
 	public UserBean getUserByUserId(int userId) {
 		
@@ -35,8 +33,7 @@ public class UserServiceImpl implements IUserService {
 
 	@Override
 	public UserBean login(String userName, String password) {
-		// TODO Auto-generated method stub
-		return null;
+		return userDao.login(userName, password);
 	}
 
 
@@ -63,5 +60,15 @@ public class UserServiceImpl implements IUserService {
 		
 	}
 
+	@Override
+	public void updateUserInfoByUserId(String tel, String emil, int id) {
+		userDao.updateUserInfoByUserId(tel, emil, id);
+		
+	}
 
+	@Override
+	public void updatePasswordByUserId(String password, int id) {
+		userDao.updatePasswordByUserId(password, id);
+		
+	}
 }
