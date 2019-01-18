@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.lovo.dao.IModelDao">
+	<resultMap type="modelEntity" id="modelEntity">
+		<id property="id" column="pk_id"/>
+		<result property="modelName" column="f_modelName"/>
+		<result property="type" column="f_type"/>
+		<result property="level" column="f_level"/>
+		<result property="perNum" column="f_perNum"/>
+		<result property="carNum" column="f_carNum"/>
+		<result property="perOfHos" column="f_perOfHos"/>
+		<result property="carOfHos" column="f_carOfHos"/>
+		<result property="creatPerson" column="f_creatPerson"/>
+	</resultMap>
+	
+	<insert id="addModel" parameterType="modelEntity">
+		insert into t_model values(null,#{modelName},#{type},#{level},
+			#{perNum},#{carNum},#{perOfHos},#{carOfHos},#{creatPerson})
+	</insert>
+	
+	<select id="findModelAll" resultMap="modelEntity">
+		select * from t_model order by f_level desc
+	</select>
+	
+	<select id="findModelByLevelAndType" resultMap="modelEntity">
+		select * from t_model where f_level=#{param1} and f_type=#{param2} order by f_level desc
+	</select>
+
+	<select id="findModelByName" resultMap="modelEntity">
+		select * from t_model where f_modelName like "%"#{param1}"%"
+	</select>
+	
+	<select id="findModelById" resultMap="modelEntity">
+		select * from t_model where pk_id=#{param1}
+	</select>
+	
+	<delete id="delModel">
+		delete from t_model where pk_id=#{param1}
+	</delete>
+	
+	<update id="updateModel">
+		update t_model set f_type=#{param1},f_level=#{param2},
+		f_perNum=#{param3},f_carNum=#{param4},f_perOfHos=#{param5},
+		f_carOfHos=#{param6} where pk_id=#{param7}
+	</update>
+</mapper>
