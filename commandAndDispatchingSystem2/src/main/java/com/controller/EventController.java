@@ -6,7 +6,7 @@ import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
-import org.junit.Test;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -17,8 +17,10 @@ import com.github.pagehelper.PageInfo;
 import com.lovo.bean.ContinueBean;
 import com.lovo.bean.DTOBean;
 import com.lovo.bean.DTOBean2;
+import com.lovo.bean.DTOBean4;
 import com.lovo.bean.EventBean;
 import com.lovo.bean.EventResourceBean;
+import com.lovo.bean.ResourceareasBean;
 import com.lovo.bean.ResourcesBean;
 import com.lovo.bean.UserBean;
 import com.lovo.service.IEventResourceService;
@@ -134,8 +136,17 @@ public class EventController {
 		  rq.setAttribute("eve", e);
 		  rq.setAttribute("d", d);
 		  rq.setAttribute("d1", d1);
+
 		return "schedulingResources";
-		
+	}
+	
+	@RequestMapping("select.lovo")
+	@ResponseBody
+	public DTOBean4 selectres(String area,HttpServletRequest rq) {
+		List<ResourceareasBean> li=resourcesService.findResByArea("医院", area);
+		List<ResourceareasBean> li1=resourcesService.findResByArea("消防队", area);
+	      DTOBean4 d=  new DTOBean4(li, li1);
+		return d;
 	}
 
 

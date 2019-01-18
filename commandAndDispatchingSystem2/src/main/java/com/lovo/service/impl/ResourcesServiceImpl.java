@@ -7,8 +7,8 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.lovo.bean.DTOBean;
 import com.lovo.bean.DTOBean2;
+import com.lovo.bean.ResourceareasBean;
 import com.lovo.bean.ResourcesBean;
 import com.lovo.dao.ResourcesDao;
 import com.lovo.service.IResourcesService;
@@ -33,6 +33,12 @@ public class ResourcesServiceImpl implements IResourcesService{
 		   map.put("id", id);
 		   map.put("type", type);
 		return resourcesDao.findNumByEveid(map);
+	}
+	
+	@Override
+	public List<ResourceareasBean> findResByArea(String type, String area) {
+		
+		return resourcesDao.findResByArea(type, area);
 	}
       
 }

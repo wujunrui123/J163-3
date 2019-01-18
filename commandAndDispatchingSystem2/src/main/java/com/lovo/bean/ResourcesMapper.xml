@@ -17,6 +17,10 @@
       re.t_e_pk_id=e.pk_id AND e.pk_id=#{id}   AND re.f_type=#{type}
   </select>
   
+    <select id="findResByArea" parameterType="string"  resultType="resourceareasBean" >
+        select f_name,f_url from t_resourceareas  where f_type=#{param1}  and f_area=#{param2}
+  </select>
+  
 
   
   

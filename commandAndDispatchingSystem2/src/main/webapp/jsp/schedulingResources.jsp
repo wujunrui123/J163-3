@@ -16,6 +16,7 @@
         <meta name="apple-mobile-web-app-capable" content="yes">
         <meta name="format-detection" content="telephone=no">
         <link rel="stylesheet" href="jsp/css/x-admin.css" media="all">
+        <link rel="stylesheet" href="jsp/js/city.css" media="all">
         <style type="text/css">
         .asd{
                margin-left: 26px;
@@ -89,7 +90,7 @@
 			     <br>
 			     <div class="layui-form news_list">
          <h1>匹配的预案模板</h1>
-                    <table class="layui-table">
+                    <table class="layui-table" >
 					    <colgroup>
 						<col width="20%">
 					    <col width="20%">
@@ -123,14 +124,25 @@
 			          <span class='asd'>已选消防员人数</span> <span class='asd'>0</span>
 			          <span class='asd'>已选救护车数</span> <span class='asd'>0</span>
 			          <span class='asd'>已选消防车数</span> <span class='asd'>0</span>
-			            <a style="left: 50px"  href='schedulingResources.jsp' class="layui-btn search_btn">资源调度</a>
+			          <a style="left: 50px"  href='schedulingResources.jsp' class="layui-btn search_btn">资源调度</a>
 
            <br>
+			     <br>
+			     
+
+                    <div class="ku" >
+
+                        <span id='dd'>${eve.f_area}</span>
+                        <div class="xiala" >
+                        </div>
+                    </div>
+                    <a id='ss' style="left: 50px"  class="layui-btn search_btn">查询</a> 
+                    <br>
 			     <br>
                 
 			     <div class="layui-form news_list">
          <h1>医院资源</h1>
-                    <table class="layui-table">
+                    <table class="layui-table" id='tab'>
 					    <colgroup>
 						<col>
 
@@ -147,11 +159,13 @@
 					</thead>
 					
 					<tbody class="news_content">
-						<tr>
-							<td align="left">css3用transition实</td>
-							<td><input class='dian' type="button" value='+'>10<input type="button" value='-'></td>
-							<td><input  class='dian' type="button" value='+'>10<input type="button" value='-'></td>
+				
+						<tr name='new'>
+							<td align="left"></td>
+							<td ><input class='dian' type="button" value='+'>1<input type="button" value='-'></td>
+							<td><input  class='dian' type="button" value='+'>2<input type="button" value='-'></td>
 						</tr>
+					
 					</tbody>
 					</table>
 			    </div>
@@ -161,7 +175,7 @@
 			    
 			     <div class="layui-form news_list">
          <h1>消防资源</h1>
-                    <table class="layui-table">
+                    <table class="layui-table" id='tab1'>
 					    <colgroup>
 						<col>
 						<col width="30%">
@@ -178,21 +192,68 @@
 					</thead>
 					
 					<tbody class="news_content">
-						<tr>
-							<td align="left">css3用transition实现边框动画效果</td>
-								<td><input class='dian' type="button" value='+'>10<input type="button" value='-'></td>
-							<td><input  class='dian' type="button" value='+'>10<input type="button" value='-'></td>
+						
+						<tr name='new'>
+							<td align="left"></td>
+							<td ><input class='dian' type="button" value='+'>1<input type="button" value='-'></td>
+							<td><input  class='dian' type="button" value='+'>2<input type="button" value='-'></td>
 						</tr>
+					
 					</tbody>
 					</table>
 			    </div>
                 
-			    
+		 <script src="jquery-2.1.4.js"></script>	    
         <script src="jsp/lib/layui/layui.js" charset="utf-8">
+        </script>
+         <script src="jsp/js/diquxuanzhe.js" charset="utf-8">
         </script>
         <script src="jsp/js/x-layui.js" charset="utf-8">
         </script>
         <script>
+            $(function () {
+            	  var area= $("#dd").html();
+            	$.post("select.lovo",{area:area},sel,'json');
+            	
+				$("#ss").click(function () {
+					  var area= $("#dd").html();
+					$.post("select.lovo",{area:area},sel,'json')
+				})
+				
+			});
+            
+            function sel(data) {
+            	 var $table=$("#tab");
+            	 var $table1=$("#tab1");
+     	        $("tr[name=new]").remove();
+     	        
+     		    $.each(data.yi,function(i,e){
+     	           var tr ="<tr name='new'>"+
+						"<td align='left' class='"+e.f_url+"'>"+e.f_name+"</td>"+
+						"<td ><input class='dian' type='button' value='+'><input type='button' value='-'></td>"+
+						"<td><input  class='dian' type='button' value='+'><input type='button' value='-'></td>"+
+					     +"</tr>"
+
+     	            $table.append(tr);
+     	        
+     	         });
+     		    
+     		    
+     		   $.each(data.xiao,function(i,e){
+     	           var tr ="<tr name='new'>"+
+     	                "<td align='left' class='"+e.f_url+"'>"+e.f_name+"</td>"+
+						"<td ><input class='dian' type='button' value='+'>1<input type='button' value='-'></td>"+
+						"<td><input  class='dian' type='button' value='+'>2<input type='button' value='-'></td>"+
+					     +"</tr>"
+
+     	            $table1.append(tr);
+     	        
+     	         });
+            	
+			}
+        
+        
+        
             layui.use(['form','layer'], function(){
                 $ = layui.jquery;
               var form = layui.form()
