@@ -9,7 +9,7 @@ import com.lovo.bean.CarBean;
  * @author Administrator
  *
  */
-public interface ICarBeanService {
+public interface ICarService {
   /**
    * 添加车辆
    * @param car 车辆实体
@@ -61,4 +61,9 @@ public interface ICarBeanService {
 		  */
 		 public List<CarBean> findAll(String state);
 	 
+			/**
+			 * 统计车辆总数
+			 * @return  返回总数
+			 */
+			public int  systemCar();
 }

@@ -6,13 +6,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.lovo.bean.CarBean;
-import com.lovo.dao.ICarBeanDao;
-import com.lovo.service.ICarBeanService;
-@Service(value="carBeanService")
-public class CarBeanServiceimpl implements ICarBeanService {
+import com.lovo.dao.ICarDao;
+import com.lovo.service.ICarService;
+@Service(value="carService")
+public class CarServiceimpl implements ICarService {
           
 	@Autowired
-	 private ICarBeanDao CarBeanDao ;
+	 private ICarDao CarBeanDao ;
 	
 	@Override
 	public void addCar(CarBean car) {
@@ -60,6 +60,12 @@ public class CarBeanServiceimpl implements ICarBeanService {
 	public List<CarBean> findAll(String state) {
 		// TODO Auto-generated method stub
 		return CarBeanDao.findAll(state);
+	}
+
+	@Override
+	public int systemCar() {
+		// TODO Auto-generated method stub
+		return CarBeanDao.systemCar();
 	}
 
 }

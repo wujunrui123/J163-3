@@ -3,7 +3,9 @@ package com.lovo.dao;
 
 import java.util.List;
 
-import com.lovo.bean.CarBean;
+import org.apache.ibatis.annotations.Param;
+
+
 import com.lovo.bean.EmployeesBean;
 
 /**
@@ -62,5 +64,11 @@ public interface IEmployeesBeanDao {
 			  * @param state
 			  * @return
 			  */
-			 public List<EmployeesBean> findAll(String state);
+			 public List<EmployeesBean> findAll(@Param("state")   String state);
+			 
+			 /**
+				 * 统计人数
+				 * @return 返回总数
+				 */
+				public int systemEmployees();
 }

@@ -13,9 +13,19 @@ public interface IStatisticalBeanDao {
     * @param Statistical
     */
 	public void addStatistical(StatisticalBean Statistical);
+	
 	/**
-	 * 根据ID修改库存
-	 * @param id
+	 * 根据id修改人员库存和车辆库存
+	 * @param totalCar 车辆库存
+	 * @param totalPerson 人员库存
+	 * @param kuCunId2 库存id
 	 */
-	public void updateStatistical(int id);
+	public void updateStatistical(int totalCar,int totalPerson,int kuCunId2);
+	
+	/**
+	 * 根据id查询库存
+	 * @param id 库存id
+	 * @return
+	 */
+		public StatisticalBean find(int id);
 }

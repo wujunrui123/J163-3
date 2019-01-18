@@ -2,16 +2,16 @@ package com.lovo.service.impl;
 
 import java.util.List;
 
+import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.lovo.bean.EmployeesBean;
-import com.lovo.dao.ICarBeanDao;
 import com.lovo.dao.IEmployeesBeanDao;
 import com.lovo.service.IEmployeesBeanService;
 @Service(value="employeesBeanService")
 public class EmployeesBeanServiceimpl implements IEmployeesBeanService {
-
+            
 	@Autowired
 	 private IEmployeesBeanDao EmployeesBeanDao;
 
@@ -56,9 +56,15 @@ public class EmployeesBeanServiceimpl implements IEmployeesBeanService {
 	}
 
 	@Override
-	public List<EmployeesBean> findAll(String state) {
+	public List<EmployeesBean> findAll(@Param("state")   String state) {
 		// TODO Auto-generated method stub
 		return EmployeesBeanDao.findAll(state);
+	}
+
+	@Override
+	public int systemEmployees() {
+		// TODO Auto-generated method stub
+		return EmployeesBeanDao.systemEmployees();
 	}
 	
 

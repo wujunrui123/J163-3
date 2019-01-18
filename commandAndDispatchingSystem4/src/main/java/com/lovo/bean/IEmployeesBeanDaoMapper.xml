@@ -2,6 +2,7 @@
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
 <mapper namespace="com.lovo.dao.IEmployeesBeanDao">
  <resultMap  id="Employees" type="EmployeesBean">
 		<id property="inventoriesId" column="pk_InventoriesId"/>
@@ -25,14 +26,18 @@
       select * from t_inventoriesare where f_state =1 
   </select>
   
-  <select id="findByItem" resultMap="Employees" >
+      <select id="systemEmployees"   resultType="int">
+      select COUNT(f_name) from t_inventoriesare 
+   </select>  
+  
+   <select id="findByItem" resultMap="Employees" >
 		select * from t_inventoriesare  where 1=1
 
-			<if test="param1 !=null">
-				and f_plateNumber like "%"#{param1}"%"  
+			<if test="_parameter!=null">
+				and f_name like "%"#{_parameter}"%"  
 			</if>
 		
-	</select>
+	</select> 
   
    <insert id="addEmployees"  parameterType="EmployeesBean">
   insert into t_inventoriesare values(null,#{ThingId},#{name},#{phone},#{state},#{sendData},#{BackDate})
