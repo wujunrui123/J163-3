@@ -98,7 +98,7 @@
 					</a>
 					    <dl class="layui-nav-child">
 					    	<dd>
-					    		<a href="javascript:;" data-url="PlanTemplate.jsp">
+					    		<a href="javascript:;" data-url="../findModelAll.lovo">
 					    		   <i class="iconfont icon-yonghu1" data-icon='icon-yonghu1'></i>
 					    		   <span>查看预案模板</span>
 					    		</a>

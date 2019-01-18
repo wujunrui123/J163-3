@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -23,10 +24,12 @@
             <blockquote class="layui-elem-quote news_search">
 		
 		   <div class="layui-inline">
+		   <form action="../findModelByName.lovo">
 		    <div class="layui-input-inline">
-		    	<input value="" placeholder="请输入关键字" class="layui-input search_input" type="text">
+		    	<input placeholder="请输入关键字" class="layui-input search_input" type="text" name="modelName">
 		   </div>
-		    <a class="layui-btn search_btn">查询</a>
+		    <input class="layui-btn" type="submit" value="查询">
+		    </form>
 		   </div><div class="layui-inline">
 			<a class="layui-btn layui-btn-normal newsAdd_btn" href='yuan1.jsp'>添加模板</a>
 		</div>
@@ -50,7 +53,7 @@
 					<thead>
 						<tr>						
 							<th style="text-align:left;">预案模板名称</th>
-							<th>预案模板等级</th>
+							<th>预案等级</th>
 							<th>事件类型</th>
 							<th>医生人数</th>
 							<th>救护车数</th>
@@ -60,19 +63,21 @@
 						</tr>
 					</thead>
 					<tbody class="news_content">
+					<c:forEach var="u" items="${modelList}">
 						<tr>
-							<td align="left">css3用transition实现边框动画效果</td>
-							<td>请叫我马哥</td>
-							<td>请叫我马哥</td>
-							<td>审核通过</td>
-							<td>开放浏览</td>
-							<td>2017-04-14</td>
-							<td>2017-04-14</td>
+							<td align="left">${u.modelName}</td>
+							<td>${u.level }</td>
+							<td>${u.type }</td>
+							<td>${u.perNum }</td>
+							<td>${u.carNum }</td>
+							<td>${u.perOfHos }</td>
+							<td>${u.carOfHos }</td>
 							<td>
-								<a class="layui-btn layui-btn-mini news_edit" href='yuan2.jsp'><i class="iconfont icon-edit"></i>编辑</a>
-								<a class="layui-btn layui-btn-danger layui-btn-mini news_del" data-id="1"><i class="layui-icon"></i> 删除</a>
+								<a class="layui-btn layui-btn-mini news_edit" href='../findModelById.lovo?id=${u.id }'><i class="iconfont icon-edit"></i>编辑</a>
+								<a href="../deleteModel.lovo?id=${u.id }" class="layui-btn layui-btn-danger layui-btn-mini news_del" data-id="1"><i class="layui-icon"></i> 删除</a>
 							</td>
 						</tr>
+						</c:forEach>
 					</tbody>
 					</table>
                      <div class="larry-table-page clearfix">

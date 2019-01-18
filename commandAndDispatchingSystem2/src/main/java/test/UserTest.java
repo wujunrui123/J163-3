@@ -1,12 +1,9 @@
 package test;
 
-import java.util.List;
-
 import org.junit.Before;
 import org.junit.Test;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
-import com.lovo.bean.DTOBean;
 import com.lovo.bean.DTOBean2;
 import com.lovo.service.IResourcesService;
 import com.lovo.service.IUserService;
