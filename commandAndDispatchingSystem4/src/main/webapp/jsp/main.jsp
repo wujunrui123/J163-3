@@ -40,10 +40,10 @@ $(function () {
 	$.getJSON("../Theevent.lovo",{area:area,type:type,site:site},findData);
 	$("input[type=button]").click(function () {
 		var operation=this.value;
-		currentPage=parseInt($("input[name=currentPage]").val());
-		var totalPage=$("input[name=totalPage]").val();
-		className=$("input[name=className]").val();
-		areaName=$("input[name=areaName]").val();
+		//alert(operation);
+		area=$("input[name=area]").val();
+		type=$("input[name=type]").val();
+		site=$("input[name=site]").val();
 	
 		$.getJSON("../Theevent.lovo",{area:area,type:type,site:site},findData);
 	
@@ -117,7 +117,7 @@ function findData(data){
 							<col width="9%">
 							<col width="15%">
 						</colgroup>
-						 <thead>
+					<!-- 	 <thead>
 							<tr>
 								<th style="text-align: left;">事件名称</th>
 								
@@ -180,7 +180,7 @@ function findData(data){
 								</td>
 							</tr>
 
-						</tbody> 
+						</tbody>  -->
 					</table>
 					<div class="larry-table-page clearfix">
 
