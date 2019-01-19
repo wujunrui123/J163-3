@@ -40,7 +40,7 @@ $(function () {
 	$.getJSON("../Theevent.lovo",{area:area,type:type,site:site},findData);
 	$("input[type=button]").click(function () {
 		var operation=this.value;
-		alert(operation);
+		//alert(operation);
 		area=$("input[name=area]").val();
 		type=$("input[name=type]").val();
 		site=$("input[name=site]").val();
