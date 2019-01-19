@@ -25,8 +25,51 @@
 	height: 36px;
 	width: 123px;
 }
+
 </style>
+
 </head>
+<script type="text/javascript" src="jquery-2.1.4.js"></script>
+
+<script type="text/javascript">
+
+$(function () {
+	var area=null;
+	var type=null;
+	var site=null;
+	$.getJSON("../Theevent.lovo",{area:area,type:type,site:site},findData);
+	$("input[type=button]").click(function () {
+		var operation=this.value;
+		currentPage=parseInt($("input[name=currentPage]").val());
+		var totalPage=$("input[name=totalPage]").val();
+		className=$("input[name=className]").val();
+		areaName=$("input[name=areaName]").val();
+	
+		$.getJSON("../Theevent.lovo",{area:area,type:type,site:site},findData);
+	
+});
+});
+
+
+function findData(data){
+	var $table=$("table");
+	$table.empty();
+	var head="<tr><th>事件名称</th><th>事件类型</th><th>事件地址</th><th>调派人数</th><th>调派车数</th><th>操作</th></tr>";
+	$table.append(head);
+	$.each(data.findBitm,function(i,e){
+		var eventName=e.eventName;
+		var type=e.type;
+		var site=e.site;
+		var numberpeople=e.numberpeople;
+		var arnumber=e.arnumber;
+		var tr="<tr><td>"+eventName+"</td><td>"+type+"</td><td>"+site+"</td><td>"+numberpeople
+		+"</td><td>"+arnumber+"</td><td><a href=../UpdateFindClassServlet?id="+e.id+">修改小班信息</a> <a href=../FindClassServlet?id="+e.id+">查看小班信息</a></tr>";
+		$table.append(tr); 
+	});
+}
+
+
+</script>
 <body>
 
 	<section class="layui-larry-box">
@@ -40,7 +83,7 @@
 								class="layui-input search_input" type="text">
 						</div>
 						<div class="layui-input-inline">
-							<select class='sel'>
+							<select class='sel' name="area">
 								<option>-请选择事件状态-</option>
 								<option>未处理事件</option>
 								<option>处理中事件</option>
@@ -49,13 +92,13 @@
 						</div>
 						<div class="layui-input-inline">
 							<input value="" placeholder="请输入类型关键字"
-								class="layui-input search_input" type="text">
+								class="layui-input search_input" type="text" name=type>
 						</div>
 						<div class="layui-input-inline">
 							<input value="" placeholder="请输入地区关键字"
-								class="layui-input search_input" type="text">
+								class="layui-input search_input" type="text"  name="site">
 						</div>
-						<a class="layui-btn search_btn">查询</a>
+						<input type="button"  name="operator"  value="查询"/>
 					</div>
 
 					<div class="layui-inline">
@@ -74,10 +117,10 @@
 							<col width="9%">
 							<col width="15%">
 						</colgroup>
-						<thead>
+						 <thead>
 							<tr>
 								<th style="text-align: left;">事件名称</th>
-								<th>事件编号</th>
+								
 								<th>事件类型</th>
 								<th>事件地址</th>
 								<th>接收时间</th>
@@ -85,8 +128,8 @@
 								<th>调派车辆数量</th>
 								<th>事件状态</th>
 								<th>操作</th>
-							</tr>
-						</thead>
+							</tr> 
+						 </thead> 
 						<tbody class="news_content">
 							<tr>
 								<td align="left">css3用transition实现边框动画效果</td>
@@ -137,7 +180,7 @@
 								</td>
 							</tr>
 
-						</tbody>
+						</tbody> 
 					</table>
 					<div class="larry-table-page clearfix">
 
