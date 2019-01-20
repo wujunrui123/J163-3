@@ -49,6 +49,5 @@ public class TheeventController {
 		}
 		 ModelAndView mv = new ModelAndView();
 		 return mv;
-		 //////
 	 }
 }
