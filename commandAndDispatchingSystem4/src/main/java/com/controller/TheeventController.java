@@ -9,7 +9,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.view.RedirectView;
-
 import com.lovo.bean.TheeventBean;
 import com.lovo.service.ITheeventBeanService;
 
@@ -29,5 +28,27 @@ public class TheeventController {
 		 mv.setView(rv);
 		 
 		 return mv;
+	 }
+	 
+	 /**
+	  * 派遣
+	  * @param person 人
+	  * @param car 车
+	  * @return
+	  */
+	 @RequestMapping("dispatch.lovo")
+	 public ModelAndView dispatch(String person,String car) {	
+		 String[] perStr =  person.split(",");
+		 for (String p : perStr) {
+			 System.out.println(p);
+		}
+		 
+		 String[] carStr =  car.split(",");
+		 for (String c : carStr) {
+			 System.out.println(c);
+		}
+		 ModelAndView mv = new ModelAndView();
+		 return mv;
+		 //////
 	 }
 }
