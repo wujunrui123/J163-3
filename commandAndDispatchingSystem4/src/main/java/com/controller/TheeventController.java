@@ -61,7 +61,6 @@ public class TheeventController {
 			 carService.updateState(messageId, new SimpleDateFormat("yyyy-MM-dd").format(new Date()), null, "出勤", c);
 		}
 		 sq.getSession().setAttribute("messageId", messageId);
-		 //
 		 return "0";
 	 }
 }
