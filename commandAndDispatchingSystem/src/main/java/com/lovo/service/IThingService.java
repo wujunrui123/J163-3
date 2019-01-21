@@ -51,10 +51,17 @@ public interface IThingService {
      */
     public void updateThing(int id,String address,String grade);
     /**
-     * 将上报改为续报（将事件状态未上报改为上报）
-     * @param thingState
+     * 修改事件状态（将事件状态待处理修改为处理中，处理完毕）
+     * @param thingState 事件状态
      */
     public void updateThingTwo(int id,String thingState);
+    
+    /**
+     * 修改上报状态（将上报状态否改为是）
+     * @param id
+     * @param uploadType
+     */
+    public void updateType(int id,String uploadType);
     /**
      * 删除上报
      * @param id 事件ID

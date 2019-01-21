@@ -95,7 +95,7 @@
 					</a>
 					    <dl class="layui-nav-child">
 					    	<dd>
-					    		<a href="javascript:;" data-url="addThing.jsp">
+					    		<a href="javascript:;" data-url="../thing/add.lovo">
 					    		   <i class="iconfont icon-yonghu1" data-icon='icon-yonghu1'></i>
 					    		   <span>添加新事件</span>
 					    		</a>
@@ -163,6 +163,16 @@
                            	   <a href="javascript:;" data-url="addPublicArea.jsp">
 					              <i class="iconfont icon-zhuti"  data-icon='icon-zhuti'></i>
 					              <span>添加类型</span>
+					           </a>
+                           </dd>
+                  
+					    	
+					   </dl>
+					   <dl class="layui-nav-child">
+                           <dd>
+                           	   <a href="javascript:;" data-url="commonTable.jsp">
+					              <i class="iconfont icon-zhuti"  data-icon='icon-zhuti'></i>
+					              <span>一览表</span>
 					           </a>
                            </dd>
                   

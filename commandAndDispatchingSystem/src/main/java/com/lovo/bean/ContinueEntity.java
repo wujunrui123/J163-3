@@ -39,9 +39,19 @@ private String callphone;
 private String uploadDate;
 
 /**
+ * 事件id(外键)
+ */
+private int thingID;
+/**
  * 事件类
  */
 private ThingEntity thingEntity;
+public int getThingID() {
+	return thingID;
+}
+public void setThingID(int thingID) {
+	this.thingID = thingID;
+}
 public int getId() {
 	return id;
 }

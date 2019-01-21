@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
     
@@ -31,51 +32,51 @@
                 <tbody>
                   <tr>
                     <th  width="80">事件名称：</th>
-                    <td> XXX</td>
+                    <td> ${thingEntity.thingName}</td>
                     <th>区域：</th>
-                    <td>xxxxxx</td>
+                    <td>${thingEntity.area}</td>
                   </tr>
                   
                   <tr>
                     <th>事件类型：</th>
-                    <td>XXXXX</td>
+                    <td>${thingEntity.thingType}</td>
                     <th>等级：</th>
-                    <td>XXXX</td>
+                    <td>${thingEntity.grade}</td>
                   </tr>
                   
                   <tr>
                     <th>详细地址：</th>
-                    <td>XXXXX</td>
+                    <td>${thingEntity.address}</td>
                     <th>伤亡人数：</th>
-                    <td>XXXX</td>
+                    <td>${thingEntity.peopleNum}</td>
                   </tr>
                   
                   <tr>
                     <th>上报人：</th>
-                    <td>XXXX</td>
+                    <td>${thingEntity.uploadName}</td>
                     <th>报警人：</th>
-                    <td>XXXX</td>
+                    <td>${thingEntity.callName}</td>
                   </tr>
                   
                   <tr>
                     <th>报警人电话：</th>
-                    <td>XXXX</td>
+                    <td>${thingEntity.phone}</td>
                     <th>报警时间：</th>
-                    <td>XXXX</td>
+                    <td>${thingEntity.callDate}</td>
                   </tr>
                   
                   <tr>
                     <th>上报时间：</th>
-                    <td>XXXX</td>
+                    <td>${thingEntity.uploadDate}</td>
                      <th>事件编号：</th>
-                    <td>XXXX</td>
+                    <td>${thingEntity.thingCard}</td>
                   </tr>
                   
                   <tr>
                     <th>是否上报：</th>
-                    <td>XXXX</td>
+                    <td>${thingEntity.uploadType}</td>
                     <th>事件状态：</th>
-                    <td>XXXX</td>
+                    <td>${thingEntity.thingState}</td>
                   </tr>
                   
                 </tbody>
@@ -83,7 +84,7 @@
             </div>
         </div>
                         <div class="layui-form news_list">
-                    <table class="layui-table">
+                    <table class="layui-table" id="tab">
 					    <colgroup>
 						<col>
 						<col width="16%">
@@ -109,18 +110,8 @@
 						</tr>
 					</thead>
 					<tbody class="news_content">
-						<tr>
-							<td align="left">2017-01-01</td>
-							<td>马哥</td>
-							<td>13688187092</td>
-							<td>小刘</td>
-							<td>
-								2
-							</td>
-							<td>11</td>
-						    
+					
 							
-						</tr>	
 
 					</tbody>
 					</table>
@@ -128,87 +119,108 @@
                          
 				          <div id="page" class="page"></div>
 			         </div>
+			          <input type="hidden" id="zong" >
+			         <input type="hidden" id="thingID" value="${thingEntity.thingID}">
 			    </div>
-        
+        <script src="../jquery-2.1.4.js"></script>
         <script src="./lib/layui/layui.js" charset="utf-8">
         </script>
         <script src="./js/x-layui.js" charset="utf-8">
         </script>
         <script>
-            layui.use(['form','layer'], function(){
-                $ = layui.jquery;
-              var form = layui.form()
-              ,layer = layui.layer;
-            
-              //自定义验证规则
-              form.verify({
-                nikename: function(value){
-                  if(value.length < 5){
-                    return '昵称至少得5个字符啊';
-                  }
-                }
-                ,pass: [/(.+){6,12}$/, '密码必须6到12位']
-                ,repass: function(value){
-                    if($('#L_pass').val()!=$('#L_repass').val()){
-                        return '两次密码不一致';
-                    }
-                }
-              });
+        $(function(){
+			
+        	var thingID=$('#thingID').val();
+	    	   //先用ajax查询一次数据
+	    	 
+	 	      //默认页码为1
+	 	      var curr=1;
+	    	   
+	 			 $.post("../continueThing/findByThingId.lovo",{thingID:thingID,curr:curr},
+	 				cha
+	 			      ,"json")
+	    			 
+		});
+		//第一次请求和点击页码后的回调函数
+		function cha(data) {
+			   var $table=$("#tab");
+		        $("tr[name=new]").remove();
+		        
+			    $.each(data.list,function(i,e){
+			    	var tr="<tr name='new'><td align='left'>"+e.uploadDate+"</td><td>"+e.callName+"</td><td>"+e.callphone+
+					"</td><td>"+e.uploadName+"</td><td>"+e.grade+"</td><td>"+e.peopleNum;
+					
+					
+					$table.append(tr);
+		        
+		         });
+			    //隐藏表单域  记录总页数
+			    $("#zong").val(data.tot);
+			    
+			    
+			    
+				layui.use([ 'jquery', 'layer', 'element', 'laypage' ], function() {
+					window.jQuery = window.$ = layui.jquery;
+					window.layer = layui.layer;
+					var element = layui.element(), laypage = layui.laypage;
+					
+					laypage({
+						cont : 'page',
+						pages : $("#zong").val()-1+1 //总页数改
+						,
+						groups : 5 //连续显示分页数
+						,
+						jump : function(obj, first) {
+							//得到了当前页，用于向服务端请求对应数据
+							var curr = obj.curr;
+							var thingID=$('#thingID').val();
+							 
+					    	  
+					    	  $.post("../continueThing/findByThingId.lovo",{thingID:thingID,curr:curr},
+						 				cha1
+						 			      ,"json")
+						}
+					});
 
-              console.log(parent);
-              //监听提交
-              form.on('submit(add)', function(data){
-                console.log(data);
-                //发异步，把数据提交给php
-                layer.alert("增加成功", {icon: 6},function () {
-                    // 获得frame索引
-                    var index = parent.layer.getFrameIndex(window.name);
-                    //关闭当前frame
-                    parent.layer.close(index);
-                });
-                return false;
-              });
-              
-              
-            });
-            
-            layui.use(['jquery','layer','element','laypage'],function(){
-      	      window.jQuery = window.$ = layui.jquery;
-      	      window.layer = layui.layer;
-                var element = layui.element(),
-                    laypage = layui.laypage;
+					laypage({
+						cont : 'page2',
+						pages : 10 //总页数
+						,
+						groups : 5 //连续显示分页数
+						,
+						jump : function(obj, first) {
+							//得到了当前页，用于向服务端请求对应数据
+							var curr = obj.curr;
+							
+							if (!first) {
+								//layer.msg('第 '+ obj.curr +' 页');
+								
+							}
+						}
+					});
 
-                  
-                laypage({
-      					cont: 'page',
-      					pages: 10 //总页数
-      						,
-      					groups: 5 //连续显示分页数
-      						,
-      					jump: function(obj, first) {
-      						//得到了当前页，用于向服务端请求对应数据
-      						var curr = obj.curr;
-      						if(!first) {
-      							//layer.msg('第 '+ obj.curr +' 页');
-      						}
-      					}
-      				});
+				}); 
 
-                laypage({
-      					cont: 'page2',
-      					pages: 10 //总页数
-      						,
-      					groups: 5 //连续显示分页数
-      						,
-      					jump: function(obj, first) {
-      						//得到了当前页，用于向服务端请求对应数据
-      						var curr = obj.curr;
-      						if(!first) {
-      							//layer.msg('第 '+ obj.curr +' 页');
-      						}
-      					}
-      				});
-          });
+	       }
+		
+		
+		function cha1(data) {
+			   var $table=$("#tab");
+		        $("tr[name=new]").remove();
+		        
+			    $.each(data.list,function(i,e){
+			    	var tr="<tr name='new'><td align='left'>"+e.uploadDate+"</td><td>"+e.callName+"</td><td>"+e.callphone+
+					"</td><td>"+e.uploadName+"</td><td>"+e.grade+"</td><td>"+e.peopleNum;
+					
+					
+					$table.append(tr);
+		        
+		         });
+			    //隐藏表单域  记录总页数
+			    $("#zong").val(data.tot);
+		}; 
+		
+	   
         </script>
         
     </body>

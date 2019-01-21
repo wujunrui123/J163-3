@@ -11,7 +11,9 @@ import org.junit.Test;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import com.github.pagehelper.PageHelper;
+import com.lovo.bean.CommonEntity;
 import com.lovo.bean.ThingEntity;
+import com.lovo.service.ICommonService;
 import com.lovo.service.IThingService;
 
 
@@ -32,21 +34,17 @@ public class MybatisT {
 	}
 	
 	
-	//@Test
+	@Test
 	public void test2() {
-		PageHelper.startPage(2, 2);
-		IThingService is=(IThingService) app.getBean("thingService");
-		Map<String, Object>map=new HashMap<String,Object>();
-		map.put("thingName", "火灾");
-		map.put("area", null);
-		map.put("startDate", null);
-		map.put("endDate", null);
-		map.put("thingType", null);
-		map.put("thingState", null);
+		PageHelper.startPage(1, 2);
+		ICommonService is=(ICommonService) app.getBean("commonService");
+		/*CommonEntity con=is.findById(1);
 		
-		List<ThingEntity>list=is.find(map);
-		for (ThingEntity thingEntity : list) {
-			System.out.println(thingEntity);
+		System.out.println(con.toString());*/
+		
+		List<CommonEntity>list=is.findByType("类型");
+		for (CommonEntity commonEntity : list) {
+			System.out.println(commonEntity.toString());
 		}	
 	}
 	/*测试添加*/
@@ -71,7 +69,7 @@ public class MybatisT {
 	}
 	
 	/*测试删除*/
-	@Test
+	//@Test
 	public void test5() {
 		
 		IThingService is=(IThingService) app.getBean("thingService");
