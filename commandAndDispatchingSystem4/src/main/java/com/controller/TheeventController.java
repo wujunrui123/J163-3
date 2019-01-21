@@ -4,6 +4,8 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -47,7 +49,8 @@ public class TheeventController {
 	  * @return
 	  */
 	 @RequestMapping("dispatch.lovo")
-	 public ModelAndView dispatch(String messageId,String person,String car) {	
+	 @ResponseBody
+	 public String dispatch(String messageId,String person,String car,HttpServletRequest sq) {	
 		 String[] perStr =  person.split(",");
 		 for (String p : perStr) {
 			 employeesBeanService.updateState(messageId, new SimpleDateFormat("yyyy-MM-dd").format(new Date()), null, "出勤", p);
@@ -57,12 +60,7 @@ public class TheeventController {
 		 for (String c : carStr) {
 			 carService.updateState(messageId, new SimpleDateFormat("yyyy-MM-dd").format(new Date()), null, "出勤", c);
 		}
-		 ModelAndView mv = new ModelAndView();
-		 RedirectView rv = new RedirectView("jsp/main2.jsp");
-		 
-		 mv.setView(rv);
-		 
-		
-		 return mv;
+		 sq.getSession().setAttribute("messageId", messageId);
+		 return "0";
 	 }
 }

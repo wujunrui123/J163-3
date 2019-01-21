@@ -106,7 +106,7 @@
 	}
 	
 	function callBack(data){
-		
+		window.location.href="main4.jsp";
 	}
 
 	function allRig() {
