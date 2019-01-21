@@ -57,24 +57,24 @@
   <select id="find" resultMap="thingEntity" parameterType="map">
 		select * from t_thing 
 
-		<trim prefix="where" prefixOverrides="and /or">
-			<if test="param1!=null"> 
-				 f_thingName like "%"#{thingName}"%"
+		<trim prefix="where" prefixOverrides="and">
+			<if test="thingName!=null"> 
+				and f_thingName like "%"#{thingName}"%"
 			</if>
-			<if test="param2!=null">
-				 f_area like "%"#{area}"%"  
+			<if test="area!=null">
+				and f_area like "%"#{area}"%"  
 			</if>
-			<if test="param3!=null">
-				 f_uploadDate &gt; #{startDate} 
+			<if test="startDate!=null">
+				and f_uploadDate &gt; #{startDate} 
 			</if>
-			<if test="param4!=null">
-				 f_uploadDate &lt;; #{endDate}   
+			<if test="endDate!=null">
+				and f_uploadDate &lt;; #{endDate}   
 			</if>
-			<if test="param5!=null">
-				 f_thingType=#{thingType}  
+			<if test="thingType!=null">
+				and f_thingType=#{thingType}  
 			</if>
-			<if test="param6!=null">
-				 f_thingState=#{thingState}  
+			<if test="uploadType!=null">
+				and f_uploadType=#{uploadType}  
 			</if>
 		</trim>
 	</select>
@@ -93,6 +93,12 @@
 	<update id="updateThingTwo">
 		update t_thing set
 		f_thingState=#{param2} where
+		pk_thingID=#{param1}
+	</update>
+	
+	<update id="updateType">
+		update t_thing set
+		f_uploadType=#{param2} where
 		pk_thingID=#{param1}
 	</update>
 	<delete id="del">

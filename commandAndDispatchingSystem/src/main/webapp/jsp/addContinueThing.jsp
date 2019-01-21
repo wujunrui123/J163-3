@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
     
@@ -19,15 +20,15 @@
     
     <body>
         <div class="x-body">
-            <form class="layui-form">
+            <form class="layui-form" action="../thing/addContinueThing.lovo" >
             	
-            
+            	
                 <div class="layui-form-item">
                     <label for="username" class="layui-form-label">
                         	事件名称
                     </label>
                     <label for="username" class="layui-form-label">
-                        	XXX大事件
+                        	${thingEntity.thingName}
                     </label>
                     
                 </div>
@@ -36,7 +37,7 @@
                    	     	发生区域
                     </label>
                     <label for="role" class="layui-form-label">
-                      	 	金牛区
+                      	 	${thingEntity.area}
                     </label>
                     
                 </div>
@@ -45,7 +46,7 @@
                    	     	事件类型
                     </label>
                     <label for="role" class="layui-form-label">
-                      	 	火灾
+                      	 	${thingEntity.thingType}
                     </label>
                     
                 </div>
@@ -54,13 +55,14 @@
                         <span class="x-red">*</span>等级
                     </label>
                     <div class="layui-input-inline">
-                      <select name="role">
-                        <option value="">请选择等级</option>
-                        <option value="火灾">1</option>
-                        <option value="坍塌">2</option>
-                        <option value="坍塌">3</option>
-                        <option value="坍塌">4</option>                       
-                      </select>
+                      <select class='sel' id="grade" name="grade">
+						<option value="">${thingEntity.grade}</option>
+						<c:forEach var="n" items="${list2}">
+
+							<option value="${n.value}">${n.value}</option>
+
+						</c:forEach>
+					</select>
                     </div>
                 </div>
                 
@@ -73,7 +75,7 @@
                        		详细地址
                     </label>
                      <label for="username" class="layui-form-label">
-                       		XXX
+                       		${thingEntity.address}
                     </label>
                     
                 </div>
@@ -87,29 +89,21 @@
                         <span class="x-red">*</span>伤亡人数
                     </label>
                     <div class="layui-input-inline">
-                        <input type="text" id="username" name="username" required="" lay-verify="required"
+                        <input type="text" id="peopleNum" name="peopleNum" required="" lay-verify="required"
                         autocomplete="off" class="layui-input">
                     </div>
                     <div class="layui-form-mid layui-word-aux">
                         <span class="x-red">*</span>请输入数字
                     </div>
                 </div>
+                <input type="hidden" name="uploadName" value="${thingEntity.uploadName}">
                 
-                <div class="layui-form-item">
-                    <label for="username" class="layui-form-label">
-                        	上报人员
-                    </label>
-                     <label for="username" class="layui-form-label">
-                        	已登录的管理员
-                    </label>
-                    
-                </div>
                  <div class="layui-form-item">
                     <label for="username" class="layui-form-label">
                         <span class="x-red">*</span>报警人员
                     </label>
                     <div class="layui-input-inline">
-                        <input type="text" id="username" name="username" required="" lay-verify="required"
+                        <input type="text" id="callName" name="callName" required="" lay-verify="required"
                         autocomplete="off" class="layui-input">
                     </div>
                     <div class="layui-form-mid layui-word-aux">
@@ -140,7 +134,7 @@
                         	报警时间
                     </label>
                     <label for="username" class="layui-form-label">
-                        	XXX
+                        	${thingEntity.callDate}
                     </label>
                     
                 </div>
@@ -151,11 +145,11 @@
                         <span class="x-red">*</span>上报时间
                     </label>
                     <div class="layui-input-inline">
-                        <input type="date" id="username" name="username" required="" lay-verify="required"
+                        <input type="text" id="uploadDate" name="uploadDate" required="" lay-verify="required"
                         autocomplete="off" class="layui-input">
                     </div>
                     <div class="layui-form-mid layui-word-aux">
-                        <span class="x-red">*</span>请输入数字
+                        <span class="x-red">*</span>请输入正确时间:1990-01-01 13:10:10
                     </div>
                 </div>
                 
@@ -166,36 +160,29 @@
                         <span class="x-red">*</span>事件编号
                     </label>
                     <label for="username" class="layui-form-label">
-                        XXXX
+                        ${thingEntity.thingCard}
                     </label>
                                      
                 </div>
-                <div class="layui-form-item">
-                    <label for="role" class="layui-form-label">
-                        	是否上报
-                    </label>
-                     <label for="role" class="layui-form-label">
-                        	XXX
-                    </label>
-                    
-                </div>
+                
                 
                 <div class="layui-form-item">
                     <label for="role" class="layui-form-label">
                         	事件状态
                     </label>
                      <label for="role" class="layui-form-label">
-                        	XXX
+                        	${thingEntity.thingState}
                     </label>
                     
                 </div>
+                <input type="hidden" name="id" value="${thingEntity.thingID}">
                 
                 
                 
                                <div class="layui-form-item">
                     <label for="L_repass" class="layui-form-label">
                     </label>
-                    <button  class="layui-btn" lay-filter="add" lay-submit="">
+                    <button type="submit" class="layui-btn" lay-filter="add" >
                     	    增加
                     </button>
                     

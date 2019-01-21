@@ -40,10 +40,16 @@ public interface IThingDao {
      */
     public void updateThing(int id,String address,String grade);
     /**
-     * 将上报改为续报（将事件状态未上报改为上报）
+     * 修改事件状态（待处理。处理中，处理完毕）
      * @param thingState
      */
     public void updateThingTwo(int id,String thingState);
+    /**
+     * 将上报改为续报（将事件状态未上报改为上报）
+     * @param id
+     * @param uploadType
+     */
+    public void updateType(int id,String uploadType);
     /**
      * 删除上报
      * @param id 事件ID

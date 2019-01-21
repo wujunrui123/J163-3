@@ -54,5 +54,11 @@ public class ThingServiceImpl implements IThingService {
 		dao.del(id);
 		
 	}
+
+	@Override
+	public void updateType(int id, String uploadType) {
+		dao.updateType(id,uploadType);
+		
+	}
     
 }

@@ -18,7 +18,7 @@ private String type;
 /**
  * 键（代号）
  */
-private int key;
+private String key;
 /**
  * 值
  */
@@ -35,10 +35,10 @@ public String getType() {
 public void setType(String type) {
 	this.type = type;
 }
-public int getKey() {
+public String getKey() {
 	return key;
 }
-public void setKey(int key) {
+public void setKey(String key) {
 	this.key = key;
 }
 public String getValue() {
@@ -50,6 +50,10 @@ public void setValue(String value) {
 public CommonEntity() {
 	super();
 	// TODO Auto-generated constructor stub
+}
+@Override
+public String toString() {
+	return "CommonEntity [commonID=" + commonID + ", type=" + type + ", key=" + key + ", value=" + value + "]";
 }
 
 

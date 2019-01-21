@@ -6,25 +6,41 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.lovo.bean.UserBean;
-import com.lovo.dao.UserDao;
+import com.lovo.dao.IUserDao;
 import com.lovo.service.IUserService;
 @Service(value="userService")
 public class UserServiceImpl implements IUserService {
 	@Autowired
-    private UserDao userDao;
+    private IUserDao userDao;
 
 	@Override
-	public List<UserBean> getListUser() {
+	public void addUser(UserBean user) {
+		userDao.addUser(user);
 		
-		return userDao.getListUser();
 	}
 
+	@Override
+	public void delUser(int userId) {
+		userDao.delUser(userId);
+		
+	}
 
+	@Override
+	public void updateUser(String phone, String password, String roleEntity, int userID) {
+		userDao.updateUser(phone, password, roleEntity, userID);
+		
+	}
 
 	@Override
 	public UserBean getUserByUserId(int userId) {
-		
+		// TODO Auto-generated method stub
 		return userDao.getUserByUserId(userId);
+	}
+
+	@Override
+	public List<UserBean> getListUser() {
+		// TODO Auto-generated method stub
+		return userDao.getListUser();
 	}
 
 	@Override
@@ -36,8 +52,16 @@ public class UserServiceImpl implements IUserService {
 	@Override
 	public UserBean login(String userName, String password) {
 		// TODO Auto-generated method stub
-		return null;
+		return userDao.login(userName, password);
 	}
+
+	@Override
+	public List<UserBean> findByItem(String sex, String name) {
+		// TODO Auto-generated method stub
+		return userDao.findByItem(sex, name);
+	}
+
+	
 
 
 }

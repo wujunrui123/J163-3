@@ -1,6 +1,16 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
 <!DOCTYPE html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<script type="text/javascript" src="../jquery-2.1.4.js"></script>
+	<script type="text/javascript">
+	$(function(){
+		
+	})
+	</script>
+</head>
+
 <html>
     
     <head>
@@ -19,15 +29,14 @@
     
     <body>
         <div class="x-body">
-            <form class="layui-form">
-            	
+            <form class="layui-form" action="../userAdd.lovo">
             
                 <div class="layui-form-item">
                     <label for="username" class="layui-form-label">
                         <span class="x-red">*</span>姓名
                     </label>
                     <div class="layui-input-inline">
-                        <input type="text" id="username" name="username" required="" lay-verify="required"
+                        <input type="text" id="name" name="name" required="" lay-verify="required"
                         autocomplete="off" class="layui-input">
                     </div>
                     <div class="layui-form-mid layui-word-aux">
@@ -39,7 +48,7 @@
                         <span class="x-red">*</span>用户名
                     </label>
                     <div class="layui-input-inline">
-                        <input type="text" id="username" name="username" required="" lay-verify="required"
+                        <input type="text" id="userName" name="userName" required="" lay-verify="required"
                         autocomplete="off" class="layui-input">
                     </div>
                     <div class="layui-form-mid layui-word-aux">
@@ -51,7 +60,7 @@
                         <span class="x-red">*</span>密码
                     </label>
                     <div class="layui-input-inline">
-                        <input type="password" id="username" name="username" required="" lay-verify="required"
+                        <input type="password" id="password" name="password" required="" lay-verify="required"
                         autocomplete="off" class="layui-input">
                     </div>
                     <div class="layui-form-mid layui-word-aux">
@@ -66,10 +75,10 @@
                         <span class="x-red">*</span>性别
                     </label>
                     <div class="layui-input-inline">
-                      <select name="role">
+                      <select name="sex">
                         <option value="">性别</option>
-                        <option value="man">男</option>
-                        <option value="women">女</option>
+                        <option value="1">男</option>
+                        <option value="0">女</option>
                        
                       </select>
                     </div>
@@ -110,9 +119,7 @@
                                <div class="layui-form-item">
                     <label for="L_repass" class="layui-form-label">
                     </label>
-                    <button  class="layui-btn" lay-filter="add" lay-submit="">
-                        增加
-                    </button>
+                    <input type="submit" value="添加" class="layui-btn" lay-filter="add" lay-submit="">
                 </div>
             </form>
         </div>
@@ -142,17 +149,17 @@
               });
 
               //监听提交
-              form.on('submit(add)', function(data){
-                console.log(data);
-                //发异步，把数据提交给php
-                layer.alert("增加成功", {icon: 6},function () {
-                    // 获得frame索引
-                    var index = parent.layer.getFrameIndex(window.name);
-                    //关闭当前frame
-                    parent.layer.close(index);
-                });
-                return false;
-              });
+//               form.on('submit(add)', function(data){
+//                 console.log(data);
+//                 //发异步，把数据提交给php
+//                 layer.alert("增加成功", {icon: 6},function () {
+//                     // 获得frame索引
+//                     var index = parent.layer.getFrameIndex(window.name);
+//                     //关闭当前frame
+//                     parent.layer.close(index);
+//                 });
+//                 return false;
+//               });
               
               
             });

@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
     
@@ -15,6 +16,13 @@
         <meta name="apple-mobile-web-app-capable" content="yes">
         <meta name="format-detection" content="telephone=no">
         <link rel="stylesheet" href="./css/x-admin.css" media="all">
+        <script type="text/javascript" src="../jquery-2.1.4.js"></script>
+		<script type="text/javascript">
+			$(function(){
+				alert(12);
+			})
+
+		</script>
     </head>
     
     <body>
@@ -31,21 +39,21 @@
                 <tbody>
                   <tr>
                     <th  width="80">姓名：</th>
-                    <td> XXX</td>
+                    <td> ${n.name }</td>
                     <th>用户名：</th>
-                    <td>xxxxxx</td>
+                    <td>${n.userName }</td>
                   </tr>
                   
                   <tr>
                     <th>性别：</th>
-                    <td>XXXXX</td>
+                    <td>${n.sex }</td>
                     <th>电话：</th>
-                    <td>XXXX</td>
+                    <td>${n.phone }</td>
                   </tr>
                   
                   <tr>
                     <th>职位：</th>
-                    <td>XXXXX</td>
+                    <td>${n.work }</td>
                    
                   </tr>
                   
