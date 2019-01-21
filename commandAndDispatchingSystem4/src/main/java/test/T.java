@@ -53,7 +53,7 @@ public class T {
 //	int i=	employeesBeanService.systemEmployees();
 //	int ss = CarBeanService.systemCar();
 //		CarBeanService.updateCar("dfgfd", 1);
-//		CarBeanService.updateState("66666", "8");
+		CarBeanService.updateState("58", "201-03-05", "2017-05-09", "出勤", "川Q123");
 //		CarBean c=new CarBean();
 //		c.setThingId(6666);
 //		c.setPlateNumber("ddd");
@@ -64,7 +64,7 @@ public class T {
 //		CarBeanService.delCara(1);
 //		System.out.println(CarBeanService.find(2).getPlateNumber());
 //		System.out.println(CarBeanService.findByItem("4"));
-		System.out.println(CarBeanService.findAll());
+//		System.out.println(CarBeanService.findAll());
 //		System.out.println(CarBeanService.systemCar());
 		
 		

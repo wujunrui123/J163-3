@@ -22,7 +22,7 @@
   </select>
   
    <select id="findAll" resultMap="car"  >
-      select * from t_resourcestocks where f_state = '在线'
+      select * from t_resourcestocks where f_state ="在线" 
   </select>
   
 	     
@@ -55,6 +55,6 @@
 	</update>
 	
 	<update id="updateState" >
-		update t_resourcestocks set f_state=#{param1} where f_plateNumber=#{param2}
+		update t_resourcestocks set fk_eventSourceId=#{param1},f_outDate=#{param2},f_backDate=#{param3}, f_state=#{param4}  where f_plateNumber=#{param5}
 	</update>
 </mapper>

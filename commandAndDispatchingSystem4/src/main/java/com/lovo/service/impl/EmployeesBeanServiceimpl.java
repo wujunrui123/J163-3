@@ -43,11 +43,9 @@ public class EmployeesBeanServiceimpl implements IEmployeesBeanService {
 		return EmployeesBeanDao.findByItem(name);
 	}
 
-	@Override
-	public void updateState( String state,String name) {
-		EmployeesBeanDao.updateState(state, name);
+	
 		
-	}
+	
 
 	@Override
 	public List<EmployeesBean> findBitm(int id) {
@@ -65,6 +63,11 @@ public class EmployeesBeanServiceimpl implements IEmployeesBeanService {
 	public int systemEmployees() {
 		// TODO Auto-generated method stub
 		return EmployeesBeanDao.systemEmployees();
+	}
+
+	@Override
+	public void updateState(String ThingId, String sendData, String BackDate, String state, String name) {
+		EmployeesBeanDao.updateState(ThingId, sendData, BackDate, state, name);	
 	}
 	
 

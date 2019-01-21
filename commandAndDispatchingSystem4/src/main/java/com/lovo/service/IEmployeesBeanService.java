@@ -46,12 +46,15 @@ public interface IEmployeesBeanService {
 		  */
 		 public List<EmployeesBean> findByItem(String name );
 		 
-		 /**
-		  * 根据人员id，修改人员状态
-		  * @param id 人员id
-		  * @param state 人员状态
-		  */
-		 public void updateState(String state,String name);
+			/**
+			 * 根据姓名修改人员的状态，派遣时间，返回时间，事件id
+			 * @param ThingId 事件id
+			 * @param sendData 派遣时间
+			 * @param BackDate 返回时间
+			 * @param state 状态
+			 * @param name 姓名
+			 */
+			 public void updateState(String ThingId,String sendData,String BackDate,String state,String name);
 		 
 		 /**
 			 * 按事件id查询所有员工集合
@@ -65,7 +68,7 @@ public interface IEmployeesBeanService {
 			  * @param state
 			  * @return
 			  */
-			 public List<EmployeesBean> findAll();
+			 public List<EmployeesBean> findAll( );
 			 
 			 /**
 				 * 统计人数

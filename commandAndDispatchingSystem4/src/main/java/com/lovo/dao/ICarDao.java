@@ -47,12 +47,15 @@ public interface ICarDao {
 	  */
 	 public List<CarBean> findByItem(String plateNumber );
 	 
-	 /**
-	  * 根据车牌，修改车辆状态
-	  * @param name 车牌
-	  * @param state 车辆状态
-	  */
-	 public void updateState(String state,String name);
+		/**
+		 * 根据车牌修改车的状态，派遣时间，返回时间，事件id
+		 * @param ThingId 事件id
+		 * @param sendData 派遣时间
+		 * @param BackDate 返回时间
+		 * @param state 状态
+		 * @param name 车牌
+		 */
+		 public void updateState(String ThingId,String sendData,String BackDate,String state,String name);
 	 
 	/**
 	 * 按事件id查询所有车辆集合

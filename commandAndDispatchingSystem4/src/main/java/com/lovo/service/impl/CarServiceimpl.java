@@ -44,11 +44,7 @@ public class CarServiceimpl implements ICarService {
 		return CarBeanDao.findByItem(plateNumber);
 	}
 
-	@Override
-	public void updateState( String state,String name) {
-		
-		CarBeanDao.updateState( state,name);
-	}
+	
 
 	@Override
 	public List<CarBean> findBitm(int id) {
@@ -66,6 +62,11 @@ public class CarServiceimpl implements ICarService {
 	public int systemCar() {
 		// TODO Auto-generated method stub
 		return CarBeanDao.systemCar();
+	}
+
+	@Override
+	public void updateState(String ThingId, String sendData, String BackDate, String state, String name) {
+		CarBeanDao.updateState(ThingId, sendData, BackDate, state, name);		
 	}
 
 }

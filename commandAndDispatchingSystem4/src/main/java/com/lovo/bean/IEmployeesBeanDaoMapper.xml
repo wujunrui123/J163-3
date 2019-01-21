@@ -23,7 +23,7 @@
   </select>
   
   <select id="findAll" resultMap="Employees"  >
-      select * from t_inventoriesare where f_state = '在线' 
+      select * from t_inventoriesare where f_state ="在线"
   </select>
   
       <select id="systemEmployees"   resultType="int">
@@ -52,6 +52,6 @@
 	</update>
 	
 	<update id="updateState" >
-		update t_inventoriesare set f_state=#{param1} where f_name=#{param2}
+		update t_inventoriesare set fk_eventSourceId=#{param1},f_outDate=#{param2},f_backDate=#{param3}, f_state=#{param4} where f_name=#{param5}
 	</update>
 </mapper>
