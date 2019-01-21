@@ -65,7 +65,7 @@ public interface IEmployeesBeanService {
 			  * @param state
 			  * @return
 			  */
-			 public List<EmployeesBean> findAll( @Param("state")   String state);
+			 public List<EmployeesBean> findAll();
 			 
 			 /**
 				 * 统计人数

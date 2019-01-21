@@ -2,32 +2,38 @@ package com.controller;
 
 import java.util.List;
 
-import javax.servlet.http.HttpServletRequest;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
-import org.springframework.web.servlet.view.RedirectView;
 import com.lovo.bean.TheeventBean;
+import com.lovo.service.ICarService;
+import com.lovo.service.IEmployeesBeanService;
 import com.lovo.service.ITheeventBeanService;
+import com.lovo.service.IUserService;
 
 @Controller
 public class TheeventController {
 
 	 @Autowired
 	 private ITheeventBeanService  theeventBeanService;
-	 
-	 @RequestMapping("Theevent.lovo")
-	 public ModelAndView Theevent(String area,String type,String site,HttpServletRequest request) {
-		 List<TheeventBean> findBitm = theeventBeanService.findBitm(area, type, site);
-		 
-		 ModelAndView mv=new ModelAndView();
-		 RedirectView rv=new RedirectView("jsp/main.jsp");
-		 request.getSession().setAttribute("findBitm", findBitm);
-		 mv.setView(rv);
-		 
-		 return mv;
+	 @Autowired
+	 private ICarService carService;
+	 @Autowired
+	 private IEmployeesBeanService employeesBeanService;
+	 /**
+	  * 获取时间信息
+	  * @param site
+	  * @param type
+	  * @param area
+	  * @return
+	  */
+	 @RequestMapping("TheEvent.lovo")
+	 @ResponseBody
+	 public  List<TheeventBean> TheEvent(String site,String type,String area) {
+		 List<TheeventBean> eventList = theeventBeanService.findBitm(area, type, site);
+		 return eventList;
 	 }
 	 
 	 /**
@@ -40,7 +46,7 @@ public class TheeventController {
 	 public ModelAndView dispatch(String person,String car) {	
 		 String[] perStr =  person.split(",");
 		 for (String p : perStr) {
-			 System.out.println(p);
+//			 employeesBeanService.addEmployees(p);
 		}
 		 
 		 String[] carStr =  car.split(",");

@@ -32,43 +32,29 @@
 <script type="text/javascript" src="jquery-2.1.4.js"></script>
 
 <script type="text/javascript">
-
-$(function () {
-	var area=null;
-	var type=null;
-	var site=null;
-	$.getJSON("../Theevent.lovo",{area:area,type:type,site:site},findData);
-	$("input[type=button]").click(function () {
-		var operation=this.value;
-		//alert(operation);
-		area=$("input[name=area]").val();
-		type=$("input[name=type]").val();
-		site=$("input[name=site]").val();
-	
-		$.getJSON("../Theevent.lovo",{area:area,type:type,site:site},findData);
-	
-});
-});
-
-
-function findData(data){
-	var $table=$("table");
-	$table.empty();
-	var head="<tr><th>事件名称</th><th>事件类型</th><th>事件地址</th><th>调派人数</th><th>调派车数</th><th>操作</th></tr>";
-	$table.append(head);
-	$.each(data.findBitm,function(i,e){
-		var eventName=e.eventName;
-		var type=e.type;
-		var site=e.site;
-		var numberpeople=e.numberpeople;
-		var arnumber=e.arnumber;
-		var tr="<tr><td>"+eventName+"</td><td>"+type+"</td><td>"+site+"</td><td>"+numberpeople
-		+"</td><td>"+arnumber+"</td><td><a href=../UpdateFindClassServlet?id="+e.id+">修改小班信息</a> <a href=../FindClassServlet?id="+e.id+">查看小班信息</a></tr>";
-		$table.append(tr); 
+	$(function() {
+		var site = null;
+		var type = null;
+		var area = null;
+		$.getJSON("../TheEvent.lovo",{site:site,type:type,area:area},callBack);
+		$("input[type=button]").click(chaxun);
 	});
-}
+	
+	function callBack(data){
+		var $tbody=$("tbody");
+		$tbody.empty();
+		$.each(data, function(i, e){
+			$tbody.append("<tr><td>"+e.eventName+"</td><td>"+e.type+"</td><td>"+e.site+"</td><td>"+e.numberpeople+"</td><td>"+e.arnumber+"</td><td>"+e.area+"</td>"+
+			"<td><a href='PlanTemplate.jsp' class='layui-btn layui-btn-mini news_edit' data-url='PlanTemplate.jsp'><i class='iconfont icon-edit'></i>派遣</a></td></tr>");
+		});
+	}
 
-
+	function chaxun(){
+		area = $("select[name=site] option:selected").text();
+		type = $("input[name=type]").val();
+		site = $("input[name=area]").val();
+		$.getJSON("../TheEvent.lovo",{site:site,type:type,area:area},callBack);
+	}
 </script>
 <body>
 
@@ -117,70 +103,20 @@ function findData(data){
 							<col width="9%">
 							<col width="15%">
 						</colgroup>
-					<!-- 	 <thead>
+						<thead>
 							<tr>
-								<th style="text-align: left;">事件名称</th>
-								
+								<th style="text-align: center">事件名称</th>
 								<th>事件类型</th>
 								<th>事件地址</th>
-								<th>接收时间</th>
-								<th>调派人员数量</th>
+								<th style="width: 150px">调派人员数量</th>
 								<th>调派车辆数量</th>
 								<th>事件状态</th>
 								<th>操作</th>
 							</tr> 
-						 </thead> 
+						</thead> 
 						<tbody class="news_content">
-							<tr>
-								<td align="left">css3用transition实现边框动画效果</td>
-								<td>请叫我马哥</td>
-								<td>火灾</td>
-								<td>金牛区</td>
-								<td>2012-11-11</td>
-								<td>15</td>
-								<td>10</td>
-								<th>未处理</th>
-								<td><a href="PlanTemplate.jsp"
-									class="layui-btn layui-btn-mini news_edit"
-									data-url="PlanTemplate.jsp"><i class="iconfont icon-edit"></i>去处理</a>
-
-								</td>
-							</tr>
-
+						
 						</tbody>
-							<tbody class="news_content">
-							<tr>
-								<td align="left">css3用transition实现边框动画效果</td>
-								<td>请叫我马哥</td>
-								<td>火灾</td>
-								<td>金牛区</td>
-								<td>2012-11-11</td>
-								<td>15</td>
-								<td>10</td>
-								<th>处理中</th>
-								<td><a href="main2.jsp"
-									class="layui-btn layui-btn-mini news_edit"
-									data-url="main2.jsp"><i class="iconfont icon-edit"></i>查看进度</a>
-
-								</td>
-							</tr>
-							<tr>
-								<td align="left">css3用transition实现边框动画效果</td>
-								<td>请叫我马哥</td>
-								<td>火灾</td>
-								<td>金牛区</td>
-								<td>2012-11-11</td>
-								<td>15</td>
-								<td>10</td>
-								<th>已处理</th>
-								<td><a href="main3.jsp"
-									class="layui-btn layui-btn-mini news_edit"
-									data-url="main3.jsp"><i class="iconfont icon-edit"></i>查看详情</a>
-
-								</td>
-							</tr>
-
-						</tbody>  -->
 					</table>
 					<div class="larry-table-page clearfix">
 

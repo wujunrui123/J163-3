@@ -2,6 +2,8 @@ package test;
 
 
 
+import java.util.List;
+
 import org.junit.Before;
 import org.junit.Test;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
@@ -47,7 +49,7 @@ public class T {
 //		e.setSendData("2000-02");
 //		employeesBeanService.addEmployees(e);
 //		System.out.println(employeesBeanService.findByItem("1"));
-//		System.out.println(employeesBeanService.findAll("1"));
+//		System.out.println(employeesBeanService.findAll());
 //	int i=	employeesBeanService.systemEmployees();
 //	int ss = CarBeanService.systemCar();
 //		CarBeanService.updateCar("dfgfd", 1);
@@ -62,7 +64,7 @@ public class T {
 //		CarBeanService.delCara(1);
 //		System.out.println(CarBeanService.find(2).getPlateNumber());
 //		System.out.println(CarBeanService.findByItem("4"));
-//		System.out.println(CarBeanService.findAll("20"));
+		System.out.println(CarBeanService.findAll());
 //		System.out.println(CarBeanService.systemCar());
 		
 		
@@ -75,13 +77,16 @@ public class T {
 //		t.setType("5");
 //		theevent.addTheevent(t);
 //		theevent.updateTheevent("3", 1);
-//		System.out.println(theevent.findBitm("3", "1", "4").size());
+//		List<TheeventBean> list = theevent.findBitm(null, null, null);
+//		for (TheeventBean theeventBean : list) {
+//			System.out.println(theeventBean.getEventName());
+//		}
 //		StatisticalBean s=new StatisticalBean();
 //		s.setTotalCar(ss);
 //		s.setTotalPerson(i);
 //		
 //		statisticalBeanService.addStatistical(s);
-		statisticalBeanService.updateStatistical(1, 1, 5);
+//		statisticalBeanService.updateStatistical(1, 1, 5);
 		
 	}
 	@Test

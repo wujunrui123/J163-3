@@ -22,7 +22,7 @@
   </select>
   
    <select id="findAll" resultMap="car"  >
-      select * from t_resourcestocks where f_state =#{param1} 
+      select * from t_resourcestocks where f_state = '在线'
   </select>
   
 	     

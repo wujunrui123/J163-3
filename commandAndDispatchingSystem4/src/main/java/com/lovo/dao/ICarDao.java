@@ -66,7 +66,7 @@ public interface ICarDao {
 	  * @param state
 	  * @return
 	  */
-	 public List<CarBean> findAll(String state);
+	 public List<CarBean> findAll();
 	 
 		/**
 		 * 统计车辆总数

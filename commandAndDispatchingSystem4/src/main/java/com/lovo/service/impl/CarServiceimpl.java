@@ -57,9 +57,9 @@ public class CarServiceimpl implements ICarService {
 	}
 
 	@Override
-	public List<CarBean> findAll(String state) {
+	public List<CarBean> findAll() {
 		// TODO Auto-generated method stub
-		return CarBeanDao.findAll(state);
+		return CarBeanDao.findAll();
 	}
 
 	@Override

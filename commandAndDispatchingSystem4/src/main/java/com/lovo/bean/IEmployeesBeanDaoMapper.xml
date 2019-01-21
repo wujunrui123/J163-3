@@ -23,7 +23,7 @@
   </select>
   
   <select id="findAll" resultMap="Employees"  >
-      select * from t_inventoriesare where f_state =1 
+      select * from t_inventoriesare where f_state = '在线' 
   </select>
   
       <select id="systemEmployees"   resultType="int">

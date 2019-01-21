@@ -40,6 +40,9 @@
 <script src="jquery-2.1.4.js"></script>
 <script>
 	$(function() {
+		$.getJSON("../findPerson.lovo",backPerson);
+		$.getJSON("../findCar.lovo",backCar);
+		
 		$(":button[name=allright]").click(allRig);
 		$(":button[name=allleft]").click(allle);
 		$(":button[name=selectleft]").click(selectle);
@@ -50,19 +53,49 @@
 		$(":button[name=selectleft1]").click(selectle1);
 		$(":button[name=selectright1]").click(selectRig1);
 		
+		/* $("#fuzeren").click(fuzeren); */
 		$("#paiqian").click(paiqian);
 	});
+	function fuzeren(){
+		alert(1);
+		var person = $("#id2 option").map(function(){
+			return $(this).text();
+		}).get().join(",")
+		
+		var $select = $("#fuzeren");
+		$select.empty;
+		$.each(person,function(i,e){
+			var option = "<option value="+e+">"+e+"</option>";
+			$select.append(option);
+		});
+	}
+	
+	function backPerson(data){
+		var $select = $("#id1");
+		$select.empty;
+		$.each(data,function(i,e){
+			var option = "<option value="+e.name+">"+e.name+"</option>";
+			$select.append(option);
+		});
+	}
+	
+	function backCar(data){
+		var $select = $("#id3");
+		$select.empty;
+		$.each(data,function(i,e){
+			var option = "<option value="+e.plateNumber+">"+e.plateNumber+"</option>";
+			$select.append(option);
+		});
+	}
 	
 	function paiqian(){
 		var person = $("#id2 option").map(function(){
 			return $(this).text();
 		}).get().join(",")
-		alert(person);
 			
 		var car = $("#id4 option").map(function(){
 			return $(this).text();
 		}).get().join(",")
-		alert(car);
 		
 		$.getJSON("../dispatch.lovo",{person:person,car:car},callBack);
 	}
@@ -131,12 +164,7 @@
 				<p class="layui-btn layui-btn-normal newsAdd_btn" style="width: 205px">人员派遣表</p>
 				<p>
 					<select name="num1" id="id1" multiple style="width: 100px; height: 120px">
-						<option value="one" ondblclick="chuangji(this)">一一一</option>
-						<option value="two" ondblclick="chuangji(this)">二二二</option>
-						<option value="three" ondblclick="chuangji(this)">三三三</option>
-						<option value="four" ondblclick="chuangji(this)">四四四</option>
-						<option value="five" ondblclick="chuangji(this)">五五五</option>
-						<option value="six" ondblclick="chuangji(this)">六六六</option>
+						
 					</select>  
 					<select name="num2" id="id2" multiple style="width: 100px; height: 120px"></select>
 					<br>
@@ -149,7 +177,7 @@
 	
 				<div class="layui-input-inline"style="position: relative;left: 250px; top:-90px" >
 					<p class="layui-btn layui-btn-normal newsAdd_btn" >选择负责人</p>
-					<select style="width: 95px">
+					<select id="fuzeren" onclick="fuzeren()" style="width: 95px">
 						<option>获取负责人</option>
 						<option>已处理事件</option>
 					</select>
@@ -160,12 +188,7 @@
 				<p class="layui-btn layui-btn-normal newsAdd_btn" style="width: 205px">车辆派遣表</p>
 				<p>
 					<select name="num1" id="id3" multiple style="width: 100px; height: 120px">
-						<option value="one" ondblclick="chuangji(this)">一一一</option>
-						<option value="two" ondblclick="chuangji(this)">二二二</option>
-						<option value="three" ondblclick="chuangji(this)">三三三</option>
-						<option value="four" ondblclick="chuangji(this)">四四四</option>
-						<option value="five" ondblclick="chuangji(this)">五五五</option>
-						<option value="six" ondblclick="chuangji(this)">六六六</option>
+						
 					</select> 
 					<select name="num2" id="id4" multiple style="width: 100px; height: 120px"></select>
 					<br> 

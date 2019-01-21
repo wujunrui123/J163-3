@@ -56,9 +56,9 @@ public class EmployeesBeanServiceimpl implements IEmployeesBeanService {
 	}
 
 	@Override
-	public List<EmployeesBean> findAll(@Param("state")   String state) {
+	public List<EmployeesBean> findAll() {
 		// TODO Auto-generated method stub
-		return EmployeesBeanDao.findAll(state);
+		return EmployeesBeanDao.findAll();
 	}
 
 	@Override
