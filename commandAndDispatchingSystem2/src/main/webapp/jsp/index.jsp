@@ -18,7 +18,7 @@
 	<link rel="stylesheet" type="text/css" href="css/adminstyle.css" media="all">
 	
 <%
-  String userName = request.getParameter("username");
+  String userName = request.getParameter("userName");
  %>	
 </head>
 <body>

@@ -45,7 +45,7 @@
 		$tbody.empty();
 		$.each(data, function(i, e){
 			$tbody.append("<tr><td>"+e.eventName+"</td><td>"+e.type+"</td><td>"+e.site+"</td><td>"+e.numberpeople+"</td><td>"+e.arnumber+"</td><td>"+e.area+"</td>"+
-			"<td><a href='PlanTemplate.jsp' class='layui-btn layui-btn-mini news_edit' data-url='PlanTemplate.jsp'><i class='iconfont icon-edit'></i>派遣</a></td></tr>");
+			"<td><a href='PlanTemplate.jsp?id="+e.messageId+"' class='layui-btn layui-btn-mini news_edit' data-url='PlanTemplate.jsp'><i class='iconfont icon-edit'></i>派遣</a></td></tr>");
 		});
 	}
 

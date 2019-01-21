@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
 	pageEncoding="utf-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -31,6 +32,9 @@
 		top:-535px;
 	}
 </style>
+<%
+  String messageId = request.getParameter("id");
+ %>	
 </head>
 <!-- 加载js文件-->  
 <script type="text/javascript" src="js/newslist.js"></script>                                                                                                                                                                                        
@@ -53,26 +57,26 @@
 		$(":button[name=selectleft1]").click(selectle1);
 		$(":button[name=selectright1]").click(selectRig1);
 		
-		/* $("#fuzeren").click(fuzeren); */
 		$("#paiqian").click(paiqian);
 	});
 	function fuzeren(){
-		alert(1);
 		var person = $("#id2 option").map(function(){
 			return $(this).text();
 		}).get().join(",")
 		
+		var persons = person.split(",");
+		
 		var $select = $("#fuzeren");
-		$select.empty;
-		$.each(person,function(i,e){
-			var option = "<option value="+e+">"+e+"</option>";
+		$select.empty();
+		$.each(persons,function(i,e){
+			var option = "<option>"+e+"</option>";
 			$select.append(option);
 		});
 	}
 	
 	function backPerson(data){
 		var $select = $("#id1");
-		$select.empty;
+		$select.empty();
 		$.each(data,function(i,e){
 			var option = "<option value="+e.name+">"+e.name+"</option>";
 			$select.append(option);
@@ -81,7 +85,7 @@
 	
 	function backCar(data){
 		var $select = $("#id3");
-		$select.empty;
+		$select.empty();
 		$.each(data,function(i,e){
 			var option = "<option value="+e.plateNumber+">"+e.plateNumber+"</option>";
 			$select.append(option);
@@ -89,6 +93,7 @@
 	}
 	
 	function paiqian(){
+		var messageId = $("input[name=messageId]").val();
 		var person = $("#id2 option").map(function(){
 			return $(this).text();
 		}).get().join(",")
@@ -97,7 +102,7 @@
 			return $(this).text();
 		}).get().join(",")
 		
-		$.getJSON("../dispatch.lovo",{person:person,car:car},callBack);
+		$.getJSON("../dispatch.lovo",{messageId:messageId,person:person,car:car},callBack);
 	}
 	
 	function callBack(data){
@@ -176,10 +181,9 @@
 				</p>
 	
 				<div class="layui-input-inline"style="position: relative;left: 250px; top:-90px" >
-					<p class="layui-btn layui-btn-normal newsAdd_btn" >选择负责人</p>
-					<select id="fuzeren" onclick="fuzeren()" style="width: 95px">
-						<option>获取负责人</option>
-						<option>已处理事件</option>
+					<p class="layui-btn layui-btn-normal newsAdd_btn" onclick="fuzeren()">选择负责人</p>
+					<select id="fuzeren"  style="width: 95px">
+						<option>请选择负责人</option>
 					</select>
 				</div>
 			</div>
@@ -198,6 +202,7 @@
 					<input type="button" name="selectright1" value="选中右移"> 
 					<input type="button" name="allright1" value="全部右移">
 				</p>
+				<input type="hidden" name="messageId" value="<%=messageId %>">
 				<button id="paiqian" class="layui-btn layui-btn-normal newsAdd_btn" style="position: relative;left: -240px; top:40px; width: 80px">派遣</button>
 				<a class="layui-btn layui-btn-normal newsAdd_btn" style="position: relative;left: -200px; top:40px; width: 80px" href="main2.jsp">取消</a>
 			</div>
