@@ -61,6 +61,8 @@ public class TheeventController {
 		 RedirectView rv = new RedirectView("jsp/main2.jsp");
 		 
 		 mv.setView(rv);
+		 
+		//
 		 return mv;
 	 }
 }
