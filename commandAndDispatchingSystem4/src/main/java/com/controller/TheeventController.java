@@ -63,4 +63,13 @@ public class TheeventController {
 		 sq.getSession().setAttribute("messageId", messageId);
 		 return "0";
 	 }
+	 
+	 @RequestMapping("findEventById.lovo")
+	 @ResponseBody
+	 public  TheeventBean findEventById(String id, HttpServletRequest sq) {
+		 String id1 = (String) sq.getSession().getAttribute("messageId");
+		 System.out.println(id);
+		 TheeventBean event = theeventBeanService.findById(Integer.parseInt(id));
+		 return event;
+	 }
 }

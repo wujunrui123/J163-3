@@ -32,14 +32,9 @@
   
      <select id="findByItem" resultMap="car" >
 		select * from t_resourcestocks  where  1=1
-          
-          <if test="_parameter!=null">
-				and f_plateNumber like "%"#{_parameter}"%"  
-			</if>
-			
-				 
-			
-	    
+        <if test="_parameter!=null">
+			and f_state like "%"#{_parameter}"%"  
+		</if> 
 	</select>
   
    <insert id="addCar"  parameterType="carBean">

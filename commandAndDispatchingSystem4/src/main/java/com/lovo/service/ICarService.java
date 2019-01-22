@@ -38,7 +38,7 @@ public interface ICarService {
 	  * @param plateNumber 车牌号
 	  * @return 车辆集合
 	  */
-	 public List<CarBean> findByItem(String plateNumber );
+	 public List<CarBean> findByItem(String plateNumber);
 	 
 	/**
 	 * 根据车牌修改车的状态，派遣时间，返回时间，事件id

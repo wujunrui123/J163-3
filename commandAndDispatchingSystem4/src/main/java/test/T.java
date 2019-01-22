@@ -1,7 +1,5 @@
 package test;
 
-
-
 import java.util.List;
 
 import org.junit.Before;
@@ -16,8 +14,6 @@ import com.lovo.service.ICarService;
 import com.lovo.service.IEmployeesBeanService;
 import com.lovo.service.IStatisticalBeanService;
 import com.lovo.service.ITheeventBeanService;
-
-
 
 public class T {                              
 	ClassPathXmlApplicationContext app = null;
@@ -53,7 +49,7 @@ public class T {
 //	int i=	employeesBeanService.systemEmployees();
 //	int ss = CarBeanService.systemCar();
 //		CarBeanService.updateCar("dfgfd", 1);
-		CarBeanService.updateState("58", "201-03-05", "2017-05-09", "出勤", "川Q123");
+//		CarBeanService.updateState("58", "201-03-05", "2017-05-09", "出勤", "川Q123");
 //		CarBean c=new CarBean();
 //		c.setThingId(6666);
 //		c.setPlateNumber("ddd");
@@ -63,7 +59,7 @@ public class T {
 //		CarBeanService.addCar(c);
 //		CarBeanService.delCara(1);
 //		System.out.println(CarBeanService.find(2).getPlateNumber());
-//		System.out.println(CarBeanService.findByItem("4"));
+		System.out.println(CarBeanService.findByItem("出勤"));
 //		System.out.println(CarBeanService.findAll());
 //		System.out.println(CarBeanService.systemCar());
 		
@@ -90,9 +86,8 @@ public class T {
 		
 	}
 	@Test
-	public void add() {
-		System.out.println("1");
+	public void findById() {
+		System.out.println(theevent.findById(1));
 	}
-
 }
 	

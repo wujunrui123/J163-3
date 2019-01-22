@@ -106,7 +106,7 @@
 	}
 	
 	function callBack(data){
-		window.location.href="main4.jsp";
+		window.location.href="main.jsp";
 	}
 
 	function allRig() {
@@ -204,7 +204,7 @@
 				</p>
 				<input type="hidden" name="messageId" value="<%=messageId %>">
 				<button id="paiqian" class="layui-btn layui-btn-normal newsAdd_btn" style="position: relative;left: -240px; top:40px; width: 80px">派遣</button>
-				<a class="layui-btn layui-btn-normal newsAdd_btn" style="position: relative;left: -200px; top:40px; width: 80px" href="main2.jsp">取消</a>
+				<a class="layui-btn layui-btn-normal newsAdd_btn" style="position: relative;left: -200px; top:40px; width: 80px" href="main.jsp">取消</a>
 			</div>
 		</div>
 	</section>

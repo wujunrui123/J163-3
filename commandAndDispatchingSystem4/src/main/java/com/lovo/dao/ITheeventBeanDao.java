@@ -32,5 +32,10 @@ public interface ITheeventBeanDao {
    */
 	public void updateTheevent(String area,int id  );
 	
-
+	/**
+	 * 根据id查询事件信息
+	 * @param id
+	 * @return
+	 */
+	public TheeventBean findById(Integer id);
 }

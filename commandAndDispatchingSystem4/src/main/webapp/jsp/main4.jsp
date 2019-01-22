@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
 	pageEncoding="utf-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -43,20 +44,26 @@
 	}
 </style>
 </head>
-<body>
+<script src="jquery-2.1.4.js"></script>
+<script type="text/javascript">
+	$(function() {
+		$.getJSON("../findEventById.lovo",callBack);
+	});
+	
+	function callBack(){}
 
+</script>
+<body>
 	<section class="layui-larry-box">
 		<div class="larry-personal">
 			<div class="layui-tab">
 
 				<!-- 操作日志 -->
 				<div class="layui-form news_list">
-
-					<a class="layui-btn layui-btn-mini news_edit"
-						style="font-size: 18px"><i class="iconfont icon-edit"></i>事件名称:<span
-						style="font-size: 16px">获取</span></a> <a
-						class="layui-btn layui-btn-mini news_edit" style="font-size: 18px"><i
-						class="iconfont icon-edit"></i>事件状态:<span style="font-size: 16px">动态获取,事件状态处理中还是完成</span></a>
+					<a class="layui-btn layui-btn-mini news_edit" style="font-size: 18px">
+					<i class="iconfont icon-edit"></i>事件名称:<span style="font-size: 16px">${event.eventName }</span></a> 
+					<a class="layui-btn layui-btn-mini news_edit" style="font-size: 18px">
+					<i class="iconfont icon-edit"></i>事件状态:<span style="font-size: 16px">${event.area }</span></a>
 
 					<div id="div4" style="overflow-y:scroll;overflow-x: hidden">
 						<span id="t1"><h4>派遣信息</h4></span>
@@ -75,7 +82,6 @@
 									<td class="text-nowrap">发生火灾</td>
 									<td>火灾</td>
 									<td><input type="checkbox" name="gui" value="gui" />归队</td>
-
 								</tr>
 								<tr>
 									<td>1</td>

@@ -31,6 +31,9 @@ public class TheeventBranServiceimpl implements ITheeventBeanService {
 
 	}
 
-
-
+	@Override
+	public TheeventBean findById(Integer id) {
+		// TODO Auto-generated method stub
+		return theeventBeanDao.findById(id);
+	}
 }
