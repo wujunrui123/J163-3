@@ -34,6 +34,7 @@
 </style>
 <%
   String messageId = request.getParameter("id");
+  String eventName = request.getParameter("name");
  %>	
 </head>
 <!-- 加载js文件-->  
@@ -163,7 +164,7 @@
 		<div class="larry-personal">
 			<div class="layui-tab"style="position: relative;left: 520px;"></div>
 			<div class="layui-inline" style="position: relative;left: 520px;">
-				<p class="layui-btn layui-btn-normal newsAdd_btn">当前事件:<span>aaaa</span></p>
+				<p class="layui-btn layui-btn-normal newsAdd_btn">当前事件:<span><%=eventName %></span></p>
 			</div>
 			<div id="aaa">
 				<p class="layui-btn layui-btn-normal newsAdd_btn" style="width: 205px">人员派遣表</p>

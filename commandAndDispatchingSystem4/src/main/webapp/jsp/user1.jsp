@@ -24,6 +24,27 @@
 	
 	</style>
 </head>
+<script type="text/javascript" src="jquery-2.1.4.js"></script>
+
+<script type="text/javascript">
+
+$(function() {
+	
+	$("input[type=button]").click(chaxun);
+ });
+
+	function chaxun(){
+		var   name = $("input[name=name]").val();
+		 var phone = $("input[name=phone]").val();
+		var state = $("select[name=zt]  option:selected").text();
+		$.getJSON("../AddEmployees.lovo",{phone:phone,name:name,state:state},callBack);
+	};
+	
+	function callBack() {
+		window.location.href="user.jsp";
+	}
+	
+</script>
 <body>
 <section class="layui-larry-box">
 	<div class="larry-personal">
@@ -36,24 +57,22 @@
 					<a class="layui-btn layui-btn-mini news_edit"
 									style="font-size: 18px"><i class="iconfont icon-edit"></i>添加员工:</a>
 				<br>	<br>人员姓名:<div class="layui-input-inline">
-							<input value="" placeholder="必填项"
+							<input name="name" placeholder="必填项"
 								class="layui-input search_input" type="text">
 						</div>
 					<br><br>	联系方式:<div class="layui-input-inline">
-							<input value="" placeholder="必填项"
+							<input name="phone" placeholder="必填项"
 								class="layui-input search_input" type="text">
 						</div>
-					<br><br>	人员职位:<div class="layui-input-inline">
-							<input value="" placeholder="必填项,如医生,护士"
-								class="layui-input search_input" type="text">
-						</div>
+						
 					<br><br>	出勤状态:<div class="layui-input-inline">
-							<select class='sel'>
-								<option>待机</option>
+							<select class='sel' name="zt">
+								<option>在线</option>
+								<option>出勤</option>
 							</select>
 						</div>
 					<br><br><div class="layui-inline">
-			<a class="layui-btn layui-btn-normal newsAdd_btn" href="user.jsp">添加员工</a>
+			<input type="button" class="layui-btn layui-btn-normal " value="添加">
 		</div>
 					</div>
 	

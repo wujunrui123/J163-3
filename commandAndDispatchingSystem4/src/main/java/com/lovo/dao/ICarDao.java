@@ -77,6 +77,14 @@ public interface ICarDao {
 	 * @return 返回车辆集合
 	 */
 	public List<CarBean> findBitm(int id);
+	
+	/**
+	 * 按事件id查询所有在线车辆
+	 * 
+	 * @param id
+	 * @return 返回车辆集合
+	 */
+	public List<CarBean> findCarByzaixian(int id);
 
 	/**
 	 * 根据转态查询车辆集合

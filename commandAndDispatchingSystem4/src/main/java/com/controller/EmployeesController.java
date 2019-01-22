@@ -25,4 +25,39 @@ public class EmployeesController {
 		 List<EmployeesBean> list = employeesBeanService.findAll();
 		 return list;
 	 }
+	 
+	 @RequestMapping("findEmployeesList.lovo")
+	 @ResponseBody
+	 public List<EmployeesBean> findEmployeesList(String name){
+		 List<EmployeesBean> list = employeesBeanService.findByItem(name);
+		
+		 return list;
+	 }
+	 
+	 /**
+	  * 修改人员
+	  * @param plateNumber
+	  * @param id
+	  * @return
+	  */
+	 @RequestMapping("UpdateEmployees.lovo")
+	 @ResponseBody
+	 public String UpdateEmployees(String phone,String name ) {
+		 
+		 employeesBeanService.updateEmployees(phone, name);
+		 
+		 return "0";
+	 }
+	 
+	 @RequestMapping("AddEmployees.lovo")
+	 @ResponseBody
+	 public String AddEmployees(String phone,String name,String state ) {
+		 EmployeesBean e=new EmployeesBean();
+		 e.setName(name);
+		 e.setPhone(phone);
+		 e.setState(state);
+		 employeesBeanService.addEmployees(e);
+		 
+		 return "0";
+	 }
 }

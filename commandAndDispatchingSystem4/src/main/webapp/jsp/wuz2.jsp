@@ -1,10 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
+    <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>库存车辆添加</title>
+	<title>修改车辆</title>
 	<meta name="renderer" content="webkit">	
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">	
@@ -23,7 +24,36 @@
 	}
 	
 	</style>
+	<%
+  String id = request.getParameter("id");
+ %>	
+ 	<%
+  String che = request.getParameter("che");
+ %>
 </head>
+<script type="text/javascript" src="jquery-2.1.4.js"></script>
+
+<script type="text/javascript">
+
+$(function() {
+	
+	$("input[type=button]").click(chaxun);
+ });
+
+	function chaxun(){
+	
+	    var plateNumber = $("input[name=plateNumber]").val();
+	    
+		var   id = $("input[name=id]").val();
+	
+		$.getJSON("../UpdateplateNumber.lovo",{plateNumber:plateNumber,id:id},callBack);
+	};
+	
+	function callBack() {
+		window.location.href="wuz.jsp";
+	}
+	
+</script>
 <body>
 <section class="layui-larry-box">
 	<div class="larry-personal">
@@ -34,24 +64,21 @@
 					
 					<div id="qqq">
 					<a class="layui-btn layui-btn-mini news_edit"
-									style="font-size: 18px"><i class="iconfont icon-edit"></i>添加员工:</a>
+									style="font-size: 18px"><i class="iconfont icon-edit"></i>修改车辆:</a>
 				
 					<br><br>	车牌号码:<div class="layui-input-inline">
-							<input value="" placeholder="XXXXXXXX输入修改内容"
-								class="layui-input search_input" type="text">
+					<input type="hidden" value="<%= id%>" name="id">
+							<input value="<%=che %>" class="layui-input search_input" type="text"  name="plateNumber">
 						</div>
 					
-					<br><br>	出勤状态:<div class="layui-input-inline">
-							<select class='sel'>
-								<option>待机</option>
-							</select>
-						</div>
+					<br><br>	
 					<br><br><div class="layui-inline">
-			<a class="layui-btn layui-btn-normal newsAdd_btn" href="user.jsp">确定修改</a>
+					<input type="button" class="layui-btn layui-btn-normal " value="确定修改">
+			
 		</div>
 					</div>
 	
-                    
+                  
 			    </div>
 			     <!-- 登录日志 -->
 			    <div class="layui-tab-item layui-field-box">

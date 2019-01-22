@@ -21,8 +21,8 @@ public class EmployeesBeanServiceimpl implements IEmployeesBeanService {
 	}
 
 	@Override
-	public void updateEmployees( String phone,int id) {
-		EmployeesBeanDao.updateEmployees( phone,id);
+	public void updateEmployees( String phone,String name) {
+		EmployeesBeanDao.updateEmployees( phone,name);
 		
 	}
 

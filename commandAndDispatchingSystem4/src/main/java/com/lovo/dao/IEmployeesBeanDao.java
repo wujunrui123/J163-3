@@ -25,7 +25,7 @@ public interface IEmployeesBeanDao {
 		 * @param id 员工id
 		 * @param phone 电话
 		 */
-		 public void updateEmployees(String phone,int  id);
+		 public void updateEmployees(String phone,String name);
 		/**
 		 * 根据id删除员工
 		 * @param id

@@ -89,5 +89,15 @@ public class T {
 	public void findById() {
 		System.out.println(theevent.findById(1));
 	}
+	
+	@Test
+	public void findBitm() {
+		System.out.println(CarBeanService.findBitm(1));
+	}
+	
+	@Test
+	public void findCarByzaixian() {
+		System.out.println(CarBeanService.findCarByzaixian(1));
+	}
 }
 	

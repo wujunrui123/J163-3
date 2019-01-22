@@ -16,6 +16,30 @@
 	<link rel="stylesheet" type="text/css" href="common/global.css" media="all">
 	<link rel="stylesheet" type="text/css" href="css/personal.css" media="all">
 </head>
+<script type="text/javascript" src="jquery-2.1.4.js"></script>
+
+<script type="text/javascript">
+	$(function() {
+		var state = null;
+		$.getJSON("../findCarList.lovo",{state:state},callBack);
+		$("input[type=button]").click(chaxun);
+	});
+	
+	function callBack(data){
+		var $tbody=$("tbody");
+		$tbody.empty();
+		$.each(data, function(i, e){
+			$tbody.append("<tr><td>"+e.plateNumber+"</td><td>"+e.state+"</td><td><a href='wuz2.jsp?id="+e.ziYuanId+"&che="+e.plateNumber+"' class='layui-btn layui-btn-mini news_edit' data-url='wuz2.jsp'><i class='iconfont icon-edit'></i>编辑</a></tr>");
+		});
+	}
+
+	function chaxun(){
+	
+	var	state = $("input[name=state]").val();
+	
+		$.getJSON("../findCarList.lovo",{state:state},callBack);
+	}
+</script>
 <body>
 <section class="layui-larry-box">
 	<div class="larry-personal">
@@ -24,9 +48,9 @@
 		
 		   <div class="layui-inline">
 		    <div class="layui-input-inline">
-		    	<input value="" placeholder="请输入关键字" class="layui-input search_input" type="text">
+		    	<input name="state" placeholder="请输入关键字" class="layui-input search_input" type="text">
 		   </div>
-		    <a class="layui-btn search_btn">查询</a>
+		    <input type="button" class="layui-btn search_btn" value="查询"/>
 		   </div><div class="layui-inline">
 			<a class="layui-btn layui-btn-normal newsAdd_btn" href="wuz1.jsp">添加物资</a>
 		</div>
@@ -43,24 +67,23 @@
 					<a class="layui-btn layui-btn-mini news_edit" style="font-size: 18px"><i class="iconfont icon-edit"></i>所有物资</a>
 					<thead>
 						<tr>						
-							<th style="text-align:left;">救护车辆</th>
 							<th>车牌号码</th>
 							<th>出勤状态</th>
 							<th>操作</th>
 						</tr>
 					</thead>
 					<tbody class="news_content">
-						<tr>
+						<!-- <tr>
 							<td align="left">css3用transition实现边框动画效果</td>
 							
 							<td>川A12345</td>
 							<td>派出</td>
-						
+						   
 							<td>
 								<a class="layui-btn layui-btn-mini news_edit" href="wuz2.jsp"><i class="iconfont icon-edit"></i>编辑</a>
 								<a class="layui-btn layui-btn-danger layui-btn-mini news_del" data-id="1"><i class="layui-icon"></i> 删除</a>
 							</td>
-						</tr>
+						</tr> -->
 					</tbody>
 					</table>
                      <div class="larry-table-page clearfix">

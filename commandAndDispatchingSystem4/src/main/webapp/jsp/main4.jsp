@@ -45,14 +45,6 @@
 </style>
 </head>
 <script src="jquery-2.1.4.js"></script>
-<script type="text/javascript">
-	$(function() {
-		$.getJSON("../findEventById.lovo",callBack);
-	});
-	
-	function callBack(){}
-
-</script>
 <body>
 	<section class="layui-larry-box">
 		<div class="larry-personal">
@@ -61,52 +53,30 @@
 				<!-- 操作日志 -->
 				<div class="layui-form news_list">
 					<a class="layui-btn layui-btn-mini news_edit" style="font-size: 18px">
-					<i class="iconfont icon-edit"></i>事件名称:<span style="font-size: 16px">${event.eventName }</span></a> 
+					<i class="iconfont icon-edit"></i>事件名称:<span style="font-size: 16px">${name}</span></a> 
 					<a class="layui-btn layui-btn-mini news_edit" style="font-size: 18px">
-					<i class="iconfont icon-edit"></i>事件状态:<span style="font-size: 16px">${event.area }</span></a>
-
+					<i class="iconfont icon-edit"></i>事件状态:<span style="font-size: 16px">${area }</span></a>
+					
 					<div id="div4" style="overflow-y:scroll;overflow-x: hidden">
 						<span id="t1"><h4>派遣信息</h4></span>
 						<table class="table table-hover">
 							<thead>
 								<tr>
-									<th>姓名</th>
 									<th>车牌号</th>
+									<th>状态</th>
 									<th>派遣时间</th>
 									<th>操作</th>
 								</tr>
 							</thead>
-							<tbody>
+							<tbody id="paiqian">
+							<c:forEach var="e" items="${carList }">
 								<tr>
-									<td>1</td>
-									<td class="text-nowrap">发生火灾</td>
-									<td>火灾</td>
-									<td><input type="checkbox" name="gui" value="gui" />归队</td>
+									<td>${e.plateNumber }</td>
+									<td>${e.state }</td>
+									<td>${e.sendData }</td>
+									<td><a href='../updateCar.lovo?id=${id }&sendData=${e.sendData }&plateNumber=${e.plateNumber }' style='padding: 5px;background-color: #249AEE'>归队</a></td>
 								</tr>
-								<tr>
-									<td>1</td>
-									<td class="text-nowrap">发生火灾</td>
-									<td>火灾</td>
-									<td><input type="checkbox" name="gui" value="gui" style="" />归队</td>
-								</tr>
-								<tr>
-									<td>1</td>
-									<td class="text-nowrap">发生火灾</td>
-									<td>火灾</td>
-									<td><input type="checkbox" name="gui" value="gui" />归队</td>
-								</tr>
-								<tr>
-									<td>1</td>
-									<td class="text-nowrap">发生火灾</td>
-									<td>火灾</td>
-									<td><input type="checkbox" name="gui" value="gui" />归队</td>
-								</tr>
-								<tr>
-									<td>1</td>
-									<td class="text-nowrap">发生火灾</td>
-									<td>火灾</td>
-									<td><input type="checkbox" name="gui" value="gui" />归队</td>
-								</tr>
+							</c:forEach>
 							</tbody>
 						</table>
 					</div>
@@ -116,44 +86,19 @@
 						<table class="table table-hover">
 							<thead>
 								<tr>
-									<th>姓名</th>
 									<th>车牌号</th>
+									<th>状态</th>
 									<th>归队时间</th>
-									<th>操作</th>
 								</tr>
 							</thead>
 							<tbody>
+							<c:forEach var="u" items="${list }">
 								<tr>
-									<td>1</td>
-									<td class="text-nowrap">发生火灾</td>
-									<td>火灾</td>
-									<td><input type="checkbox" name="gui" value="gui" />归队</td>
-
+									<td>${u.plateNumber }</td>
+									<td>${u.state }</td>
+									<td>${u.backDate }</td>
 								</tr>
-								<tr>
-									<td>1</td>
-									<td class="text-nowrap">发生火灾</td>
-									<td>火灾</td>
-									<td><input type="checkbox" name="gui" value="gui" style="" />归队</td>
-								</tr>
-								<tr>
-									<td>1</td>
-									<td class="text-nowrap">发生火灾</td>
-									<td>火灾</td>
-									<td><input type="checkbox" name="gui" value="gui" />归队</td>
-								</tr>
-								<tr>
-									<td>1</td>
-									<td class="text-nowrap">发生火灾</td>
-									<td>火灾</td>
-									<td><input type="checkbox" name="gui" value="gui" />归队</td>
-								</tr>
-								<tr>
-									<td>1</td>
-									<td class="text-nowrap">发生火灾</td>
-									<td>火灾</td>
-									<td><input type="checkbox" name="gui" value="gui" />归队</td>
-								</tr>
+							</c:forEach>
 							</tbody>
 						</table>
 					</div>

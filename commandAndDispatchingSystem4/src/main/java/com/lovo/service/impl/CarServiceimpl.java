@@ -69,4 +69,10 @@ public class CarServiceimpl implements ICarService {
 		CarBeanDao.updateState(ThingId, sendData, BackDate, state, name);		
 	}
 
+	@Override
+	public List<CarBean> findCarByzaixian(int id) {
+		// TODO Auto-generated method stub
+		return CarBeanDao.findCarByzaixian(id);
+	}
+
 }

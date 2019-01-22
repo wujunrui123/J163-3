@@ -24,6 +24,27 @@
 	
 	</style>
 </head>
+<script type="text/javascript" src="jquery-2.1.4.js"></script>
+
+<script type="text/javascript">
+
+$(function() {
+	
+	$("input[type=button]").click(chaxun);
+ });
+
+	function chaxun(){
+	
+		 var plateNumber = $("input[name=plateNumber]").val();
+		var state = $("select[name=state]  option:selected").text();
+		$.getJSON("../AddCar.lovo",{plateNumber:plateNumber,state:state},callBack);
+	};
+	
+	function callBack() {
+		window.location.href="wuz.jsp";
+	}
+	
+</script>
 <body>
 <section class="layui-larry-box">
 	<div class="larry-personal">
@@ -36,18 +57,19 @@
 					<a class="layui-btn layui-btn-mini news_edit"
 									style="font-size: 18px"><i class="iconfont icon-edit"></i>添加车辆:</a>
 				<br>	<br>车牌号码:<div class="layui-input-inline">
-							<input value="" placeholder="必填项"
+							<input name="plateNumber" placeholder="必填项"
 								class="layui-input search_input" type="text">
 						</div>
 					
 					
 					<br><br>	出勤状态:<div class="layui-input-inline">
-							<select class='sel'>
-								<option>待机</option>
+							<select class='sel' name="state">
+								<option>在线</option>
+								<option>出勤</option>
 							</select>
 						</div>
 					<br><br><div class="layui-inline">
-			<a class="layui-btn layui-btn-normal newsAdd_btn" href="wuz.jsp">添加车辆</a>
+			<input type="button" class="layui-btn layui-btn-normal " value="添加">
 		</div>
 					</div>
 	

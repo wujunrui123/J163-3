@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.view.RedirectView;
 
+import com.lovo.bean.CarBean;
 import com.lovo.bean.TheeventBean;
 import com.lovo.service.ICarService;
 import com.lovo.service.IEmployeesBeanService;
@@ -50,7 +51,7 @@ public class TheeventController {
 	  */
 	 @RequestMapping("dispatch.lovo")
 	 @ResponseBody
-	 public String dispatch(String messageId,String person,String car,HttpServletRequest sq) {	
+	 public String dispatch(String messageId,String person,String car) {	
 		 String[] perStr =  person.split(",");
 		 for (String p : perStr) {
 			 employeesBeanService.updateState(messageId, new SimpleDateFormat("yyyy-MM-dd").format(new Date()), null, "出勤", p);
@@ -60,16 +61,6 @@ public class TheeventController {
 		 for (String c : carStr) {
 			 carService.updateState(messageId, new SimpleDateFormat("yyyy-MM-dd").format(new Date()), null, "出勤", c);
 		}
-		 sq.getSession().setAttribute("messageId", messageId);
 		 return "0";
-	 }
-	 
-	 @RequestMapping("findEventById.lovo")
-	 @ResponseBody
-	 public  TheeventBean findEventById(String id, HttpServletRequest sq) {
-		 String id1 = (String) sq.getSession().getAttribute("messageId");
-		 System.out.println(id);
-		 TheeventBean event = theeventBeanService.findById(Integer.parseInt(id));
-		 return event;
 	 }
 }

@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
+    <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -23,7 +24,37 @@
 	}
 	
 	</style>
+	
+ 	<%
+  String name = request.getParameter("name");
+ %>
+ 	<%
+  String tel = request.getParameter("tel");
+ %>
 </head>
+<script type="text/javascript" src="jquery-2.1.4.js"></script>
+
+<script type="text/javascript">
+
+$(function() {
+	
+	$("input[type=button]").click(chaxun);
+ });
+
+	function chaxun(){
+	
+	    var phone = $("input[name=phone]").val();
+	    
+		var   name = $("input[name=name]").val();
+	
+		$.getJSON("../UpdateEmployees.lovo",{phone:phone,name:name},callBack);
+	};
+	
+	function callBack() {
+		window.location.href="user.jsp";
+	}
+	
+</script>
 <body>
 <section class="layui-larry-box">
 	<div class="larry-personal">
@@ -36,23 +67,17 @@
 					<a class="layui-btn layui-btn-mini news_edit"
 									style="font-size: 18px"><i class="iconfont icon-edit"></i>添加员工:</a>
 				<br>	<br>人员姓名:<div class="layui-input-inline">
-							XXXXXX
+				<input type="hidden" value="<%= name%>" name="name">
+							<span><%=name %></span>
 						</div>
 					<br><br>	联系方式:<div class="layui-input-inline">
-							<input value="" placeholder="XXXXXXXX输入修改内容"
+							<input name="phone" value="<%= tel%>"
 								class="layui-input search_input" type="text">
 						</div>
-					<br><br>	人员职位:<div class="layui-input-inline">
-							<input value="" placeholder="XXXXXXXX输入修改内容"
-								class="layui-input search_input" type="text">
-						</div>
-					<br><br>	出勤状态:<div class="layui-input-inline">
-							<select class='sel'>
-								<option>待机</option>
-							</select>
-						</div>
+					<br><br>	
+					<br><br>	
 					<br><br><div class="layui-inline">
-			<a class="layui-btn layui-btn-normal newsAdd_btn" href="user.jsp">确定修改</a>
+			<input type="button" class="layui-btn layui-btn-normal " value="确定修改">
 		</div>
 					</div>
 	

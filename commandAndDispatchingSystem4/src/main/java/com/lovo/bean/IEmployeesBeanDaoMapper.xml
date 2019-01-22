@@ -48,7 +48,7 @@
  </delete>
 
 <update id="updateEmployees" >
-		update t_inventoriesare set f_phone=#{param1} where pk_InventoriesId=#{param2}
+		update t_inventoriesare set f_phone=#{param1} where f_name=#{param2}
 	</update>
 	
 	<update id="updateState" >

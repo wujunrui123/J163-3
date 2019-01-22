@@ -44,8 +44,22 @@
 		var $tbody=$("tbody");
 		$tbody.empty();
 		$.each(data, function(i, e){
-			$tbody.append("<tr><td>"+e.eventName+"</td><td>"+e.type+"</td><td>"+e.site+"</td><td>"+e.numberpeople+"</td><td>"+e.arnumber+"</td><td>"+e.area+"</td>"+
-			"<td><a href='PlanTemplate.jsp?id="+e.messageId+"' class='layui-btn layui-btn-mini news_edit' data-url='PlanTemplate.jsp'><i class='iconfont icon-edit'></i>派遣</a></td></tr>");
+		var  tr="<tr><td>"+e.eventName+"</td><td>"+e.type+"</td><td>"+e.site+"</td><td>"+e.numberpeople+"</td><td>"+e.arnumber+"</td><td>"+e.area+"</td>";
+			
+			
+		
+			var tr2="";
+			if(e.area=="处理中" || e.area=="已处理"){
+				
+		tr2="<td><a href='../findEventById.lovo?id="+e.messageId+"&name="+e.eventName+"&area="+e.area+"' class='layui-btn layui-btn-mini news_edit' data-url='../findEventById.lovo'><i class='iconfont icon-edit'></i>查看详情</a></td></tr>";
+
+			}else{
+				tr2="<td><a href='PlanTemplate.jsp?id="+e.messageId+"&name="+e.eventName+"' class='layui-btn layui-btn-mini news_edit' data-url='PlanTemplate.jsp'><i class='iconfont icon-edit'></i>派遣</a></td></tr>";
+			}
+			
+			
+			var trr=tr+tr2;
+		$tbody.append(trr);
 		});
 	}
 
@@ -71,9 +85,9 @@
 						<div class="layui-input-inline">
 							<select class='sel' name="area">
 								<option>-请选择事件状态-</option>
-								<option>未处理事件</option>
-								<option>处理中事件</option>
-								<option>已处理事件</option>
+								<option>未处理</option>
+								<option>处理中</option>
+								<option>已处理</option>
 							</select>
 						</div>
 						<div class="layui-input-inline">
