@@ -23,7 +23,7 @@ public interface ITheeventBeanDao {
 	 * @param address 事件地址
 	 * @return
 	 */
-	public List<TheeventBean> findBitm(String area,String type,String address);
+	public List<TheeventBean> findBitm(String area,String address);
 
   /**
    * 根据事件id修改事件状态

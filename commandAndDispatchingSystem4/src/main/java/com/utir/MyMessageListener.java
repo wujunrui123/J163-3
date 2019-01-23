@@ -40,6 +40,7 @@ public class MyMessageListener implements MessageListener {
                 	e.setArnumber(t.getF_perNum());
                     e.setArea("未处理");
                     e.setTheEventNum(t.getEveNum());
+                    e.setSite(t.getSite());
                 	theeventBeanService.addTheevent(e);
                 
                

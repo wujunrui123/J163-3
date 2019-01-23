@@ -54,8 +54,16 @@ public class EventResourceBean {
      */
     private String   eveNum;
     
+    /**地址*/
+    private String site;
     
     
+	public String getSite() {
+		return site;
+	}
+	public void setSite(String site) {
+		this.site = site;
+	}
 	public String getEveNum() {
 		return eveNum;
 	}

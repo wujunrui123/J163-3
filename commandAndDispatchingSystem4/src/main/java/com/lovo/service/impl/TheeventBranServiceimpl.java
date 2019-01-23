@@ -19,11 +19,7 @@ public class TheeventBranServiceimpl implements ITheeventBeanService {
 
 	}
 
-	@Override
-	public List<TheeventBean> findBitm(String area, String type, String address) {
-		// TODO Auto-generated method stub
-		return theeventBeanDao.findBitm(area, type, address);
-	}
+
 
 	@Override
 	public void updateTheevent(String area, int id) {
@@ -35,5 +31,13 @@ public class TheeventBranServiceimpl implements ITheeventBeanService {
 	public TheeventBean findById(Integer id) {
 		// TODO Auto-generated method stub
 		return theeventBeanDao.findById(id);
+	}
+
+
+
+	@Override
+	public List<TheeventBean> findBitm(String area, String address) {
+		// TODO Auto-generated method stub
+		return theeventBeanDao.findBitm(area, address);
 	}
 }

@@ -38,8 +38,9 @@ public class TheeventController {
 	  */
 	 @RequestMapping("TheEvent.lovo")
 	 @ResponseBody
-	 public  List<TheeventBean> TheEvent(String site,String type,String area) {
-		 List<TheeventBean> eventList = theeventBeanService.findBitm(area, type, site);
+	 public  List<TheeventBean> TheEvent(String site,String area) {
+		 List<TheeventBean> eventList = theeventBeanService.findBitm(area,site);
+		System.out.println(eventList);
 		 return eventList;
 	 }
 	 
@@ -53,15 +54,21 @@ public class TheeventController {
 	 @ResponseBody
 	 public String dispatch(String messageId,String person,String car) {	
 		 String[] perStr =  person.split(",");
-		 for (String p : perStr) {
-			 employeesBeanService.updateState(messageId, new SimpleDateFormat("yyyy-MM-dd").format(new Date()), null, "出勤", p);
-		}
-		 
 		 String[] carStr =  car.split(",");
+		 String	min= new SimpleDateFormat("yyyy-MM-dd").format(new Date());
+		 for (String p : perStr) {
+			 employeesBeanService.updateState(messageId, min, null, "出勤", p);
+		}
 		 for (String c : carStr) {
-			 carService.updateState(messageId, new SimpleDateFormat("yyyy-MM-dd").format(new Date()), null, "出勤", c);
+			 carService.updateState(messageId, min, null, "出勤", c);
 		}
 		 theeventBeanService.updateTheevent("处理中", Integer.parseInt(messageId));
+		 
+		 
+		 
 		 return "0";
+		 
+		 
+		 
 	 }
 }

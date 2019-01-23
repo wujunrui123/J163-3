@@ -34,9 +34,8 @@
 <script type="text/javascript">
 	$(function() {
 		var site = null;
-		var type = null;
 		var area = null;
-		$.getJSON("../TheEvent.lovo",{site:site,type:type,area:area},callBack);
+		$.getJSON("../TheEvent.lovo",{site:site,area:area},callBack);
 		$("input[type=button]").click(chaxun);
 	});
 	
@@ -65,9 +64,8 @@
 
 	function chaxun(){
 		area = $("select[name=site] option:selected").text();
-		type = $("input[name=type]").val();
 		site = $("input[name=area]").val();
-		$.getJSON("../TheEvent.lovo",{site:site,type:type,area:area},callBack);
+		$.getJSON("../TheEvent.lovo",{site:site,area:area},callBack);
 	}
 </script>
 <body>
