@@ -6,6 +6,7 @@
 <mapper namespace="com.lovo.dao.ITheeventBeanDao">
 	<resultMap id="theevent" type="TheeventBean">
 		<id property="messageId" column="pk_id" />
+		<id property="theEventNum" column="f_theEventNum" />
 		<id property="eventName" column="f_eventName" />
 		<id property="area" column="f_area" />
 		<id property="type" column="f_type" />
@@ -37,7 +38,7 @@
 
 	<insert id="addTheevent" parameterType="TheeventBean">
 		insert into t_messages
-		values(null,#{eventName},#{area},#{type},#{site},#{numberpeople},#{arnumber})
+		values(null,#{theEventNum},#{eventName},#{area},#{type},#{site},#{numberpeople},#{arnumber})
 	</insert>
 
 	<update id="updateTheevent">

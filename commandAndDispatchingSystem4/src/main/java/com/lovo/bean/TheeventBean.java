@@ -8,8 +8,10 @@ import java.util.List;
  *
  */
 public class TheeventBean {
-/** 事件id*/
+	/** 事件id*/
 	private Integer messageId;
+	/** 事件编号*/
+	private String theEventNum; 
 	/**事件名称*/
 	private String eventName;
 	/**事件状态*/
@@ -84,5 +86,11 @@ public class TheeventBean {
 	}
 	public void setArnumber(int arnumber) {
 		this.arnumber = arnumber;
+	}
+	public String getTheEventNum() {
+		return theEventNum;
+	}
+	public void setTheEventNum(String theEventNum) {
+		this.theEventNum = theEventNum;
 	}
 }

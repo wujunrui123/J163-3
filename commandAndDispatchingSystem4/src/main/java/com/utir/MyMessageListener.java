@@ -38,7 +38,8 @@ public class MyMessageListener implements MessageListener {
                 	e.setEventName(t.getEveName());
                 	e.setNumberpeople(t.getF_carNum());
                 	e.setArnumber(t.getF_perNum());
-                       e.setArea("未处理");
+                    e.setArea("未处理");
+                    e.setTheEventNum(t.getEveNum());
                 	theeventBeanService.addTheevent(e);
                 
                

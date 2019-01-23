@@ -5,20 +5,63 @@ package com.lovo.bean;
  *
  */
 public class EventResourceBean {
+	/**
+	 * id
+	 */
     private  int pk_id;
+    /**
+     * 事件id
+     */
     private  int t_e_pk_id;
+    /**
+     * 负责人
+     */
     private  String f_Duty;
+    /**
+     * 负责人电话
+     */
     private  String f_DutyTel;
+    /**
+     * 资源名称
+     */
     private  String f_fname;
+    /**
+     * 资源类型
+     */
     private  String f_Type; 
+    /**
+     * 派出时间
+     */
     private  String f_outDate;
+    /**
+     * 调度时间
+     */
     private  String f_dispatchTime;
+    /**
+     * 人数
+     */
     private  int f_perNum;
+    /**
+     * 车数
+     */
     private  int f_carNum;
+    /**
+     * 事件名称
+     */
     private String  eveName;
+    /**
+     * 事件编号
+     */
+    private String   eveNum;
     
     
     
+	public String getEveNum() {
+		return eveNum;
+	}
+	public void setEveNum(String eveNum) {
+		this.eveNum = eveNum;
+	}
 	public String getEveName() {
 		return eveName;
 	}
