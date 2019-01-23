@@ -146,14 +146,9 @@ public class ThingController {
 		continueEntity.setThingID(id);
 		continueEntity.setUploadDate(uploadDate);
 		continueEntity.setUploadName(uploadName);
-<<<<<<< HEAD
 		ThingEntity thingEntity= thingService.findById(id);
 		String thingCard=thingEntity.getThingCard();
 		continueEntity.setThingCard(thingCard);
-=======
-		
-		
->>>>>>> branch 'master' of https://github.com/wujunrui123/J163-3.git
 		continueService.add(continueEntity);
 		
 		

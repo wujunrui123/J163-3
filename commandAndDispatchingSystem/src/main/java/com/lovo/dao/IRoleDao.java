@@ -15,11 +15,7 @@ public interface IRoleDao {
      * 查询角色集合
      * @return 角色集合
      */
-<<<<<<< HEAD
 	public List<RoleEntity> getAllRole();
-=======
-	public List<RoleEntity> getAllRole() ;
->>>>>>> branch 'master' of https://github.com/wujunrui123/J163-3.git
 	
 
 }

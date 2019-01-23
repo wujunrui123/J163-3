@@ -38,7 +38,6 @@ private String callphone;
  */
 private String uploadDate;
 
-<<<<<<< HEAD
 
 /**
  * 事件编号
@@ -59,16 +58,6 @@ public String getThingCard() {
 public void setThingCard(String thingCard) {
 	this.thingCard = thingCard;
 }
-=======
-/**
- * 事件id(外键)
- */
-private int thingID;
-/**
- * 事件类
- */
-private ThingEntity thingEntity;
->>>>>>> branch 'master' of https://github.com/wujunrui123/J163-3.git
 public int getThingID() {
 	return thingID;
 }
