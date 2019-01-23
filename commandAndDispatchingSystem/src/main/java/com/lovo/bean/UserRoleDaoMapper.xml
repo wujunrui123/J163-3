@@ -11,8 +11,8 @@
   insert into t_userrole values(null,#{param1},#{param2})
   </insert>
   
-  <delete id="delRoleByUserid" parameterType="int" >
-    delete  from t_userrole where userid = 1 and roleid = 2
+  <delete id="delRoleByUserid" >
+    delete  from t_userrole where userid =#{param1} and roleid =#{param2}
  </delete>
   
 <!--   <select id="getListUser" resultType="powerEntity" >

@@ -16,18 +16,18 @@
 </script> -->
 </head>
 <body>
-       <h1>${user.userName}拥有的角色</h1>
+       <h1>${map.user.userName}拥有的角色</h1>
        <table>
       <tr><th>角色名</th><th>操作</th></tr>
-    <c:forEach var="u1" items="${listRole}">
-       <tr><td>${u1.roleName}</td><td><a href="delRole.lovo?userid=${user.id}&roleid=${u1.roleId}">删除</a></td></tr>
+    <c:forEach var="u1" items="${map.listRole}">
+       <tr><td>${u1.roleName}</td><td><a href="../delRole.lovo?userid=${map.user.userID}&roleid=${u1.roleId}">删除</a></td></tr>
     </c:forEach>
        </table>
        <br>
        <h4>添加角色</h4>
-       <form action="addRole.lovo?userid=${user.id}" method="post">
+       <form action="../addRole.lovo?userid=${map.user.userID}" method="post">
        <select name='roleid'>
-       <c:forEach var="n1" items="${notRole}">
+       <c:forEach var="n1" items="${map.notRole}">
        <option value='${n1.roleId}'>${n1.roleName}</option>
        </c:forEach>   
        </select>

@@ -9,7 +9,7 @@
 
   <select id="getListRole" parameterType="int" resultType="roleEntity" >
   select r.* from t_user u , t_userrole ur ,t_role r
-  WHERE u.id=ur.userid AND ur.roleid=r.roleId AND u.id = #{id}
+  WHERE u.pk_userID=ur.userid AND ur.roleid=r.roleId AND u.pk_userID = #{id}
   </select>
   
   <select id="getAllRole"  resultType="roleEntity" >

@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lovo.dao.IWorkDao"><!-- 映射器接口 -->
+<!-- 配置映射关系（表中的列与JAVABEAN属性的映射） -->
+	<resultMap id="workRM" type="workBean">
+		<result property="workID" column="pk_workID"/>
+		<result property="startDate" column="f_startDate"/>
+		<result property="endDate" column="f_endDate"/>
+		<result property="userName" column="f_userName"/>
+		<result property="log" column="f_log"/>
+	</resultMap>
+
+	<insert id="addWork" parameterType="WorkBean">
+		insert into t_work(f_startDate,f_endDate,f_userName)values(#{startDate},#{endDate},#{userName})
+	</insert>
+	
+	<delete id="delWork" parameterType="WorkBean">
+		delete from t_work where pk_workID=#{workID}
+	</delete>
+	
+	<select id="findAll" resultMap="workRM" useCache="true">
+		select * from t_work 
+	</select>
+	
+	<select id="findByItem" resultMap="workRM" parameterType="map">
+		select * from t_work 
+		<trim prefix="where" prefixOverrides="and">
+			<if test="startDateStart!=null"> 
+				and f_startDate&gt;#{startDateStart}
+			</if>
+			<if test="startDateEnd!=null"> 
+				and f_startDate&lt;#{startDateEnd}
+			</if>
+			<if test="userName!=null">
+				and f_userName like "%"#{userName}"%"  
+			</if>
+		</trim>
+	</select>
+	
+	<select id="findById" resultMap="workRM" parameterType="int">
+		select * from t_work where pk_workID=#{workID}
+	</select>
+	
+	<select id="findByEndTime" resultMap="workRM" parameterType="String">
+		select * from t_work where f_endDate=#{endDate}
+	</select>
+	
+	<update id="writeLog">
+		update t_work set f_log=#{param1} where pk_workID=#{param2}
+	</update>
+	
+</mapper>

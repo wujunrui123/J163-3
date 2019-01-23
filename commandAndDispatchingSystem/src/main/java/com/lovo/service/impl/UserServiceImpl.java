@@ -1,6 +1,7 @@
 package com.lovo.service.impl;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -26,8 +27,8 @@ public class UserServiceImpl implements IUserService {
 	}
 
 	@Override
-	public void updateUser(String phone, String password, String roleEntity, int userID) {
-		userDao.updateUser(phone, password, roleEntity, userID);
+	public void updateUser(String password, int userID) {
+		userDao.updateUser(password,  userID);
 		
 	}
 
@@ -56,9 +57,9 @@ public class UserServiceImpl implements IUserService {
 	}
 
 	@Override
-	public List<UserBean> findByItem(String sex, String name) {
+	public List<UserBean> findByItem(Map<String, String> map) {
 		// TODO Auto-generated method stub
-		return userDao.findByItem(sex, name);
+		return userDao.findByItem(map);
 	}
 
 	

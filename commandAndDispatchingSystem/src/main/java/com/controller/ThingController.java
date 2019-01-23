@@ -146,8 +146,9 @@ public class ThingController {
 		continueEntity.setThingID(id);
 		continueEntity.setUploadDate(uploadDate);
 		continueEntity.setUploadName(uploadName);
-		
-		
+		ThingEntity thingEntity= thingService.findById(id);
+		String thingCard=thingEntity.getThingCard();
+		continueEntity.setThingCard(thingCard);
 		continueService.add(continueEntity);
 		
 		

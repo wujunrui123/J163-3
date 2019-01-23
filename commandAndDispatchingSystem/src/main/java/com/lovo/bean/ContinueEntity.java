@@ -38,6 +38,12 @@ private String callphone;
  */
 private String uploadDate;
 
+
+/**
+ * 事件编号
+ */
+private String thingCard;
+
 /**
  * 事件id(外键)
  */
@@ -46,6 +52,12 @@ private int thingID;
  * 事件类
  */
 private ThingEntity thingEntity;
+public String getThingCard() {
+	return thingCard;
+}
+public void setThingCard(String thingCard) {
+	this.thingCard = thingCard;
+}
 public int getThingID() {
 	return thingID;
 }

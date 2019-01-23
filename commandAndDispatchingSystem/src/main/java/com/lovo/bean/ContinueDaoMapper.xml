@@ -16,6 +16,7 @@
 		<result property="uploadDate" column="f_uploadDate"/>
 		<result property="uploadDate" column="f_uploadDate"/>
 		<result property="thingID" column="fk_thingID"/>		
+		<result property="thingCard" column="f_thingCard"/>		
 	</resultMap>
 	
 	
@@ -30,7 +31,7 @@
   
 	<insert id="add" parameterType="continueEntity">
 	insert into t_continue(fk_thingID, f_grade, f_peopleNum, f_uploadName, f_callName, f_callphone, 
-    f_uploadDate) values(#{thingID},#{grade},#{peopleNum},#{uploadName},#{callName},#{callphone},#{uploadDate})
+    f_uploadDate,f_thingCard) values(#{thingID},#{grade},#{peopleNum},#{uploadName},#{callName},#{callphone},#{uploadDate},#(thingCard))
 	</insert>
 	
 	

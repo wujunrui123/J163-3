@@ -1,11 +1,11 @@
-package com.lovo.dao;
+package com.lovo.service;
 
 import java.util.List;
 import java.util.Map;
 
 import com.lovo.bean.WorkBean;
 
-public interface IWorkDao {
+public interface IWorkService {
 	public void addWork(WorkBean work);
 	public void delWork(int id);
 	public WorkBean findById(int id);

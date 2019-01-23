@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
+    <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -41,7 +42,7 @@
             <!-- 右侧导航 -->
             <ul class="layui-nav larry-header-item">
             		<li class="layui-nav-item">
-            			账户名：帅得掉渣渣
+            			姓名：<span>${UserBean.name}</span>
             		</li>
 					<li class="layui-nav-item">
 						<a href="login.html">
@@ -72,7 +73,7 @@
 				</a>
 				<dl class="layui-nav-child">
                     <dd>
-                        <a href="javascript:;" data-url="findUser.jsp">
+                        <a href="javascript:;" data-url="findUserMe.jsp">
                             <i class="iconfont icon-geren1" data-icon='icon-geren1'></i>
                             <span>个人信息</span>
                         </a>
@@ -95,7 +96,7 @@
 					</a>
 					    <dl class="layui-nav-child">
 					    	<dd>
-					    		<a href="javascript:;" data-url="../thing/add.lovo">
+					    		<a href="javascript:;" data-url="addThing.jsp">
 					    		   <i class="iconfont icon-yonghu1" data-icon='icon-yonghu1'></i>
 					    		   <span>添加新事件</span>
 					    		</a>
@@ -130,6 +131,12 @@
 					    	<a href="javascript:;" data-url="findUserTable.jsp">
 					    		   <i class="iconfont icon-lanmuguanli" data-icon='icon-lanmuguanli'></i>
 					    		   <span>用户一览表</span>
+					    		</a>
+					    		</dd>
+					    		<dd>
+					    	<a href="javascript:;" data-url="jiaojieban.jsp">
+					    		   <i class="iconfont icon-lanmuguanli" data-icon='icon-lanmuguanli'></i>
+					    		   <span>交接班</span>
 					    		</a>
 					    		</dd>
 					   </dl>
@@ -178,24 +185,6 @@
                   
 					    	
 					   </dl>
-				</li>
-				
-			<!-- 系统设置 -->
-			<li class="layui-nav-item">
-					<a href="javascript:;">
-					   <i class="iconfont icon-xitong" ></i>
-					   <span>系统设置</span>
-					   <em class="layui-nav-more"></em>
-					</a>
-					    <dl class="layui-nav-child">
-					    	
-					    	<dd>
-					    		<a href="javascript:;">
-					    			<i class='iconfont icon-xinxicaiji' data-icon='icon-xinxicaiji'></i>
-					    			<span>防采集管理</span>
-					    		</a>
-					    	</dd>
-					    </dl>
 				</li>
 		</ul>
 	    </div>

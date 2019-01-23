@@ -1,6 +1,7 @@
 package com.lovo.dao;
 
 import java.util.List;
+import java.util.Map;
 
 import com.lovo.bean.UserBean;
 
@@ -10,7 +11,7 @@ import com.lovo.bean.UserBean;
 	 
 	 public void delUser(int userId);
 	 
-	 public void updateUser(String phone,String password,String roleEntity,int userID);
+	 public void updateUser(String password,int userID);
 	 
     
 	public List<UserBean> getListUser();
@@ -28,7 +29,7 @@ import com.lovo.bean.UserBean;
 	 */
 	public UserBean login(String userName,String password);
 	
-	public List<UserBean> findByItem(String sex,String name);
+	public List<UserBean> findByItem(Map<String, String> map);
 	
 	
 }

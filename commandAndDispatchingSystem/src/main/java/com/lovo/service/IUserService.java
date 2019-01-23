@@ -1,6 +1,7 @@
 package com.lovo.service;
 
 import java.util.List;
+import java.util.Map;
 
 import com.lovo.bean.UserBean;
 
@@ -10,7 +11,7 @@ public interface IUserService {
 	 
 	 public void delUser(int userId);
 	 
-	 public void updateUser(String phone,String password,String roleEntity,int userID);
+	 public void updateUser(String password,int userID);
 	/**
 	 * 查询用户信息
 	 * @param userId 用户id
@@ -37,7 +38,7 @@ public interface IUserService {
 	 */
 	public UserBean login(String userName,String password);
 	
-	public List<UserBean> findByItem(String sex,String name);
+	public List<UserBean> findByItem(Map<String, String> map);
 	
 	
 }

@@ -26,7 +26,7 @@
 	</delete>
 	
 	<update id="updateUser">
-		update t_user set f_phone=#{param1} and f_password=#{param2} and f_work=#{#param3}where pk_id=#{param4}
+		update t_user set  f_password=#{param1} where pk_userID=#{param2}
 	</update>
 	
 	<select id="getListUser" resultMap="userRM" useCache="true">
@@ -35,13 +35,12 @@
 	
 	<select id="findByItem" resultMap="userRM" parameterType="map">
 		select * from t_user 
-
-		<trim prefix="where" prefixOverrides="and /or">
-			<if test="param1!=null"> 
-				 f_sex=#{param1}
+		<trim prefix="where" prefixOverrides="and">
+			<if test="sex!=null"> 
+				and f_sex=#{sex}
 			</if>
-			<if test="param2!=null">
-				 f_name like "%"#{param2}"%"  
+			<if test="name!=null">
+				and f_name like "%"#{name}"%"  
 			</if>
 		</trim>
 	</select>

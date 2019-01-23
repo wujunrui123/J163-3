@@ -15,7 +15,7 @@ public interface IRoleDao {
      * 查询角色集合
      * @return 角色集合
      */
-	public List<RoleEntity> getAllRole() ;
+	public List<RoleEntity> getAllRole();
 	
 
 }

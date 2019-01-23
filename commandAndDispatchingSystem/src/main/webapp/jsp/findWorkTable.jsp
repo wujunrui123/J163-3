@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -21,6 +22,14 @@
     width: 123px;
 	}
 	</style>
+	<script type="text/javascript" src="../jquery-2.1.4.js"></script>
+	<script>
+		$(function(){
+			$.post("../workList.lovo",callBack,'JSON')
+		})
+		function callBack(data){
+		}
+	</script>
 </head>
 <body>
 <section class="layui-larry-box">
@@ -30,35 +39,23 @@
 		
 		<div class="layui-inline">
 		    
-		    <div class="layui-input-inline">
-		      <select  class='sel'>
-		       <option>一月
-		       </option>
-		       <option>二月
-		       </option>
-		       <option>三月
-		       </option>
-		        <option>四月
-		       </option>
-		      </select>
-		    </div>
+		    <form action="../findWorkByItem.lovo" method="post">
 		    
-		    <div class="layui-input-inline">
-		    	<input value="" placeholder="起始日期" class="layui-input search_input" type="date">
-		    	
-		    </div>
-		     <div class="layui-input-inline">
-		    	<input value="" placeholder="结束日期" class="layui-input search_input" type="date">
-		    	
-		    </div>
-		    <div class="layui-input-inline">
-		    	<input value="" placeholder="请输入姓名" class="layui-input search_input" type="text">
-		    </div>
-		    
-		
-		    <a class="layui-btn search_btn">查询</a>
-		    
-		    <a href="addWorker.jsp" class="layui-btn search_btn" data-url="addWorker.jsp" >添加值班人员</a>
+			    <div class="layui-input-inline">
+			    	<input name="startDate" placeholder="起始日期" class="layui-input search_input" type="date">
+			    	
+			    </div>
+			     <div class="layui-input-inline">
+			    	<input name="endDate" placeholder="结束日期" class="layui-input search_input" type="date">
+			    	
+			    </div>
+			    <div class="layui-input-inline">
+			    	<input name="name" placeholder="请输入姓名" class="layui-input search_input" type="text">
+			    </div>
+			
+			    <input type="submit" id="find"  value="查询" class="layui-btn search_btn">
+		    </form>
+		    <a href="../addWorkFindAllUser.lovo" class="layui-btn search_btn">添加值班人员</a>
 		    
 		    
 		</div>
@@ -85,28 +82,23 @@
 							<th style="text-align:left;">姓名</th>
 							<th>上班时间</th>
 							<th>下班时间</th>
-							
-							<th>联系方式</th>
-							
+							<th>值班日志</th>
 							
 							<th>操作</th>
 						</tr>
 					</thead>
 					<tbody class="news_content">
-						<tr>
-							<td align="left">张三</td>
-							<td>2011-01-01 16:00</td>
-							<td>2011-01-01 24:00</td>
-							<td>13688261088</td>
-							
-							<td>
-								
-								<a href="PlanTemplate.jsp" class="layui-btn layui-btn-mini news_edit" data-url="PlanTemplate.jsp" ><i class="iconfont icon-edit"></i>删除</a>
-								
-							
-							</td>
-						</tr>	
-
+						<c:forEach var="w" items="${workList}">
+							<tr>
+								<td  align="left">${w.userName}</td>
+								<td>${w.startDate}</td>
+								<td>${w.endDate}</td>
+								<td>${w.log}</td>
+								<td>
+									<a href="../delWork.lovo?id=${w.workID}" class="layui-btn layui-btn-mini news_edit" data-url="delWork.lovo" ><i class="iconfont icon-edit"></i>删除</a>
+								</td>
+							</tr>
+						</c:forEach>
 					</tbody>
 					</table>
                      <div class="larry-table-page clearfix">
@@ -114,48 +106,13 @@
 				          <div id="page" class="page"></div>
 			         </div>
 			    </div>
-			     <!-- 登录日志 -->
-			    <div class="layui-tab-item layui-field-box">
-			          <table class="layui-table table-hover" lay-even="" lay-skin="nob">
-                           <thead>
-                              <tr>
-                                  <th><input type="checkbox" id="selected-all"></th>
-                                  <th>ID</th>
-                                  <th>管理员账号</th>
-                                  <th>状态</th>
-                                  <th>最后登录时间</th>
-                                  <th>上次登录IP</th>
-                                  <th>登录IP</th>
-                                  <th>IP所在位置</th>
-                              </tr>
-                            </thead>
-                            <tbody>
-                              <tr>
-                                <td><input type="checkbox"></td>
-                                <td>110</td>
-                                <td>admin</td>
-                                <td>后台登录成功</td>
-                                <td>2016-12-19 14:26:03</td>
-                                <td>127.0.0.1</td>
-                                <td>127.0.0.1</td>
-                                <td>Unknown</td>
-                              </tr>
-                            </tbody>
-			          </table>
-			          <div class="larry-table-page clearfix">
-                          <a href="javascript:;" class="layui-btn layui-btn-small"><i class="iconfont icon-shanchu1"></i>删除</a>
-				          <div id="page2" class="page"></div>
-			         </div>
-			    </div>
+			   
 		    </div>
 		</div>
 	
 </section>
  <script src="../jquery-2.1.4.js"></script>
 <script type="text/javascript" src="common/layui/layui.js"></script>
-<script type="text/javascript" src="js/newslist.js"></script>
-<!-- <script type="text/javascript" src="js/larry.js"></script>
-<script type="text/javascript" src="js/index.js"></script> -->
 <script type="text/javascript">
 /*     $("body").on("click",".news_edit",function(){  //编辑
 	layer.alert('您点击了文章编辑按钮，由于是纯静态页面，所以暂时不存在编辑内容，后期会添加，敬请谅解。。。',{icon:6, title:'文章编辑'});

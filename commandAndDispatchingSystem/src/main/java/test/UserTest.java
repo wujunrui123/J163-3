@@ -1,5 +1,9 @@
 package test;
 
+import java.util.HashMap;
+import java.util.Map;
+
+import org.apache.log4j.Logger;
 import org.junit.Before;
 import org.junit.Test;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
@@ -16,11 +20,14 @@ public class UserTest {
 	@Test
 	public void test() {
 		IUserService user=(IUserService) app.getBean("userService");
-//		System.out.println(user.login("AAA", "BBB"));
+//		System.out.println(user.login("a", "1"));
 //		user.addUser(new UserBean("BB", "C", "123", "1", "123"));
 //		System.out.println(user.getListUser());
-//		System.out.println(user.findByItem(null,"B"));
+//		Map<String, String> map=new HashMap<String, String>();
+//		map.put("sex", "1");
+//		System.out.println(user.findByItem(map));
 //		System.out.println(user.getUserByUserId(1));
 //		user.delUser(1);
+		user.updateUser("666", 29);
 	}
 }
