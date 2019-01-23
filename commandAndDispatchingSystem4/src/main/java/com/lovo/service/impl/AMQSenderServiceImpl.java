@@ -32,7 +32,7 @@ public class AMQSenderServiceImpl implements IAmqSenderService{
 	    //向特定的队列发送消息
 	    @Override
 	    public void sendMsgQueue(String msg) {
-	  
+//	  
 	        try {
 	            logger.info("将要向队列{}发送的消息msg:{}"+destinationQueue+ msg);
 	            jmsTemplate.send(destinationQueue, new MessageCreator() {
