@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+
+<mapper namespace="com.lovo.dao.IContinueDao">
+
+<resultMap type="continueEntity" id="continueEntity">
+		<id property="id" column="pk_id" />
+		<result property="grade" column="f_grade"/>
+		<result property="peopleNum" column="f_peopleNum"/>
+		<result property="uploadName" column="f_uploadName"/>
+		<result property="callName" column="f_callName"/>
+		<result property="callphone" column="f_callphone"/>
+		<result property="uploadDate" column="f_uploadDate"/>
+		<result property="uploadDate" column="f_uploadDate"/>
+		<result property="thingID" column="fk_thingID"/>		
+		<result property="thingCard" column="f_thingCard"/>		
+	</resultMap>
+	
+	
+	<!-- <resultMap type="lockBean" id="lockRM">
+		<id property="id" column="lock_id" />
+		<result property="type" column="f_type"/>		
+	</resultMap> -->
+
+  <select id="findById" resultMap="continueEntity" >
+    select * from t_continue where pk_id=#{id} 
+  </select>
+  
+	<insert id="add" parameterType="continueEntity">
+	insert into t_continue(fk_thingID, f_grade, f_peopleNum, f_uploadName, f_callName, f_callphone, 
+    f_uploadDate,f_thingCard) values(#{thingID},#{grade},#{peopleNum},#{uploadName},#{callName},#{callphone},#{uploadDate},#(thingCard))
+	</insert>
+	
+	
+	<select id="findByThingId" resultMap="continueEntity" >
+    select * from t_continue where fk_thingID=#{param1} 
+  </select>
+	
+	
+	<delete id="delById">
+	delete from t_continue where pk_id=#{param1}
+	</delete>
+  
+  
+  
+  
+  
+   
+  
+
+  
+</mapper>
