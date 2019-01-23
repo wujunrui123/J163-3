@@ -44,7 +44,7 @@
 		var $tbody=$("tbody");
 		$tbody.empty();
 		$.each(data, function(i, e){
-		var  tr="<tr><td>"+e.eventName+"</td><td>"+e.type+"</td><td>"+e.site+"</td><td>"+e.numberpeople+"</td><td>"+e.arnumber+"</td><td>"+e.area+"</td>";
+		var  tr="<tr><td>"+e.eventName+"</td><td>"+e.numberpeople+"</td><td>"+e.arnumber+"</td><td>"+e.area+"</td>";
 			
 			
 		
@@ -78,10 +78,7 @@
 				<blockquote class="layui-elem-quote news_search">
 
 					<div class="layui-inline">
-						<div class="layui-input-inline">
-							<input value="" placeholder="请输入事件编号"
-								class="layui-input search_input" type="text">
-						</div>
+						
 						<div class="layui-input-inline">
 							<select class='sel' name="area">
 								<option>-请选择事件状态-</option>
@@ -90,15 +87,7 @@
 								<option>已处理</option>
 							</select>
 						</div>
-						<div class="layui-input-inline">
-							<input value="" placeholder="请输入类型关键字"
-								class="layui-input search_input" type="text" name=type>
-						</div>
-						<div class="layui-input-inline">
-							<input value="" placeholder="请输入地区关键字"
-								class="layui-input search_input" type="text"  name="site">
-						</div>
-						<input type="button"  name="operator"  value="查询"/>
+						<input type="button" class="layui-btn search_btn"  name="operator"  value="查询"/>
 					</div>
 
 					<div class="layui-inline">
@@ -120,8 +109,6 @@
 						<thead>
 							<tr>
 								<th style="text-align: center">事件名称</th>
-								<th>事件类型</th>
-								<th>事件地址</th>
 								<th style="width: 150px">调派人员数量</th>
 								<th>调派车辆数量</th>
 								<th>事件状态</th>

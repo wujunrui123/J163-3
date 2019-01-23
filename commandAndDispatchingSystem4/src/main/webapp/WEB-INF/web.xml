@@ -37,8 +37,9 @@
   <context-param>
       <param-name>contextConfigLocation</param-name>
 <!--       如果classpath 会在src下面找文件 -->
-      <param-value>classpath:jbdca.xml</param-value>
+      <param-value>classpath:applicationContext*.xml</param-value>
   </context-param> 
+
   
   <!-- 过滤器   中来设置编码集 -->
   <filter>
