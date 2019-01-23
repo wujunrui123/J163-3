@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 package com.lovo.bean;
 
 import java.io.Serializable;
@@ -51,4 +52,15 @@ public class WorkBean implements Serializable{
 		// TODO Auto-generated constructor stub
 	}
 	
+=======
+
+package com.lovo.bean;
+public class WorkBean {
+private int workID;
+private java.sql.Date startDate;
+private java.sql.Date endDate;
+private String userName;
+private String phone;
+private String month;
+>>>>>>> branch 'master' of https://github.com/wujunrui123/J163-3.git
 }

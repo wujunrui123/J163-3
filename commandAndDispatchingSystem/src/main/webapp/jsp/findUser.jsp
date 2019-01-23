@@ -15,6 +15,7 @@
         <meta name="apple-mobile-web-app-status-bar-style" content="black">
         <meta name="apple-mobile-web-app-capable" content="yes">
         <meta name="format-detection" content="telephone=no">
+<<<<<<< HEAD
         <link rel="stylesheet" href="jsp/css/x-admin.css" media="all">
         <script type="text/javascript" src="jquery-2.1.4.js"></script>
 		<script type="text/javascript">
@@ -59,6 +60,56 @@
               </table>
             </div>
             <a href="jsp/findUserTable.jsp" class="layui-btn search_btn" data-url="findUserTable.jsp" >返回</a>
+=======
+        <link rel="stylesheet" href="./css/x-admin.css" media="all">
+        <script type="text/javascript" src="../jquery-2.1.4.js"></script>
+		<script type="text/javascript">
+			$(function(){
+				alert(12);
+			})
+
+		</script>
+    </head>
+    
+    <body>
+        <div class="x-body">
+            <blockquote class="layui-elem-quote">
+                <img src="./images/logo.png" class="layui-circle" style="width:50px;float:left">
+                <dl style="margin-left:80px; color:#019688">
+                <dt><span >用户信息</span> </dt>
+               
+              </dl>
+            </blockquote>
+            <div class="pd-20">
+              <table  class="layui-table" lay-skin="line">
+                <tbody>
+                  <tr>
+                    <th  width="80">姓名：</th>
+                    <td> ${n.name }</td>
+                    <th>用户名：</th>
+                    <td>${n.userName }</td>
+                  </tr>
+                  
+                  <tr>
+                    <th>性别：</th>
+                    <td>${n.sex }</td>
+                    <th>电话：</th>
+                    <td>${n.phone }</td>
+                  </tr>
+                  
+                  <tr>
+                    <th>职位：</th>
+                    <td>${n.work }</td>
+                   
+                  </tr>
+                  
+                  
+                  
+                </tbody>
+              </table>
+            </div>
+            <a href="findUserTable.jsp" class="layui-btn search_btn" data-url="findUserTable.jsp" >返回</a>
+>>>>>>> branch 'master' of https://github.com/wujunrui123/J163-3.git
         </div>
                         
         

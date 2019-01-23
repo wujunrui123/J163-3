@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="com.lovo.dao.IEmployeesBeanDao">
+ <resultMap  id="Employees" type="EmployeesBean">
+		<id property="inventoriesId" column="pk_InventoriesId"/>
+		<id property="ThingId" column="fk_eventSourceId"/>
+		<id property="name" column="f_name"/>
+		<id property="phone" column="f_phone"/>
+		<id property="state" column="f_state"/>
+	<id property="sendData" column="f_outDate"/> 
+			<id property="BackDate" column="f_backDate"/>
+	</resultMap>
+	
+  <select id="findEmployees" resultMap="Employees"  >
+      select * from t_inventoriesare where pk_InventoriesId =#{param1} 
+  </select>
+  
+    <select id="findBitm" resultMap="Employees"  >
+      select * from t_inventoriesare where fk_eventSourceId =#{param1} 
+  </select>
+  
+  <select id="findAll" resultMap="Employees"  >
+      select * from t_inventoriesare where f_state ="在线"
+  </select>
+  
+      <select id="systemEmployees"   resultType="int">
+      select COUNT(f_name) from t_inventoriesare 
+   </select>  
+  
+   <select id="findByItem" resultMap="Employees" >
+		select * from t_inventoriesare  where 1=1
+
+			<if test="_parameter!=null">
+				and f_name like "%"#{_parameter}"%"  
+			</if>
+		
+	</select> 
+  
+   <insert id="addEmployees"  parameterType="EmployeesBean">
+  insert into t_inventoriesare values(null,#{ThingId},#{name},#{phone},#{state},#{sendData},#{BackDate})
+  </insert>
+  
+  <delete id="delEmployees"   >
+    delete  from t_inventoriesare where pk_InventoriesId =#{param1} 
+ </delete>
+
+<update id="updateEmployees" >
+		update t_inventoriesare set f_phone=#{param1} where f_name=#{param2}
+	</update>
+	
+	<update id="updateState" >
+		update t_inventoriesare set fk_eventSourceId=#{param1},f_outDate=#{param2},f_backDate=#{param3}, f_state=#{param4} where f_name=#{param5}
+	</update>
+</mapper>

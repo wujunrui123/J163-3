@@ -16,6 +16,7 @@
 		<result property="uploadDate" column="f_uploadDate"/>
 		<result property="uploadDate" column="f_uploadDate"/>
 		<result property="thingID" column="fk_thingID"/>		
+<<<<<<< HEAD
 		<result property="thingCard" column="f_thingCard"/>		
 	</resultMap>
 	
@@ -32,6 +33,23 @@
 	<insert id="add" parameterType="continueEntity">
 	insert into t_continue(fk_thingID, f_grade, f_peopleNum, f_uploadName, f_callName, f_callphone, 
     f_uploadDate,f_thingCard) values(#{thingID},#{grade},#{peopleNum},#{uploadName},#{callName},#{callphone},#{uploadDate},#(thingCard))
+=======
+	</resultMap>
+	
+	
+	<!-- <resultMap type="lockBean" id="lockRM">
+		<id property="id" column="lock_id" />
+		<result property="type" column="f_type"/>		
+	</resultMap> -->
+
+  <select id="findById" resultMap="continueEntity" >
+    select * from t_continue where pk_id=#{id} 
+  </select>
+  
+	<insert id="add" parameterType="continueEntity">
+	insert into t_continue(fk_thingID, f_grade, f_peopleNum, f_uploadName, f_callName, f_callphone, 
+    f_uploadDate) values(#{thingID},#{grade},#{peopleNum},#{uploadName},#{callName},#{callphone},#{uploadDate})
+>>>>>>> branch 'master' of https://github.com/wujunrui123/J163-3.git
 	</insert>
 	
 	

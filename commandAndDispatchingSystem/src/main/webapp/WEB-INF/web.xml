@@ -33,6 +33,7 @@
       <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
   </listener> 
   
+<<<<<<< HEAD
  
   
   <!-- 加载MQ映射文件，加载spring.xml文件 -->
@@ -46,6 +47,14 @@
   
   
   
+=======
+  <!--  加载spring.xml文件-->
+  <context-param>
+      <param-name>contextConfigLocation</param-name>
+<!--       如果classpath 会在src下面找文件 -->
+      <param-value>classpath:jbdca.xml</param-value>
+  </context-param> 
+>>>>>>> branch 'master' of https://github.com/wujunrui123/J163-3.git
   
   <!-- 过滤器   中来设置编码集 -->
   <filter>

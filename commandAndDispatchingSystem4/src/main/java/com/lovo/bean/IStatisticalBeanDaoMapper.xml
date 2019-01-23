@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lovo.dao.IStatisticalBeanDao">
+ <resultMap  id="Statistical" type="StatisticalBean">
+		<id property="kuCunId" column="t_stock"/>
+		<id property="totalCar" column="f_totalCar"/>
+		<id property="totalPerson" column="f_totalPerson "/>
+	
+	</resultMap>
+	
+  <select id="find" resultMap="Statistical"  >
+      select * from t_stock where pk_to_id =#{param1} 
+  </select>
+  
+   <insert id="addStatistical"  parameterType="StatisticalBean">
+  insert into t_stock values(null,#{totalCar},#{totalPerson})
+  </insert>
+  
+
+
+    <update id="updateStatistical" >
+		update t_stock set f_totalCar=#{param1},f_totalPerson=#{param2}   where pk_to_id=#{param3}
+	</update>
+	
+ 
+</mapper> 

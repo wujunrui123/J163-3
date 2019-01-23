@@ -23,5 +23,8 @@ public interface IRoleService {
 	 * @return 角色集合
 	 */
 	public List<RoleEntity> getNotRole(int userid);
+<<<<<<< HEAD
 	
+=======
+>>>>>>> branch 'master' of https://github.com/wujunrui123/J163-3.git
 }

@@ -31,7 +31,7 @@ import com.lovo.service.IUserService;
 @Controller
 @RequestMapping("common")
 public class CommonController {
-
+\\
 	@Autowired
 	private ICommonService commonService;
 

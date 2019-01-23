@@ -9,7 +9,11 @@
 
   <select id="getListRole" parameterType="int" resultType="roleEntity" >
   select r.* from t_user u , t_userrole ur ,t_role r
+<<<<<<< HEAD
   WHERE u.pk_userID=ur.userid AND ur.roleid=r.roleId AND u.pk_userID = #{id}
+=======
+  WHERE u.id=ur.userid AND ur.roleid=r.roleId AND u.id = #{id}
+>>>>>>> branch 'master' of https://github.com/wujunrui123/J163-3.git
   </select>
   
   <select id="getAllRole"  resultType="roleEntity" >

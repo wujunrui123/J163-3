@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+
+<mapper namespace="com.lovo.dao.IEventDao">
+
+
+  <select id="findAll"  parameterType="java.util.Map" resultType="eventBean" >
+            select * from t_event where 1=1
+			      
+			
+                <if test="eventNum!=null">
+					and f_eventNum = #{eventNum}
+				</if>  
+
+				
+				<if test="state!=null">
+					and f_state = #{state}
+				</if>
+				
+				<if test="stattime!=null">
+					and f_time &gt; #{stattime}
+				</if>
+				
+				<if test="endtime!=null">
+					and f_time &lt; #{endtime}
+				</if>
+				
+				   ORDER BY f_time DESC
+		
+
+  </select>
+  
+  <select id="findcontByEvid"   resultType="continueBean" >
+     select * from t_continue where t_e_pk_id = #{id} 
+     ORDER BY f_repTime DESC 
+ </select>
+ 
+ <insert id="addEvent" parameterType="eventBean">
+     insert into t_event values(null,#{f_eventName},#{f_eventNum},#{f_time},
+     #{f_address},#{f_area},
+     #{f_level},#{f_type},#{t_report}
+     ,#{t_alarm},#{f_alarmTel},#{f_state}
+     ,#{f_firesituation},#{f_firesi},#{f_collapsearea}
+     ,#{f_collapse})
+ </insert>
+ 
+  <select id="findEventById" resultType="eventBean" >
+   select * from t_event where pk_id=#{eventid}
+ </select>
+  
+  
+
+  
+</mapper>
