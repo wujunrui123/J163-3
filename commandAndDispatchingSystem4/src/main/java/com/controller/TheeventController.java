@@ -61,6 +61,7 @@ public class TheeventController {
 		 for (String c : carStr) {
 			 carService.updateState(messageId, new SimpleDateFormat("yyyy-MM-dd").format(new Date()), null, "出勤", c);
 		}
+		 theeventBeanService.updateTheevent("处理中", Integer.parseInt(messageId));
 		 return "0";
 	 }
 }

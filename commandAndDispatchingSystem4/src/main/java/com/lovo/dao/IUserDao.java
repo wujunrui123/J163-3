@@ -1,29 +1,21 @@
-package com.lovo.service;
+package com.lovo.dao;
 
 import java.util.List;
 
 import com.lovo.bean.UserBean;
 
-
-public interface IUserService {
-	/**
-	 * 查询用户信息
-	 * @param userId 用户id
-	 * @return 用户对象
-	 */
-	public UserBean getUserByUserId(int userId) ;
+ public interface IUserDao {
     /**
      * 获取所用用户
      * @return
      */
 	public List<UserBean> getListUser();
 	/**
-	 * 获取角色不拥有的用户
-	 * @param listAll
-	 * @param listRoleUser
+	 * 根据用户ID获取用户详细信息
+	 * @param userId
 	 * @return
 	 */
-	public List<UserBean> getUNListUserByRole(List<UserBean> listAll,List<UserBean> listRoleUser);
+	public UserBean getUserByUserId(int userId);	
 	/**
 	 * 登录，
 	 * @param userName
@@ -31,22 +23,6 @@ public interface IUserService {
 	 * @return 用户对象
 	 */
 	public UserBean login(String userName,String password);
-	/**
-	 * 添加用户
-	 * @param user
-	 */
-	public  void addUser(UserBean user);
-	/**
-	 * 删除用户
-	 * @param user
-	 */
-	public void delUser(UserBean user);
-	/**
-	 * 修改用户信息
-	 * @param user
-	 */
-	public void update(UserBean user);
-	
 	/**
 	 * 根据用户id修改用户电话、邮箱
 	 * @param tel 电话

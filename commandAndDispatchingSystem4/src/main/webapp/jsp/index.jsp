@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
 	pageEncoding="utf-8"%>
+	<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -20,7 +21,9 @@
 <link rel="stylesheet" type="text/css" href="css/adminstyle.css"
 	media="all">
 
-
+<%
+  String userName = request.getParameter("username");
+ %>	
 </head>
 <body>
 	<div class="layui-layout layui-layout-admin" id="layui_layout">
@@ -43,7 +46,7 @@
 				</div>
 				<!-- 右侧导航 -->
 				<ul class="layui-nav larry-header-item">
-					<li class="layui-nav-item">账户名：广州丹奇日化</li>
+					<li class="layui-nav-item">用户名：<span><%=userName %></span></li>
 					<li class="layui-nav-item"><a href="login.html"> <i
 							class="iconfont icon-exit"></i> 退出
 					</a></li>
@@ -69,12 +72,12 @@
 					</a>
 						<dl class="layui-nav-child">
 							<dd>
-								<a href="javascript:;" data-url="personInfo.html"> <i
+								 <a href="javascript:;" data-url="userShow.jsp"> <i
 									class="iconfont icon-geren1" data-icon='icon-geren1'></i> <span>个人信息</span>
 								</a>
 							</dd>
 							<dd>
-								<a href="javascript:;" data-url="changepwd.html"> <i
+								<a href="javascript:;" data-url="chengspwd.jsp"> <i
 									class="iconfont icon-iconfuzhi01" data-icon='icon-iconfuzhi01'></i>
 									<span>修改密码</span>
 								</a>
