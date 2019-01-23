@@ -118,7 +118,7 @@
 						</dl></li>
 
 					<!-- 会员管理 -->
-					<li class="layui-nav-item"><a href="javascript:;"> <i
+					<!-- <li class="layui-nav-item"><a href="javascript:;"> <i
 							class="iconfont icon-m-members"></i> <span>权限管理</span> <em
 							class="layui-nav-more"></em>
 					</a>
@@ -144,7 +144,7 @@
 
 						</dl></li>
 
-					<!-- 系统设置 -->
+					系统设置
 					<li class="layui-nav-item"><a href="javascript:;"> <i
 							class="iconfont icon-xitong"></i> <span>系统设置</span> <em
 							class="layui-nav-more"></em>
@@ -156,7 +156,7 @@
 									data-icon='icon-xinxicaiji'></i> <span>防采集管理</span>
 								</a>
 							</dd>
-						</dl></li>
+						</dl></li> -->
 				</ul>
 			</div>
 		</div>
