@@ -79,7 +79,7 @@
 
     <!-- 往二系统发信息的容器 -->
 	 <bean id="sendToTwo" class="org.apache.activemq.command.ActiveMQQueue">
-        <constructor-arg name="name" value="sendtoone"/>
+        <constructor-arg name="name" value="sen"/>
     </bean>
 	
 	

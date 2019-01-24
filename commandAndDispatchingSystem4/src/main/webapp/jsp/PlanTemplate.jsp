@@ -99,11 +99,13 @@
 			return $(this).text();
 		}).get().join(",")
 			
+		var fz=$("select[name=fz] option:selected").text();
+		
 		var car = $("#id4 option").map(function(){
 			return $(this).text();
 		}).get().join(",")
 		
-		$.getJSON("../dispatch.lovo",{messageId:messageId,person:person,car:car},callBack);
+		$.getJSON("../dispatch.lovo",{messageId:messageId,person:person,car:car,fz:fz},callBack);
 	}
 	
 	function callBack(data){
@@ -183,7 +185,7 @@
 	
 				<div class="layui-input-inline"style="position: relative;left: 250px; top:-90px" >
 					<p class="layui-btn layui-btn-normal newsAdd_btn" onclick="fuzeren()">选择负责人</p>
-					<select id="fuzeren"  style="width: 95px">
+					<select id="fuzeren"  name="fz" style="width: 95px">
 						<option>请选择负责人</option>
 					</select>
 				</div>

@@ -32,14 +32,14 @@ public class MyMessageListener implements MessageListener {
                 System.out.println("点对点收到结果===" + message);
                 Gson g =new Gson();
              
-                EventResourceBean t=  g.fromJson(message, EventResourceBean.class);
+                EventResourceBean t =  g.fromJson(message, EventResourceBean.class);
                 	  TheeventBean e =new TheeventBean();
-                	e.setMessageId(t.getPk_id());
+                	  
                 	e.setEventName(t.getEveName());
-                	e.setNumberpeople(t.getF_carNum());
-                	e.setArnumber(t.getF_perNum());
+                	e.setNumberpeople(t.getF_perNum());
+                	e.setArnumber(t.getF_carNum());
                     e.setArea("未处理");
-                    e.setTheEventNum(t.getEveNum());
+                    e.setTheEventNum(t.getPk_id()+"");
                     e.setSite(t.getSite());
                 	theeventBeanService.addTheevent(e);
                 

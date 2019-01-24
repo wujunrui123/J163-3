@@ -67,6 +67,7 @@ public interface ICarService {
 	 *            状态
 	 * @param name
 	 *            车牌
+	 * @return 
 	 */
 	public void updateState(String ThingId, String sendData, String BackDate, String state, String name);
 

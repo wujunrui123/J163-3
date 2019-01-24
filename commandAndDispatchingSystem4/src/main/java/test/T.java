@@ -59,7 +59,7 @@ public class T {
 //		CarBeanService.addCar(c);
 //		CarBeanService.delCara(1);
 //		System.out.println(CarBeanService.find(2).getPlateNumber());
-		System.out.println(CarBeanService.findByItem("出勤"));
+//		System.out.println(CarBeanService.findByItem("出勤"));
 //		System.out.println(CarBeanService.findAll());
 //		System.out.println(CarBeanService.systemCar());
 		
@@ -84,20 +84,6 @@ public class T {
 //		statisticalBeanService.addStatistical(s);
 //		statisticalBeanService.updateStatistical(1, 1, 5);
 		
-	}
-	@Test
-	public void findById() {
-		System.out.println(theevent.findById(1));
-	}
-	
-	@Test
-	public void findBitm() {
-		System.out.println(CarBeanService.findBitm(1));
-	}
-	
-	@Test
-	public void findCarByzaixian() {
-		System.out.println(CarBeanService.findCarByzaixian(1));
 	}
 }
 	

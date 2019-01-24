@@ -2,9 +2,11 @@ package com.controller;
 
 import java.lang.ProcessBuilder.Redirect;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,14 +16,24 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.view.RedirectView;
 
+import com.google.gson.Gson;
 import com.lovo.bean.CarBean;
+import com.lovo.bean.TheeventBean;
+import com.lovo.bean.TheeventJsonBean;
+import com.lovo.service.IAmqSenderService;
 import com.lovo.service.ICarService;
+import com.lovo.service.ITheeventBeanService;
 
 @Controller
 public class CarController {
-
+	 @Autowired
+	 private ITheeventBeanService  theeventBeanService;
 	 @Autowired
 	 private ICarService carService;
+	 
+	  @Resource(name="amqSenderService")
+		private IAmqSenderService amqSenderService;
+	 
 	 /**
 	  * 获取可派遣的车辆
 	  * @return
@@ -48,11 +60,35 @@ public class CarController {
 	 
 	 @RequestMapping("updateCar.lovo")
 	 public ModelAndView updateCar(String id,String sendData,String plateNumber,HttpServletRequest sq) {
-		 carService.updateState(id, sendData, new SimpleDateFormat("yyyy-MM-dd").format(new Date()), "在线", plateNumber);
+		 List<CarBean>  carList=new ArrayList<CarBean>();
+		 
+		 TheeventBean findById = theeventBeanService.findById(Integer.parseInt(id));
+         String num= findById.getTheEventNum();
+         
+         String	min= new SimpleDateFormat("yyyy-MM-dd").format(new Date());
+		 carService.updateState(id, sendData, min, "在线", plateNumber);
 		 List<CarBean> list = carService.findCarByzaixian(Integer.parseInt(id));
 		 sq.getSession().setAttribute("list", list);
 		 sq.getSession().setAttribute("id", id);
-		 ModelAndView mv = new ModelAndView();
+		 
+		 
+		 CarBean c1=new CarBean();
+		 
+		  c1.setPlateNumber(plateNumber);
+		  c1.setBackDate(min);
+		  c1.setState("回归");
+		  carList.add(c1);
+		 
+		 
+		  TheeventJsonBean json=new TheeventJsonBean();
+			 json.setTheeventnumber(num);
+		     json.setCar(carList);
+		     
+			 Gson gs=new Gson();
+			String aa= gs.toJson(json);
+			 amqSenderService.sendMsgQueue(aa);
+		 
+			 ModelAndView mv = new ModelAndView();
 		 RedirectView rv = new RedirectView("jsp/main4.jsp");
 		 mv.setView(rv);
 		 return mv;
