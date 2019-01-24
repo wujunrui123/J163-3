@@ -14,20 +14,10 @@ public class StatisticalBeanServiceimpl implements IStatisticalBeanService {
 	@Autowired
 	 private  IStatisticalBeanDao  StatisticalBeanDao;
 	
-	@Autowired
-	 private IEmployeesBeanDao EmployeesBeanDao;
-	
-	@Autowired
-	 private ICarDao CarBeanDao ;
-	
 	@Override
 	public void addStatistical(StatisticalBean Statistical) {
-		int car = CarBeanDao.systemCar();
-		int Employees = EmployeesBeanDao.systemEmployees();
-		StatisticalBean s=new StatisticalBean();
-		s.setTotalCar(car);
-		s.setTotalPerson(Employees);
-		StatisticalBeanDao.addStatistical(s);		
+	
+		StatisticalBeanDao.addStatistical(Statistical);		
 	}
 
 	@Override

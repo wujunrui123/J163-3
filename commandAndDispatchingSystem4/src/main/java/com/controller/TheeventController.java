@@ -65,6 +65,14 @@ public class TheeventController {
 		@ResponseBody
 		public void getJsonp(String theFunction,HttpServletResponse response) throws IOException {
 		
+		Integer ss= carService.systemCar();
+		Integer qq= employeesBeanService.systemEmployees();
+		StatisticalBean st=new StatisticalBean();
+		  st.setTotalCar(ss);
+		  st.setTotalPerson(qq);
+		 statisticalBeanService.addStatistical(st);
+		 
+		 
 		    StatisticalBean find = statisticalBeanService.find(1);
 		    Integer car= find.getTotalCar();
 		    Integer employees= find.getTotalPerson();

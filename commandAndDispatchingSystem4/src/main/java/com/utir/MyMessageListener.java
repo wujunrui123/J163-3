@@ -50,12 +50,10 @@ public class MyMessageListener implements MessageListener {
                 	Integer ca=t.getF_carNum();
                 	Integer  emp=t.getF_perNum();
                 	
-                	
-                	 StatisticalBean s=new StatisticalBean();
-         			Integer cars= s.getTotalCar();
-         			Integer employees= s.getTotalPerson();
-         			
-         			Integer a=cars-ca;
+                	  StatisticalBean find = statisticalBeanService.find(1);
+          		    Integer car= find.getTotalCar();
+          		    Integer employees= find.getTotalPerson();
+         			Integer a=car-ca;
          			Integer b=employees-emp;
          			
          			

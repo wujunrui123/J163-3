@@ -18,10 +18,12 @@ import org.springframework.web.servlet.view.RedirectView;
 
 import com.google.gson.Gson;
 import com.lovo.bean.CarBean;
+import com.lovo.bean.StatisticalBean;
 import com.lovo.bean.TheeventBean;
 import com.lovo.bean.TheeventJsonBean;
 import com.lovo.service.IAmqSenderService;
 import com.lovo.service.ICarService;
+import com.lovo.service.IStatisticalBeanService;
 import com.lovo.service.ITheeventBeanService;
 
 @Controller
@@ -30,6 +32,9 @@ public class CarController {
 	 private ITheeventBeanService  theeventBeanService;
 	 @Autowired
 	 private ICarService carService;
+	 
+	  @Autowired
+		 private IStatisticalBeanService statisticalBeanService;
 	 
 	  @Resource(name="amqSenderService")
 		private IAmqSenderService amqSenderService;
@@ -78,7 +83,10 @@ public class CarController {
 		  c1.setBackDate(min);
 		  c1.setState("回归");
 		  carList.add(c1);
-		 
+		  StatisticalBean find = statisticalBeanService.find(1);
+		    Integer car= find.getTotalCar()+1;
+		    Integer employees= find.getTotalPerson()+1;
+		  statisticalBeanService.updateStatistical(car, employees, 1);
 		 
 		  TheeventJsonBean json=new TheeventJsonBean();
 			 json.setTheeventnumber(num);
