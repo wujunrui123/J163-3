@@ -21,9 +21,10 @@ public class T {
 	IEmployeesBeanService employeesBeanService=null;
 	ITheeventBeanService theevent=null;
 	IStatisticalBeanService statisticalBeanService=null;
+	
 	@Before
 	public void before() {
-		app = new ClassPathXmlApplicationContext("jbdca.xml");
+		app = new ClassPathXmlApplicationContext("applicationContext.xml");
 		CarBeanService = (ICarService) app.getBean("carService");
 		employeesBeanService = (IEmployeesBeanService) app.getBean("employeesBeanService");
 		theevent=(ITheeventBeanService) app.getBean("theeventBeanService");
@@ -77,11 +78,9 @@ public class T {
 //		for (TheeventBean theeventBean : list) {
 //			System.out.println(theeventBean.getEventName());
 //		}
-//		StatisticalBean s=new StatisticalBean();
-//		s.setTotalCar(ss);
-//		s.setTotalPerson(i);
+		
 //		
-//		statisticalBeanService.addStatistical(s);
+//		statisticalBeanService.addStatistical(null);
 //		statisticalBeanService.updateStatistical(1, 1, 5);
 		
 	}

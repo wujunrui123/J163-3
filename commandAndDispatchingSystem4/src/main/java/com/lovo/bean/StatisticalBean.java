@@ -7,17 +7,17 @@ package com.lovo.bean;
 public class StatisticalBean {
 	/**总量库存id*/
 	private Integer kuCunId;
+
+	/**总车辆*/
+	private Integer totalCar;
+	/**总人数*/
+	private Integer totalPerson;
 	public Integer getKuCunId() {
 		return kuCunId;
 	}
 	public void setKuCunId(Integer kuCunId) {
 		this.kuCunId = kuCunId;
 	}
-	/**总车辆*/
-	private Integer totalCar;
-	/**总人数*/
-	private Integer totalPerson;
-	
 	public Integer getTotalCar() {
 		return totalCar;
 	}
@@ -30,6 +30,8 @@ public class StatisticalBean {
 	public void setTotalPerson(Integer totalPerson) {
 		this.totalPerson = totalPerson;
 	}
+	
+
 
 
 }

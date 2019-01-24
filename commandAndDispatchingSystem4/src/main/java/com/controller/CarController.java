@@ -65,7 +65,7 @@ public class CarController {
 		 TheeventBean findById = theeventBeanService.findById(Integer.parseInt(id));
          String num= findById.getTheEventNum();
          
-         String	min= new SimpleDateFormat("yyyy-MM-dd").format(new Date());
+         String	min= new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date());
 		 carService.updateState(id, sendData, min, "在线", plateNumber);
 		 List<CarBean> list = carService.findCarByzaixian(Integer.parseInt(id));
 		 sq.getSession().setAttribute("list", list);

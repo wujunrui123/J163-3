@@ -15,13 +15,17 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import com.google.gson.Gson;
 import com.lovo.bean.EventResourceBean;
+import com.lovo.bean.StatisticalBean;
 import com.lovo.bean.TheeventBean;
+import com.lovo.service.IStatisticalBeanService;
 import com.lovo.service.ITheeventBeanService;
 
 public class MyMessageListener implements MessageListener {
 
 	@Autowired
     private ITheeventBeanService theeventBeanService;
+	@Autowired
+    private IStatisticalBeanService statisticalBeanService;
 	
 	public void onMessage(Message msg) {
         if (msg instanceof TextMessage) {
@@ -41,8 +45,23 @@ public class MyMessageListener implements MessageListener {
                     e.setArea("未处理");
                     e.setTheEventNum(t.getPk_id()+"");
                     e.setSite(t.getSite());
+                   
                 	theeventBeanService.addTheevent(e);
-                
+                	Integer ca=t.getF_carNum();
+                	Integer  emp=t.getF_perNum();
+                	
+                	
+                	 StatisticalBean s=new StatisticalBean();
+         			Integer cars= s.getTotalCar();
+         			Integer employees= s.getTotalPerson();
+         			
+         			Integer a=cars-ca;
+         			Integer b=employees-emp;
+         			
+         			
+         		 
+         			statisticalBeanService.updateStatistical(a, b, 1);
+                 
                
             } catch (JMSException e) {
                 throw new RuntimeException(e);
